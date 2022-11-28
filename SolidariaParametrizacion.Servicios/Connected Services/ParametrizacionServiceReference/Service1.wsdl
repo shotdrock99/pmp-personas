@@ -1,0 +1,1711 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://192.1.2.13:8088/WCFTablasParametrizacion/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://192.1.2.13:8088/WCFTablasParametrizacion/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.1.2.13:8088/WCFTablasParametrizacion/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Tablas_Parametrizacion.Entidades" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_TraerSucursales_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerSucursales" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerSucursales_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerSucursalesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerSucursal_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerSucursal" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerSucursal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerSucursalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerSucursalesxAgente_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerSucursalesxAgente" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerSucursalesxAgente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerSucursalesxAgenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerSucursalesxUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerSucursalesxUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerSucursalesxUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerSucursalesxUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerMacroRamos_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerMacroRamos" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerMacroRamos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerMacroRamosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerMacroRamo_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerMacroRamo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerMacroRamo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerMacroRamoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerMacroRamoxRamo_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerMacroRamoxRamo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerMacroRamoxRamo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerMacroRamoxRamoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerRamos_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerRamos" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerRamos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerRamosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerRamosxMacroRamo_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerRamosxMacroRamo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerRamosxMacroRamo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerRamosxMacroRamoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerRamo_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerRamo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerRamo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerRamoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerRamosxSucursal_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerRamosxSucursal" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerRamosxSucursal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerRamosxSucursalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerRamoxSucursal_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerRamoxSucursal" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerRamoxSucursal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerRamoxSucursalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoPoliza_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoPoliza" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoPoliza_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoPolizaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerSubRamosxRamo_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerSubRamosxRamo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerSubRamosxRamo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerSubRamosxRamoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerSubRamo_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerSubRamo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerSubRamo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerSubRamoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerDeducible_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerDeducible" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerDeducible_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerDeducibleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerPaises_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerPaises" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerPaises_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerPaisesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerDepartamentos_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerDepartamentos" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerDepartamentos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerDepartamentosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerDepartamento_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerDepartamento" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerDepartamento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerDepartamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerMunicipiosxDepartamento_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerMunicipiosxDepartamento" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerMunicipiosxDepartamento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerMunicipiosxDepartamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerMunicipio_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerMunicipio" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerMunicipio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerMunicipioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoDocumento_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoDocumento" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoDocumento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoDocumentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoTelefono_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoTelefono" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoTelefono_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoTelefonoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoTelefonoxCodigo_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoTelefonoxCodigo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoTelefonoxCodigo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoTelefonoxCodigoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoDireccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoDireccion" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoDireccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoDireccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoDireccionxCodigo_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoDireccionxCodigo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoDireccionxCodigo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoDireccionxCodigoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoAgente_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoAgente" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoAgente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoAgenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoAgentexCodigo_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoAgentexCodigo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoAgentexCodigo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoAgentexCodigoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerMoneda_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerMoneda" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerMoneda_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerMonedaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoMovimiento_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoMovimiento" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoMovimiento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoMovimientoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerGrupoEndoso_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerGrupoEndoso" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerGrupoEndoso_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerGrupoEndosoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoEndoso_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoEndoso" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoEndoso_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoEndosoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoEndosoxCodigo_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoEndosoxCodigo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoEndosoxCodigo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoEndosoxCodigoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerConvenios_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerConvenios" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerConvenios_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerConveniosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerConvenioxCodigo_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerConvenioxCodigo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerConvenioxCodigo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerConvenioxCodigoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerPuntoVenta_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerPuntoVenta" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerPuntoVenta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerPuntoVentaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerPuntoVentaxCodigo_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerPuntoVentaxCodigo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerPuntoVentaxCodigo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerPuntoVentaxCodigoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerPuntoVentaxUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerPuntoVentaxUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerPuntoVentaxUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerPuntoVentaxUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerPuntoVentaxSucursalxUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerPuntoVentaxSucursalxUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerPuntoVentaxSucursalxUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerPuntoVentaxSucursalxUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerPuntoVentaxAgente_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerPuntoVentaxAgente" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerPuntoVentaxAgente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerPuntoVentaxAgenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerOficinasConvenio_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerOficinasConvenio" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerOficinasConvenio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerOficinasConvenioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerOficinasConvenioxCodigo_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerOficinasConvenioxCodigo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerOficinasConvenioxCodigo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerOficinasConvenioxCodigoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerUsuarioxCodigo_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerUsuarioxCodigo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerUsuarioxCodigo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerUsuarioxCodigoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerUsuarioxSucursal_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerUsuarioxSucursal" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerUsuarioxSucursal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerUsuarioxSucursalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerUsuarioxIntermediario_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerUsuarioxIntermediario" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerUsuarioxIntermediario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerUsuarioxIntermediarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerActividadEconomica_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerActividadEconomica" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerActividadEconomica_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerActividadEconomicaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoAsegurado_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoAsegurado" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoAsegurado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoAseguradoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerCategoriaAsegurado_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerCategoriaAsegurado" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerCategoriaAsegurado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerCategoriaAseguradoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoCliente" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerGiroNegocio_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerGiroNegocio" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerGiroNegocio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerGiroNegocioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerGiroNegocioxCodigo_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerGiroNegocioxCodigo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerGiroNegocioxCodigo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerGiroNegocioxCodigoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerOcupaciones_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerOcupaciones" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerOcupaciones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerOcupacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerAgrupadores_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerAgrupadores" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerAgrupadores_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerAgrupadoresResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerAgrupadoresxNombre_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerAgrupadoresxNombre" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerAgrupadoresxNombre_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerAgrupadoresxNombreResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerAgrupadoresxSucursal_Nombre_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerAgrupadoresxSucursal_Nombre" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerAgrupadoresxSucursal_Nombre_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerAgrupadoresxSucursal_NombreResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerAgrupadorxCodigo_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerAgrupadorxCodigo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerAgrupadorxCodigo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerAgrupadorxCodigoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoNegocio_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoNegocio" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoNegocio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoNegocioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerAgentes_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerAgentes" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerAgentes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerAgentesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerAgentexCodigo_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerAgentexCodigo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerAgentexCodigo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerAgentexCodigoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ConsultarTipoAgente_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarTipoAgente" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ConsultarTipoAgente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarTipoAgenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerParentesco_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerParentesco" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerParentesco_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerParentescoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerEstadoCivil_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerEstadoCivil" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerEstadoCivil_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerEstadoCivilResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoTasa_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoTasa" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoTasa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoTasaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoTasaxCodigo_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoTasaxCodigo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoTasaxCodigo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoTasaxCodigoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoVigencia_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoVigencia" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoVigencia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoVigenciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoVigenciaxCodigo_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoVigenciaxCodigo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerTipoVigenciaxCodigo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTipoVigenciaxCodigoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerPeriodoFacturacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerPeriodoFacturacion" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerPeriodoFacturacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerPeriodoFacturacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerPeriodoFacturacionxCodigo_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerPeriodoFacturacionxCodigo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerPeriodoFacturacionxCodigo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerPeriodoFacturacionxCodigoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerCalculoFacturacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerCalculoFacturacion" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerCalculoFacturacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerCalculoFacturacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerCoaseguradoras_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerCoaseguradoras" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerCoaseguradoras_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerCoaseguradorasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerCoaseguradoraxCodigo_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerCoaseguradoraxCodigo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerCoaseguradoraxCodigo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerCoaseguradoraxCodigoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerCargos_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerCargos" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerCargos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerCargosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerCargoxCodigo_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerCargoxCodigo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerCargoxCodigo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerCargoxCodigoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerAreas_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerAreas" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerAreas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerAreasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerAreaxCodigo_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerAreaxCodigo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerAreaxCodigo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerAreaxCodigoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerInformacionFinanciera_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerInformacionFinanciera" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerInformacionFinanciera_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerInformacionFinancieraResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerConducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerConducto" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerConducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerConductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerConductoPlan_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerConductoPlan" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerConductoPlan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerConductoPlanResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerConductoPlanxPlan_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerConductoPlanxPlan" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerConductoPlanxPlan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerConductoPlanxPlanResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerConductoPlanxConducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerConductoPlanxConducto" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerConductoPlanxConducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerConductoPlanxConductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerPlanPago_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerPlanPago" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerPlanPago_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerPlanPagoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerFormaPago_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerFormaPago" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerFormaPago_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerFormaPagoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UsuarioSoligesproXCodigo_InputMessage">
+    <wsdl:part name="parameters" element="tns:UsuarioSoligesproXCodigo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UsuarioSoligesproXCodigo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UsuarioSoligesproXCodigoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ConsultarConductoPago_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarConductoPago" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ConsultarConductoPago_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarConductoPagoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ConsultarPlanpago_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarPlanpago" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ConsultarPlanpago_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarPlanpagoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerBancos_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerBancos" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerBancos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerBancosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ConsultarTipoEmpresa_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarTipoEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ConsultarTipoEmpresa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarTipoEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ConsultarRamoImpuestoXRamo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarRamoImpuestoXRamo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ConsultarRamoImpuestoXRamo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarRamoImpuestoXRamoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ConsultarRamosImpuestos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarRamosImpuestos" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ConsultarRamosImpuestos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarRamosImpuestosResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="TraerSucursales">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerSucursales" message="tns:IService1_TraerSucursales_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerSucursalesResponse" message="tns:IService1_TraerSucursales_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerSucursal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerSucursal" message="tns:IService1_TraerSucursal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerSucursalResponse" message="tns:IService1_TraerSucursal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerSucursalesxAgente">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerSucursalesxAgente" message="tns:IService1_TraerSucursalesxAgente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerSucursalesxAgenteResponse" message="tns:IService1_TraerSucursalesxAgente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerSucursalesxUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerSucursalesxUsuario" message="tns:IService1_TraerSucursalesxUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerSucursalesxUsuarioResponse" message="tns:IService1_TraerSucursalesxUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerMacroRamos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerMacroRamos" message="tns:IService1_TraerMacroRamos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerMacroRamosResponse" message="tns:IService1_TraerMacroRamos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerMacroRamo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerMacroRamo" message="tns:IService1_TraerMacroRamo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerMacroRamoResponse" message="tns:IService1_TraerMacroRamo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerMacroRamoxRamo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerMacroRamoxRamo" message="tns:IService1_TraerMacroRamoxRamo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerMacroRamoxRamoResponse" message="tns:IService1_TraerMacroRamoxRamo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerRamos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerRamos" message="tns:IService1_TraerRamos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerRamosResponse" message="tns:IService1_TraerRamos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerRamosxMacroRamo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerRamosxMacroRamo" message="tns:IService1_TraerRamosxMacroRamo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerRamosxMacroRamoResponse" message="tns:IService1_TraerRamosxMacroRamo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerRamo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerRamo" message="tns:IService1_TraerRamo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerRamoResponse" message="tns:IService1_TraerRamo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerRamosxSucursal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerRamosxSucursal" message="tns:IService1_TraerRamosxSucursal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerRamosxSucursalResponse" message="tns:IService1_TraerRamosxSucursal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerRamoxSucursal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerRamoxSucursal" message="tns:IService1_TraerRamoxSucursal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerRamoxSucursalResponse" message="tns:IService1_TraerRamoxSucursal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoPoliza">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerTipoPoliza" message="tns:IService1_TraerTipoPoliza_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerTipoPolizaResponse" message="tns:IService1_TraerTipoPoliza_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerSubRamosxRamo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerSubRamosxRamo" message="tns:IService1_TraerSubRamosxRamo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerSubRamosxRamoResponse" message="tns:IService1_TraerSubRamosxRamo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerSubRamo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerSubRamo" message="tns:IService1_TraerSubRamo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerSubRamoResponse" message="tns:IService1_TraerSubRamo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerDeducible">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerDeducible" message="tns:IService1_TraerDeducible_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerDeducibleResponse" message="tns:IService1_TraerDeducible_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerPaises">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerPaises" message="tns:IService1_TraerPaises_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerPaisesResponse" message="tns:IService1_TraerPaises_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerDepartamentos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerDepartamentos" message="tns:IService1_TraerDepartamentos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerDepartamentosResponse" message="tns:IService1_TraerDepartamentos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerDepartamento">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerDepartamento" message="tns:IService1_TraerDepartamento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerDepartamentoResponse" message="tns:IService1_TraerDepartamento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerMunicipiosxDepartamento">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerMunicipiosxDepartamento" message="tns:IService1_TraerMunicipiosxDepartamento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerMunicipiosxDepartamentoResponse" message="tns:IService1_TraerMunicipiosxDepartamento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerMunicipio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerMunicipio" message="tns:IService1_TraerMunicipio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerMunicipioResponse" message="tns:IService1_TraerMunicipio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoDocumento">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerTipoDocumento" message="tns:IService1_TraerTipoDocumento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerTipoDocumentoResponse" message="tns:IService1_TraerTipoDocumento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoTelefono">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerTipoTelefono" message="tns:IService1_TraerTipoTelefono_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerTipoTelefonoResponse" message="tns:IService1_TraerTipoTelefono_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoTelefonoxCodigo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerTipoTelefonoxCodigo" message="tns:IService1_TraerTipoTelefonoxCodigo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerTipoTelefonoxCodigoResponse" message="tns:IService1_TraerTipoTelefonoxCodigo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoDireccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerTipoDireccion" message="tns:IService1_TraerTipoDireccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerTipoDireccionResponse" message="tns:IService1_TraerTipoDireccion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoDireccionxCodigo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerTipoDireccionxCodigo" message="tns:IService1_TraerTipoDireccionxCodigo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerTipoDireccionxCodigoResponse" message="tns:IService1_TraerTipoDireccionxCodigo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoAgente">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerTipoAgente" message="tns:IService1_TraerTipoAgente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerTipoAgenteResponse" message="tns:IService1_TraerTipoAgente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoAgentexCodigo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerTipoAgentexCodigo" message="tns:IService1_TraerTipoAgentexCodigo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerTipoAgentexCodigoResponse" message="tns:IService1_TraerTipoAgentexCodigo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerMoneda">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerMoneda" message="tns:IService1_TraerMoneda_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerMonedaResponse" message="tns:IService1_TraerMoneda_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoMovimiento">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerTipoMovimiento" message="tns:IService1_TraerTipoMovimiento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerTipoMovimientoResponse" message="tns:IService1_TraerTipoMovimiento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerGrupoEndoso">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerGrupoEndoso" message="tns:IService1_TraerGrupoEndoso_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerGrupoEndosoResponse" message="tns:IService1_TraerGrupoEndoso_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoEndoso">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerTipoEndoso" message="tns:IService1_TraerTipoEndoso_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerTipoEndosoResponse" message="tns:IService1_TraerTipoEndoso_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoEndosoxCodigo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerTipoEndosoxCodigo" message="tns:IService1_TraerTipoEndosoxCodigo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerTipoEndosoxCodigoResponse" message="tns:IService1_TraerTipoEndosoxCodigo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerConvenios">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerConvenios" message="tns:IService1_TraerConvenios_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerConveniosResponse" message="tns:IService1_TraerConvenios_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerConvenioxCodigo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerConvenioxCodigo" message="tns:IService1_TraerConvenioxCodigo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerConvenioxCodigoResponse" message="tns:IService1_TraerConvenioxCodigo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerPuntoVenta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerPuntoVenta" message="tns:IService1_TraerPuntoVenta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerPuntoVentaResponse" message="tns:IService1_TraerPuntoVenta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerPuntoVentaxCodigo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerPuntoVentaxCodigo" message="tns:IService1_TraerPuntoVentaxCodigo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerPuntoVentaxCodigoResponse" message="tns:IService1_TraerPuntoVentaxCodigo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerPuntoVentaxUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerPuntoVentaxUsuario" message="tns:IService1_TraerPuntoVentaxUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerPuntoVentaxUsuarioResponse" message="tns:IService1_TraerPuntoVentaxUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerPuntoVentaxSucursalxUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerPuntoVentaxSucursalxUsuario" message="tns:IService1_TraerPuntoVentaxSucursalxUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerPuntoVentaxSucursalxUsuarioResponse" message="tns:IService1_TraerPuntoVentaxSucursalxUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerPuntoVentaxAgente">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerPuntoVentaxAgente" message="tns:IService1_TraerPuntoVentaxAgente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerPuntoVentaxAgenteResponse" message="tns:IService1_TraerPuntoVentaxAgente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerOficinasConvenio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerOficinasConvenio" message="tns:IService1_TraerOficinasConvenio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerOficinasConvenioResponse" message="tns:IService1_TraerOficinasConvenio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerOficinasConvenioxCodigo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerOficinasConvenioxCodigo" message="tns:IService1_TraerOficinasConvenioxCodigo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerOficinasConvenioxCodigoResponse" message="tns:IService1_TraerOficinasConvenioxCodigo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerUsuarioxCodigo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerUsuarioxCodigo" message="tns:IService1_TraerUsuarioxCodigo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerUsuarioxCodigoResponse" message="tns:IService1_TraerUsuarioxCodigo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerUsuarioxSucursal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerUsuarioxSucursal" message="tns:IService1_TraerUsuarioxSucursal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerUsuarioxSucursalResponse" message="tns:IService1_TraerUsuarioxSucursal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerUsuarioxIntermediario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerUsuarioxIntermediario" message="tns:IService1_TraerUsuarioxIntermediario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerUsuarioxIntermediarioResponse" message="tns:IService1_TraerUsuarioxIntermediario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerActividadEconomica">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerActividadEconomica" message="tns:IService1_TraerActividadEconomica_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerActividadEconomicaResponse" message="tns:IService1_TraerActividadEconomica_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoAsegurado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerTipoAsegurado" message="tns:IService1_TraerTipoAsegurado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerTipoAseguradoResponse" message="tns:IService1_TraerTipoAsegurado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCategoriaAsegurado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerCategoriaAsegurado" message="tns:IService1_TraerCategoriaAsegurado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerCategoriaAseguradoResponse" message="tns:IService1_TraerCategoriaAsegurado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerTipoCliente" message="tns:IService1_TraerTipoCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerTipoClienteResponse" message="tns:IService1_TraerTipoCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerGiroNegocio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerGiroNegocio" message="tns:IService1_TraerGiroNegocio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerGiroNegocioResponse" message="tns:IService1_TraerGiroNegocio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerGiroNegocioxCodigo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerGiroNegocioxCodigo" message="tns:IService1_TraerGiroNegocioxCodigo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerGiroNegocioxCodigoResponse" message="tns:IService1_TraerGiroNegocioxCodigo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerOcupaciones">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerOcupaciones" message="tns:IService1_TraerOcupaciones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerOcupacionesResponse" message="tns:IService1_TraerOcupaciones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerAgrupadores">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerAgrupadores" message="tns:IService1_TraerAgrupadores_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerAgrupadoresResponse" message="tns:IService1_TraerAgrupadores_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerAgrupadoresxNombre">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerAgrupadoresxNombre" message="tns:IService1_TraerAgrupadoresxNombre_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerAgrupadoresxNombreResponse" message="tns:IService1_TraerAgrupadoresxNombre_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerAgrupadoresxSucursal_Nombre">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerAgrupadoresxSucursal_Nombre" message="tns:IService1_TraerAgrupadoresxSucursal_Nombre_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerAgrupadoresxSucursal_NombreResponse" message="tns:IService1_TraerAgrupadoresxSucursal_Nombre_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerAgrupadorxCodigo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerAgrupadorxCodigo" message="tns:IService1_TraerAgrupadorxCodigo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerAgrupadorxCodigoResponse" message="tns:IService1_TraerAgrupadorxCodigo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoNegocio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerTipoNegocio" message="tns:IService1_TraerTipoNegocio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerTipoNegocioResponse" message="tns:IService1_TraerTipoNegocio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerAgentes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerAgentes" message="tns:IService1_TraerAgentes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerAgentesResponse" message="tns:IService1_TraerAgentes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerAgentexCodigo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerAgentexCodigo" message="tns:IService1_TraerAgentexCodigo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerAgentexCodigoResponse" message="tns:IService1_TraerAgentexCodigo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarTipoAgente">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ConsultarTipoAgente" message="tns:IService1_ConsultarTipoAgente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ConsultarTipoAgenteResponse" message="tns:IService1_ConsultarTipoAgente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerParentesco">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerParentesco" message="tns:IService1_TraerParentesco_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerParentescoResponse" message="tns:IService1_TraerParentesco_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerEstadoCivil">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerEstadoCivil" message="tns:IService1_TraerEstadoCivil_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerEstadoCivilResponse" message="tns:IService1_TraerEstadoCivil_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoTasa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerTipoTasa" message="tns:IService1_TraerTipoTasa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerTipoTasaResponse" message="tns:IService1_TraerTipoTasa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoTasaxCodigo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerTipoTasaxCodigo" message="tns:IService1_TraerTipoTasaxCodigo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerTipoTasaxCodigoResponse" message="tns:IService1_TraerTipoTasaxCodigo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoVigencia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerTipoVigencia" message="tns:IService1_TraerTipoVigencia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerTipoVigenciaResponse" message="tns:IService1_TraerTipoVigencia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoVigenciaxCodigo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerTipoVigenciaxCodigo" message="tns:IService1_TraerTipoVigenciaxCodigo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerTipoVigenciaxCodigoResponse" message="tns:IService1_TraerTipoVigenciaxCodigo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerPeriodoFacturacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerPeriodoFacturacion" message="tns:IService1_TraerPeriodoFacturacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerPeriodoFacturacionResponse" message="tns:IService1_TraerPeriodoFacturacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerPeriodoFacturacionxCodigo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerPeriodoFacturacionxCodigo" message="tns:IService1_TraerPeriodoFacturacionxCodigo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerPeriodoFacturacionxCodigoResponse" message="tns:IService1_TraerPeriodoFacturacionxCodigo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCalculoFacturacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerCalculoFacturacion" message="tns:IService1_TraerCalculoFacturacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerCalculoFacturacionResponse" message="tns:IService1_TraerCalculoFacturacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCoaseguradoras">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerCoaseguradoras" message="tns:IService1_TraerCoaseguradoras_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerCoaseguradorasResponse" message="tns:IService1_TraerCoaseguradoras_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCoaseguradoraxCodigo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerCoaseguradoraxCodigo" message="tns:IService1_TraerCoaseguradoraxCodigo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerCoaseguradoraxCodigoResponse" message="tns:IService1_TraerCoaseguradoraxCodigo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerCargos" message="tns:IService1_TraerCargos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerCargosResponse" message="tns:IService1_TraerCargos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoxCodigo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerCargoxCodigo" message="tns:IService1_TraerCargoxCodigo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerCargoxCodigoResponse" message="tns:IService1_TraerCargoxCodigo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerAreas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerAreas" message="tns:IService1_TraerAreas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerAreasResponse" message="tns:IService1_TraerAreas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerAreaxCodigo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerAreaxCodigo" message="tns:IService1_TraerAreaxCodigo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerAreaxCodigoResponse" message="tns:IService1_TraerAreaxCodigo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerInformacionFinanciera">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerInformacionFinanciera" message="tns:IService1_TraerInformacionFinanciera_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerInformacionFinancieraResponse" message="tns:IService1_TraerInformacionFinanciera_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerConducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerConducto" message="tns:IService1_TraerConducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerConductoResponse" message="tns:IService1_TraerConducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerConductoPlan">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerConductoPlan" message="tns:IService1_TraerConductoPlan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerConductoPlanResponse" message="tns:IService1_TraerConductoPlan_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerConductoPlanxPlan">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerConductoPlanxPlan" message="tns:IService1_TraerConductoPlanxPlan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerConductoPlanxPlanResponse" message="tns:IService1_TraerConductoPlanxPlan_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerConductoPlanxConducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerConductoPlanxConducto" message="tns:IService1_TraerConductoPlanxConducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerConductoPlanxConductoResponse" message="tns:IService1_TraerConductoPlanxConducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerPlanPago">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerPlanPago" message="tns:IService1_TraerPlanPago_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerPlanPagoResponse" message="tns:IService1_TraerPlanPago_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerFormaPago">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerFormaPago" message="tns:IService1_TraerFormaPago_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerFormaPagoResponse" message="tns:IService1_TraerFormaPago_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioSoligesproXCodigo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UsuarioSoligesproXCodigo" message="tns:IService1_UsuarioSoligesproXCodigo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UsuarioSoligesproXCodigoResponse" message="tns:IService1_UsuarioSoligesproXCodigo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarConductoPago">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ConsultarConductoPago" message="tns:IService1_ConsultarConductoPago_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ConsultarConductoPagoResponse" message="tns:IService1_ConsultarConductoPago_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarPlanpago">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ConsultarPlanpago" message="tns:IService1_ConsultarPlanpago_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ConsultarPlanpagoResponse" message="tns:IService1_ConsultarPlanpago_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerBancos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerBancos" message="tns:IService1_TraerBancos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerBancosResponse" message="tns:IService1_TraerBancos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarTipoEmpresa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ConsultarTipoEmpresa" message="tns:IService1_ConsultarTipoEmpresa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ConsultarTipoEmpresaResponse" message="tns:IService1_ConsultarTipoEmpresa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarRamoImpuestoXRamo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ConsultarRamoImpuestoXRamo" message="tns:IService1_ConsultarRamoImpuestoXRamo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ConsultarRamoImpuestoXRamoResponse" message="tns:IService1_ConsultarRamoImpuestoXRamo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarRamosImpuestos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ConsultarRamosImpuestos" message="tns:IService1_ConsultarRamosImpuestos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ConsultarRamosImpuestosResponse" message="tns:IService1_ConsultarRamosImpuestos_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TraerSucursales">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerSucursales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerSucursal">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerSucursal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerSucursalesxAgente">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerSucursalesxAgente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerSucursalesxUsuario">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerSucursalesxUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerMacroRamos">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerMacroRamos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerMacroRamo">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerMacroRamo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerMacroRamoxRamo">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerMacroRamoxRamo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerRamos">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerRamos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerRamosxMacroRamo">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerRamosxMacroRamo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerRamo">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerRamo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerRamosxSucursal">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerRamosxSucursal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerRamoxSucursal">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerRamoxSucursal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoPoliza">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerTipoPoliza" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerSubRamosxRamo">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerSubRamosxRamo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerSubRamo">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerSubRamo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerDeducible">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerDeducible" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerPaises">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerPaises" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerDepartamentos">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerDepartamentos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerDepartamento">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerDepartamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerMunicipiosxDepartamento">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerMunicipiosxDepartamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerMunicipio">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerMunicipio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoDocumento">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerTipoDocumento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoTelefono">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerTipoTelefono" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoTelefonoxCodigo">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerTipoTelefonoxCodigo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoDireccion">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerTipoDireccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoDireccionxCodigo">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerTipoDireccionxCodigo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoAgente">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerTipoAgente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoAgentexCodigo">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerTipoAgentexCodigo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerMoneda">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerMoneda" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoMovimiento">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerTipoMovimiento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerGrupoEndoso">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerGrupoEndoso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoEndoso">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerTipoEndoso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoEndosoxCodigo">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerTipoEndosoxCodigo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerConvenios">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerConvenios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerConvenioxCodigo">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerConvenioxCodigo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerPuntoVenta">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerPuntoVenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerPuntoVentaxCodigo">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerPuntoVentaxCodigo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerPuntoVentaxUsuario">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerPuntoVentaxUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerPuntoVentaxSucursalxUsuario">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerPuntoVentaxSucursalxUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerPuntoVentaxAgente">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerPuntoVentaxAgente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerOficinasConvenio">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerOficinasConvenio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerOficinasConvenioxCodigo">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerOficinasConvenioxCodigo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerUsuarioxCodigo">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerUsuarioxCodigo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerUsuarioxSucursal">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerUsuarioxSucursal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerUsuarioxIntermediario">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerUsuarioxIntermediario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerActividadEconomica">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerActividadEconomica" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoAsegurado">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerTipoAsegurado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCategoriaAsegurado">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerCategoriaAsegurado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoCliente">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerTipoCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerGiroNegocio">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerGiroNegocio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerGiroNegocioxCodigo">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerGiroNegocioxCodigo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerOcupaciones">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerOcupaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerAgrupadores">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerAgrupadores" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerAgrupadoresxNombre">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerAgrupadoresxNombre" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerAgrupadoresxSucursal_Nombre">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerAgrupadoresxSucursal_Nombre" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerAgrupadorxCodigo">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerAgrupadorxCodigo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoNegocio">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerTipoNegocio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerAgentes">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerAgentes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerAgentexCodigo">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerAgentexCodigo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarTipoAgente">
+      <soap:operation soapAction="http://tempuri.org/IService1/ConsultarTipoAgente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerParentesco">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerParentesco" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerEstadoCivil">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerEstadoCivil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoTasa">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerTipoTasa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoTasaxCodigo">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerTipoTasaxCodigo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoVigencia">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerTipoVigencia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTipoVigenciaxCodigo">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerTipoVigenciaxCodigo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerPeriodoFacturacion">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerPeriodoFacturacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerPeriodoFacturacionxCodigo">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerPeriodoFacturacionxCodigo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCalculoFacturacion">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerCalculoFacturacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCoaseguradoras">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerCoaseguradoras" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCoaseguradoraxCodigo">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerCoaseguradoraxCodigo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargos">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerCargos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoxCodigo">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerCargoxCodigo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerAreas">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerAreas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerAreaxCodigo">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerAreaxCodigo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerInformacionFinanciera">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerInformacionFinanciera" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerConducto">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerConducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerConductoPlan">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerConductoPlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerConductoPlanxPlan">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerConductoPlanxPlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerConductoPlanxConducto">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerConductoPlanxConducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerPlanPago">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerPlanPago" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerFormaPago">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerFormaPago" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioSoligesproXCodigo">
+      <soap:operation soapAction="http://tempuri.org/IService1/UsuarioSoligesproXCodigo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarConductoPago">
+      <soap:operation soapAction="http://tempuri.org/IService1/ConsultarConductoPago" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarPlanpago">
+      <soap:operation soapAction="http://tempuri.org/IService1/ConsultarPlanpago" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerBancos">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerBancos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarTipoEmpresa">
+      <soap:operation soapAction="http://tempuri.org/IService1/ConsultarTipoEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarRamoImpuestoXRamo">
+      <soap:operation soapAction="http://tempuri.org/IService1/ConsultarRamoImpuestoXRamo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarRamosImpuestos">
+      <soap:operation soapAction="http://tempuri.org/IService1/ConsultarRamosImpuestos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://192.1.2.13:8088/WCFTablasParametrizacion/Service1.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

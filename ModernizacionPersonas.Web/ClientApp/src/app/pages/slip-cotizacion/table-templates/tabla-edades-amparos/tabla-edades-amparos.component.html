@@ -1,0 +1,39 @@
+<div fxFlex="100%" fxLayout="column" class="main-container">
+  <div class="table-title thin-text md">
+    <b>EDADES DE INGRESO Y PERMANENCIA</b>
+  </div>
+  <div fxFlex="100%" fxLayout="column" class="table-container thin-text sm">
+    <div fxFlex="100%" fxLayout="row" class="table-header">
+      <div class="column-header" fxFlex="40%">EDADES POR AMPARO</div>
+      <div class="column-header" fxFlex="20%">
+        EDAD MÍNIMA DE INGRESO
+        <div>años + 364 días</div>
+      </div>
+      <div class="column-header" fxFlex="20%">
+        EDAD MÁXIMA DE INGRESO
+        <div>años + 364 días</div>
+      </div>
+      <div class="column-header" fxFlex="20%">
+        EDAD MÁXIMA DE PERMANENCIA
+        <div>años + 364 días</div>
+      </div>
+    </div>
+    <div fxFlex="100%" fxLayout="column" class="table-body">
+      <div fxFlex="100%" fxLayout="row" class="table-row" *ngFor="let item of data">
+        <div class="column-data" fxFlex="40%">{{item.nombreAmparo}}</div>
+        <div class="column-data text-center" fxFlex="20%">{{item.edadMinimaIngreso}}</div>
+        <div class="column-data text-center" fxFlex="20%">{{item.edadMaximaIngreso}}</div>
+        <div class="column-data text-center" fxFlex="20%">
+          {{item.edadMaximaPermanencia}}
+          <b *ngIf="item.edadMaximaPermanencia===111">*</b>
+        </div>
+      </div>
+      <div fxFlex="100%">
+        <b *ngIf="hasEdadMaxPermitida">* INDEFINIDA O HASTA LA FECHA EN QUE DEJE DE PERTENECER AL GRUPO ASEGURADO</b>
+      </div>
+      <div fxFlex="100%" class="table-footer hidden">
+        Número registros: {{data.length}}
+      </div>
+    </div>
+  </div>
+</div>

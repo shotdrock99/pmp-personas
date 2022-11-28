@@ -1,0 +1,19 @@
+<div class="main-container">
+  <h4>{{model.tituloSeccion}}</h4>
+  <hr />
+  <div *ngFor="let group of model.gruposAsegurados">
+    <h6 class="thin-text md">{{group.nombre}}</h6>
+    <div>
+      <app-tabla-valores-amparos [data]="group.valoresAmparos" [esTasaMensual]="group.snTasaMensual" ></app-tabla-valores-amparos>
+    </div>
+    <div>
+      <app-tabla-valores-asegurados-diarios [data]="group.valoresAmparos" [esTasaMensual]="group.snTasaMensual" ></app-tabla-valores-asegurados-diarios>
+    </div>
+    <div *ngIf="group.snTasaMensual">
+      <app-slip-maximo-valor-asegurado-individual [data]="group.valorMaximo"></app-slip-maximo-valor-asegurado-individual>
+    </div>
+    <div>
+      <app-tabla-edades-amparos [data]="group.edades"></app-tabla-edades-amparos>
+    </div>
+  </div>
+</div>

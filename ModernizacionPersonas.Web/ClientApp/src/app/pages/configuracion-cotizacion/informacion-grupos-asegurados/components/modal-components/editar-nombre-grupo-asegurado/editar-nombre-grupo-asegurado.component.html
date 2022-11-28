@@ -1,0 +1,43 @@
+<h1 mat-dialog-title>Editar Grupo de Asegurados</h1>
+<div mat-dialog-content>
+  <p class="thin-text" sm>Complete la siguiente información</p>
+  <form [formGroup]="grupoAseguradoForm">
+    <div class="row">
+      <div class="col-12">
+        <mat-form-field class="full-width">
+          <input matInput upperCase #nombreGrupo placeholder="Nombre" formControlName="nombre" required
+            cdkFocusInitial />
+        </mat-form-field>
+        <div *ngIf="(submitted || form.nombre.touched) && form.nombre.errors" class="text-danger">
+          <div *ngIf="form.nombre.errors.required">
+            <b class="error-message">El campo es requerido</b>
+          </div>
+          <div *ngIf="form.nombre.errors.incorrect">
+            <b class="error-message">El valor ingresado es invalido</b>
+          </div>
+          <div *ngIf="form.nombre.errors.maxlength">
+            <b class="error-message">El valor del campo excedió el límite de caracteres permitido</b>
+          </div>
+          <div *ngIf="form.nombre.errors.exist">
+            <b class="error-message">Ya existe un grupo con este nombre</b>
+          </div>
+          <div *ngIf="form.nombre.errors.pattern">
+            <b class="error-message">El nombre del grupo no puede contener caracteres espciales</b>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions class="float-right">
+  <div class="row">
+    <div>
+      <button mat-raised-button (click)="onNoClick()">
+        Cancelar
+      </button>
+      <button mat-raised-button color=primary (click)="onAcceptClick()">
+        Aceptar
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+// shared definitions
+%input-noborder {
+  overflow: visible;
+  max-width: 80px;
+  border: none;
+  border-bottom: 1px solid #8e8e8e;
+  padding: 0 8px;
+  text-align: right;
+  background-color: transparent;
+  outline: none;
+}

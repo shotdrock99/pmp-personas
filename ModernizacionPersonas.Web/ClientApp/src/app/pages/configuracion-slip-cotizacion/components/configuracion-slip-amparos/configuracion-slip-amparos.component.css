@@ -1,0 +1,83 @@
+.table .value-container input[type="text"] {
+  overflow: visible;
+  max-width: 100px;
+  border: none;
+  border-bottom: 1px solid #8e8e8e;
+  padding: 0 8px;
+  text-align: right;
+  background-color: transparent;
+  outline: none;
+}
+.main-container {
+  padding: 0 15px 0 15px;
+  display: flex;
+}
+.main-container-wflex{
+  padding: 0 15px 0 15px;
+}
+.main-container-wflex .ga-container {
+  margin-bottom: 10px;
+  
+}
+.main-container-wflex .ga-container .ga-title {
+  padding: 4px 0;
+  
+}
+.main-container-wflex .ga-container .ga-title .mat-icon {
+  cursor: pointer;
+}
+.main-container .ga-container {
+  margin-bottom: 10px;
+  display: flex;
+}
+.main-container .ga-container .ga-title {
+  padding: 4px 0;
+  display: flex;
+}
+.main-container .ga-container .ga-title .mat-icon {
+  cursor: pointer;
+}
+.mat-card-content ul {
+  list-style: none;
+}
+.mat-icon.small {
+  color: steelblue;
+  font-size: 9pt;
+}
+.table {
+  margin: 2px 0;
+  border: 1px solid #888;
+  border-bottom: 1px solid #888;
+}
+.table .row {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 2px;
+}
+.table .row.subtitle {
+  background-color: #eee;
+  font-weight: bold;
+  padding: 3px;
+}
+.table .value-container {
+  float: right;
+  margin: 2px;
+}
+.table .value-container.inline {
+  display: inline-flex;
+}
+.table .value-container input[type="text"]:disabled {
+  border: none;
+}
+.table .popover-errors .mat-icon {
+  font-size: 12pt;
+  padding-top: 0.2em;
+  cursor: pointer;
+}
+.table .bottom-bordered {
+  border-bottom: 1px solid #888;
+}
+.table .left-bordered {
+  border-left: 1px solid #888;
+  padding-left: 4px;
+}

@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>{{title}}</h2>
+
+<mat-dialog-content [formGroup]="crearCausalForm">
+
+  <mat-form-field class="mat-form-field-text">
+    <mat-label>Casual Texto</mat-label>
+    <input matInput #texto maxlength="100" formControlName="descripcion">
+    <mat-error *ngIf="crearCausalForm.get('descripcion').hasError('required') && (crearCausalForm.get('descripcion').dirty || crearCausalForm.get('descripcion').touched)">
+      Descripción requerida.
+    </mat-error>
+    <mat-hint align="end">{{texto.value.length}} / 100</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field style="width: 60%;">
+    <mat-label>Tipo Causal</mat-label>
+    <mat-select [(ngModel)]="tipoC" formControlName="tipoC" required>
+      <mat-option *ngFor="let tc of tipoCausales" [value]="tc.value" [disabled]="tc.value === 0">
+        {{tc.viewValue}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="crearCausalForm.get('tipoC').hasError('required')">
+      Por favor seleccione una opción.
+    </mat-error>
+  </mat-form-field>
+
+  <div>
+    <mat-checkbox class="example-margin" formControlName="activoCheck">Activo</mat-checkbox>
+  </div>
+  <div *ngIf="tipoC !== 1">
+    <mat-checkbox class="example-margin" formControlName="externoCheck">Externo</mat-checkbox>
+  </div>
+  <div *ngIf="tipoC !== 1">
+    <mat-checkbox class="example-margin" formControlName="solidariaCheck">Solidaria</mat-checkbox>
+  </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions class="mat-container">
+  <button mat-raised-button mat-dialog-close>Cancelar</button>
+  <button mat-raised-button color="primary" (click)="create()">Crear</button>
+</mat-dialog-actions>

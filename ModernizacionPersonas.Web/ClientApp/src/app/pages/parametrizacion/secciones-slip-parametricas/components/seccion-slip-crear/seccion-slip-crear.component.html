@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>{{title}}</h2>
+
+<mat-dialog-content [formGroup]="createForm">
+
+  <mat-form-field class="mat-form-field-text">
+    <mat-label>Nombre Sección</mat-label>
+    <input matInput #seccion maxlength="100" formControlName="seccion" class="uppercase" (input)="createForm.get('seccion').setValue(createForm.get('seccion').value.toUpperCase())" >
+    <mat-error *ngIf="createForm.get('seccion').hasError('required') && (createForm.get('seccion').dirty || createForm.get('seccion').touched)">
+      Nombre requerido.
+    </mat-error>
+    <mat-hint align="end">{{seccion.value.length}} / 100</mat-hint>
+  </mat-form-field>
+  
+  <mat-form-field style="width: 60%;">
+    <mat-label>Grupo</mat-label>
+    <mat-select [(ngModel)]="grupo" formControlName="grupo">
+      <mat-option *ngFor="let g of grupos" [value]="g.value" [disabled]="g.value === 0">
+        {{g.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-checkbox *ngIf="grupo === 3" [(ngModel)]="especial" formControlName="especial">Especial</mat-checkbox>
+
+</mat-dialog-content>
+
+<mat-dialog-actions class="mat-container">
+  <button mat-raised-button mat-dialog-close>Cancelar</button>
+  <button mat-raised-button color="primary" (click)="create()">Crear</button>
+</mat-dialog-actions>

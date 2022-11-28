@@ -1,0 +1,8 @@
+.mat-raised-button {
+  &.mat-soli-info,
+  &.mat-primary {
+    background-color: var(--azul-solidaria);
+    color: #fff;
+    min-width: 100px;
+  }
+}

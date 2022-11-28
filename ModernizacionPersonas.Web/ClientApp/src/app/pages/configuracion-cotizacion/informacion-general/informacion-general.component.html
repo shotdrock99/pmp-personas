@@ -1,0 +1,60 @@
+<form [formGroup]="datosBasicosForm">
+  <div fxLayout.gt-md="row" fxLayout.lt-md="column" fxLayoutGap="20px">
+    <div class="form-group" fxFlex="0 1 calc(33.3% - 20px)">
+      <mat-form-field class="full-width">
+        <mat-label>Sucursal</mat-label>
+        <mat-select aria-label="Sucursal" disableOptionCentering formControlName="Sucursal" matTooltip="Sucursal">
+          <mat-option *ngFor="let item of sucursales" [value]="item">
+            {{item.nombreSucursal}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="(submitted || form.Sucursal.touched) && form.Sucursal.errors" class="text-danger">
+        <div *ngIf="form.Sucursal.errors.required">
+          <b class="error-message">El campo es requerido</b>
+        </div>
+        <div *ngIf="form.Sucursal.errors.incorrect">
+          <b class="error-message">El valor ingresado es inválido.</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" fxFlex="0 1 calc(33.3% - 20px)">
+      <mat-form-field class="full-width">
+        <mat-label>Ramo</mat-label>
+        <mat-select #ctrlRamo aria-label="Ramo" disableOptionCentering formControlName="Ramo" matTooltip="Ramo">
+          <mat-option *ngFor="let item of ramos" [value]="item">
+            {{item.nombreAbreviado}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="(submitted || form.Ramo.touched)  && form.Ramo.errors" class="text-danger">
+        <div *ngIf="form.Ramo.errors.required">
+          <b class="error-message">El campo es requerido</b>
+        </div>
+        <div *ngIf="form.Ramo.errors.incorrect">
+          <b class="error-message">El valor ingresado es inválido.</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" fxFlex="0 1 calc(33.3% - 20px)">
+      <mat-form-field class="full-width">
+        <mat-label>Subramo</mat-label>
+        <mat-select aria-label="Subramo" disableOptionCentering formControlName="Subramo" matTooltip="Subramo">
+          <mat-option *ngFor="let item of subramos" [value]="item">
+            {{item.nombreSubRamo}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="(submitted || form.Subramo.touched)  && form.Subramo.errors" class="text-danger">
+        <div *ngIf="form.Subramo.errors.required">
+          <b class="error-message">El campo es requerido</b>
+        </div>
+        <div *ngIf="form.Subramo.errors.incorrect">
+          <b class="error-message">El valor ingresado es inválido.</b>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

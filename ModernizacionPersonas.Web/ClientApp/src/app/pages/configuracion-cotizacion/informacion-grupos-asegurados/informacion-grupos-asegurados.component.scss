@@ -1,0 +1,110 @@
+.grupos-asegurados-section-container {
+  .toolbar {
+    margin-bottom: 20px;
+  }
+
+  .table-container {
+    max-height: 300px;
+    overflow: auto;
+    table {
+      &.mat-table {
+        td {
+          &.mat-cell {
+            .errors-popover {
+              display: inline-flex;
+              .mat-icon {
+                font-size: 20px;
+                color: red;
+                cursor: pointer;
+              }
+            }
+
+            .mobile-label {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
+    .table-footer {
+      text-align: right;
+      padding: 15px 10px 0;
+      font-weight: bold;
+    }
+  }
+
+  .form-errors-container {
+    padding-top: 20px;
+    text-align: right;
+    color: red;
+    font-weight: bold;
+    ul {
+      list-style: none;
+    }
+  }
+}
+
+.grupo-asegurado-wizard {
+  .section-container {
+    height: 436px;
+  }
+}
+
+.mobile-label {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .table-container {
+    margin-top: 20px;
+    border-top: 1px solid #8e8e8e;
+    table {
+      &.mat-table {
+        tr {
+          &.mat-header-row {
+            display: none;
+          }
+
+          &.mat-row {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 8px 24px;
+            display: flex;
+            height: auto;
+            border-bottom: 1px solid #8e8e8e;
+          }
+        }
+
+        td {
+          &.mat-cell {
+            flex: 1;
+            overflow: hidden;
+            word-wrap: break-word;
+            width: 100%;
+            border-bottom: 1px solid transparent;
+            font-weight: 100 !important;
+
+            &:first-of-type {
+              padding-left: 0;
+            }
+
+            .mobile-label {
+              display: inline-block;
+              font-weight: bold;
+              min-width: 170px;
+            }
+          }
+
+          &.mat-column-opciones {
+            padding-right: 0;
+            .button-group {
+              float: right;
+              padding: 15px 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,345 @@
+<div class="asegurados-wizard-section-container">
+  <form [formGroup]="aseguradosForm">
+    <div fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutGap="20px">
+      <div class="form-group" fxFlex="100%">
+        <section>
+          <mat-checkbox formControlName="conListaAsegurados">Con Lista de Asegurados</mat-checkbox>
+        </section>
+      </div>
+      <div fxFlex="100%" fxLayout="row">
+        <div fxFlex="80%" fxLayout="column" fxLayoutGap="10px">
+          <div fxFlex="80%" *ngIf="capturaValorAsegurado">
+            <mat-form-field class="full-width">
+              <input matInput type="text" class="currency-mask" mask="separator.2" prefix="$" thousandSeparator="."
+                [placeholder]="valorAseguradoText" formControlName="valorAsegurado" />
+            </mat-form-field>
+            <div *ngIf="form.valorAsegurado.errors" class="text-danger">
+              <div *ngIf="form.valorAsegurado.errors.required">
+                <b class="error-message">El {{valorAseguradoText.toLowerCase()}} es requerido</b>
+              </div>
+              <div *ngIf="form.valorAsegurado.errors.min">
+                <b class="error-message">El {{valorAseguradoText.toLowerCase()}} debe ser mayor a cero</b>
+              </div>
+            </div>
+          </div>
+          <div fxFlex="100%" *ngIf="esTipoSumaFija">
+            <div class="form-group" fxFlex="100%" fxLayout="column">
+              <div fxLayout="row" fxLayoutGap="150px" fxLayoutAlign=" center">
+                <section>
+                  <mat-checkbox formControlName="conDistribucionAsegurados"
+                    [matTooltip]="'Recuerde que la cantidad de opciones está determinada por la información del formulario de valores asegurados'"
+                    [matTooltipPosition]="'above'" [matTooltipClass]="'Info-tooltip'"
+                    [disabled]="this.cantidadOpcionesUsadas <= 1">Distribución Asegurados</mat-checkbox>
+                    <!--<mat-checkbox formControlName="conDistribucionAsegurados"
+                    [matTooltip]="'Recuerde que la cantidad de opciones está determinada por la información del formulario de valores asegurados'"
+                    [matTooltipPosition]="'above'" [matTooltipClass]="'Info-tooltip'"
+                    [disabled]="this.cantidadOpcionesUsadas <= 1">Distribución Asegurados</mat-checkbox>-->
+                </section>
+                <div fxLayout="row" fxLayoutAlign=" center" fxLayoutGap="30px" *ngIf="capturaAseguradosPorOpcion">
+                  <div fxFlex="{{this.cantidadOpcionesUsadas > 2? '15%': '22%'}}" fxLayout="column"
+                    *ngIf="opcionesUsadas.opcion1">
+                    <mat-form-field>
+                      <input matInput style="text-align: center;" type="number" placeholder="Opción N°1"
+                        formControlName="aseguradosOpcion1" />
+                    </mat-form-field>
+                    <div *ngIf="form.aseguradosOpcion1.errors" class="text-danger">
+                      <div *ngIf="form.aseguradosOpcion1.errors.required">
+                        <b class="error-message">La opción n°1 es requerida</b>
+                      </div>
+                      <div *ngIf="form.aseguradosOpcion1.errors.min">
+                        <b class="error-message">La opción n°1 debe ser mayor a cero</b>
+                      </div>
+                    </div>
+                  </div>
+                  <div fxFlex="{{this.cantidadOpcionesUsadas > 2? '15%': '22%'}}" fxLayout="column"
+                    *ngIf="opcionesUsadas.opcion2">
+                    <mat-form-field>
+                      <input matInput style="text-align: center;" type="number" placeholder="Opción N°2"
+                        formControlName="aseguradosOpcion2" />
+                    </mat-form-field>
+                    <div *ngIf="form.aseguradosOpcion2.errors" class="text-danger">
+                      <div *ngIf="form.aseguradosOpcion2.errors.required">
+                        <b class="error-message">La opción n°2 es requerida</b>
+                      </div>
+                      <div *ngIf="form.aseguradosOpcion2.errors.min">
+                        <b class="error-message">La opción n°2 debe ser mayor a cero</b>
+                      </div>
+                    </div>
+                  </div>
+                  <div fxFlex="15%" fxLayout="column" *ngIf="opcionesUsadas.opcion3">
+                    <mat-form-field>
+                      <input matInput style="text-align: center;" type="number" placeholder="Opción N°3"
+                        formControlName="aseguradosOpcion3" />
+                    </mat-form-field>
+                    <div *ngIf="form.aseguradosOpcion3.errors" class="text-danger">
+                      <div *ngIf="form.aseguradosOpcion3.errors.required">
+                        <b class="error-message">La opción n°3 es requerida</b>
+                      </div>
+                      <div *ngIf="form.aseguradosOpcion3.errors.min">
+                        <b class="error-message">La opción n°3 debe ser mayor a cero</b>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div fxFlex="80%" fxLayout="column" *ngIf="capturaNumeroAsegurados">
+            <mat-form-field class="full-width">
+              <input matInput type="number" placeholder="Número de Asegurados" formControlName="numeroAsegurados"
+                [readonly]="capturaAseguradosPorOpcion" />
+            </mat-form-field>
+            <div *ngIf="form.numeroAsegurados.errors" class="text-danger">
+              <div *ngIf="form.numeroAsegurados.errors.required">
+                <b class="error-message">El número de asegurados es requerido</b>
+              </div>
+              <div *ngIf="form.numeroAsegurados.errors.min">
+                <b class="error-message">El número de asegurados debe ser mayor a cero</b>
+              </div>
+            </div>
+          </div>
+          <div fxFlex="80%" fxLayout="column" *ngIf="capturaNumeroPotencialAsegurados">
+            <mat-form-field class="full-width">
+              <input matInput type="number" placeholder="Número Potencial de Asegurados"
+                formControlName="numeroPotencialAsegurados" />
+            </mat-form-field>
+          </div>
+          <div fxFlex="80%" fxLayout="column" *ngIf="capturaPorcentaje">
+            <mat-form-field class="full-width">
+              <input matInput type="text" mask="percent" suffix="%" placeholder="Porcentaje de Asegurados esperado"
+                formControlName="porcentajeAsegurados" />
+            </mat-form-field>
+          </div>
+          <div fxFlex="80%" fxLayout="column" *ngIf="capturaEdadPromedio">
+            <mat-form-field class="full-width">
+              <input matInput type="number" placeholder="Edad Promedio" formControlName="edadPromedio" />
+            </mat-form-field>
+            <div *ngIf="form.edadPromedio.errors" class="text-danger">
+              <div *ngIf="form.edadPromedio.errors.required">
+                <b class="error-message">La edad promedio es requerida</b>
+              </div>
+              <div *ngIf="form.edadPromedio.errors.min">
+                <b class="error-message">La edad promedio debe ser mayor a cero</b>
+              </div>
+            </div>
+          </div>
+          <div fxFlex="100%" fxLayout="column" *ngIf="showCargarAsegurados">
+            <div *ngIf="hasAsegurados">
+              <div class="asegurados-info-container">
+                <p class="thin-text md">Información actual de asegurados</p>
+                <div class="thin-text sm">
+                  <div><b>Número actual de asegurados: </b>{{grupoAsegurado.numeroAsegurados}}</div>
+                  <div *ngIf="showPorcentajeAsegurados"><b>Porcentaje de asegurados:
+                    </b>{{grupoAsegurado.porcentajeAsegurados}}%</div>
+                  <div><b>Edad promedio de asegurados: </b>{{grupoAsegurado.edadPromedioAsegurados}}</div>
+                </div>
+                <div class="options">
+                  <div class="form-group">
+                    <button mat-raised-button color="primary" (click)="deleteAsegurados($event)" [disabled]="readonly">
+                      Eliminar asegurados
+                    </button>
+                  </div>
+                  <div class="thin-text sm" *ngIf="showRemoveAseguradosMessage">
+                    Los asegurados del grupo fueron eliminados.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p style="margin-left: 2em; margin-bottom: -0.5em;">Estructura de cargue de asegurados a seleccionar.</p>
+            </div>
+            <mat-radio-group formControlName="tipoEstructura">
+              <div fxLayout="row">
+                <mat-radio-button value="tipoUno" class="checkbox"></mat-radio-button>
+                <table>
+                  <tr>
+                    <th>Documento</th>
+                    <th style="width: 15%;">Fecha Nacimiento</th>
+                    <th style="width: 20%;">Valor Asegurado</th>
+                  </tr>
+                  <tr>
+                    <td>93410999</td>
+                    <td style="width: 15%;">15/05/1985</td>
+                    <td style="width: 20%;">75014421</td>
+                  </tr>
+                </table>
+                <a (dblclick)="downloadBaseFile($event, 'tipoUno')" style="margin-left: 0.5em;">
+                  <mat-icon class="text-info icon" style="cursor: pointer;"
+                    matTooltip="Descarga un archivo base haciendo doble click." matTooltipClass="primary-tooltip"
+                    [matTooltipPosition]="'right'">
+                    get_app
+                  </mat-icon>
+                </a>
+              </div>
+              <div fxLayout="row">
+                <mat-radio-button value="tipoDos" class="checkbox"></mat-radio-button>
+                <table>
+                  <tr>
+                    <th>Documento</th>
+                    <th style="width: 15%;">Edad</th>
+                    <th style="width: 20%;">Valor Asegurado</th>
+                  </tr>
+                  <tr>
+                    <td>93410999</td>
+                    <td style="width: 15%;">35</td>
+                    <td style="width: 20%;">75014421</td>
+                  </tr>
+                </table>
+                <a (dblclick)="downloadBaseFile($event, 'tipoDos')" style="margin-left: 0.5em;">
+                  <mat-icon class="text-info icon" style="cursor: pointer;"
+                    matTooltip="Descarga un archivo base haciendo doble click." matTooltipClass="primary-tooltip"
+                    [matTooltipPosition]="'right'">
+                    get_app
+                  </mat-icon>
+                </a>
+              </div>
+              <div fxLayout="row">
+                <mat-radio-button value="tipoTres" class="checkbox"></mat-radio-button>
+                <table>
+                  <tr>
+                    <th>Nombre</th>
+                    <th style="width: 15%;">Fecha Nacimiento</th>
+                    <th style="width: 20%;">Valor Asegurado</th>
+                  </tr>
+                  <tr>
+                    <td>VICTOR JULIAN SANCHEZ ACOSTA</td>
+                    <td style="width: 15%;">15/05/1985</td>
+                    <td style="width: 20%;">75014421</td>
+                  </tr>
+                </table>
+                <a (dblclick)="downloadBaseFile($event, 'tipoTres')" style="margin-left: 0.5em;">
+                  <mat-icon class="text-info icon" style="cursor: pointer;"
+                    matTooltip="Descarga un archivo base haciendo doble click." matTooltipClass="primary-tooltip"
+                    [matTooltipPosition]="'right'">
+                    get_app
+                  </mat-icon>
+                </a>
+              </div>
+              <div fxLayout="row">
+                <mat-radio-button value="tipoCuatro" class="checkbox"></mat-radio-button>
+                <table>
+                  <tr>
+                    <th>Nombre</th>
+                    <th style="width: 15%;">Edad</th>
+                    <th style="width: 20%;">Valor Asegurado</th>
+                  </tr>
+                  <tr>
+                    <td>VICTOR JULIAN SANCHEZ ACOSTA</td>
+                    <td style="width: 15%;">35</td>
+                    <td style="width: 20%;">75014421</td>
+                  </tr>
+                </table>
+                <a (dblclick)="downloadBaseFile($event, 'tipoCuatro')" style="margin-left: 0.5em;">
+                  <mat-icon class="text-info icon" style="cursor: pointer;"
+                    matTooltip="Descarga un archivo base haciendo doble click." matTooltipClass="primary-tooltip"
+                    [matTooltipPosition]="'right'">
+                    get_app
+                  </mat-icon>
+                </a>
+              </div>
+            </mat-radio-group>
+            <br>
+            <form (ngSubmit)="onUploadFile()">
+              <p class="thin-text md">Cargar información</p>
+              <div fxLayout="row" fxLayoutGap="10px">
+                <div class="form-group">
+                  <label for="files" class="btn btn-info custom"
+                    [ngStyle]="{'background-color': uploadFileEnabled ? '#004173' : '#E0E0E0'}"
+                    [ngStyle]="{'color': uploadFileEnabled ? '#ffffff' : '#B6B6B6'}">Seleccionar archivo</label>
+                  <input id="files" mat-raised-button color="primary" type="file" accept=".csv"
+                    formControlname="archivoCargado" onclick="this.value = null" (change)="onFileChange($event)"
+                    style="visibility: hidden;font-size: 0ch" [disabled]="!uploadFileEnabled" />
+                  <div *ngIf="!uploadFileEnabled && !readonly">
+                    <small class="text-danger">Debe seleccionar un Tipo de Estructura</small>
+                  </div>
+                  <div class="thin-text sm">{{fileName}}</div>
+                </div>
+                <div class="form-group">
+                  <button mat-raised-button color="primary" [disabled]="!uploadEnabled">Cargar Asegurados</button>
+                </div>
+              </div>
+              <div class="thin-text sm text-info bold" *ngIf="showLoading">Cargando...</div>
+              <div class="thin-text sm bold" *ngIf="uploadFail">
+                <div class="text-danger" style="text-align:left;">Hubo un error cargando el archivo</div>
+                <a class="thin-text xs" (click)="showError=!showError" style="cursor: pointer;">Ver detalles</a>
+                <div *ngIf="showError" style="max-height: 200px; overflow: auto;">
+                  {{uploadError}}
+                </div>
+              </div>
+              <div *ngIf="uploadCompleted&&!uploadFail">
+                <div class="thin-text sm">
+                  <div *ngIf="numeroAseguradosProcesados>0">
+                    <span *ngIf="!uploadErrorSummary.withErrors" class="text-success">El archivo fue cargado
+                      exitosamente</span>
+                    <span *ngIf="uploadErrorSummary.withErrors" class="text-warning">El archivo fue cargado
+                      exitosamente
+                      (Con errores)</span>
+                      
+                  </div>
+                  <div *ngIf="numeroAseguradosProcesados==0">
+                    <span class="text-warning">El archivo fue cargado (sin registros insertados)</span>
+                  </div>
+                  
+                </div>
+                
+                <div class="carga-asegurados-result-container">
+                  <div class="thin-text sm">
+                    <div><b>Total de asegurados: </b>{{totalRegistros}}</div>
+                    <div><b>Número de asegurados procesados: </b>{{numeroAseguradosProcesados}}</div>
+                    <div *ngIf="showPorcentajeAsegurados"><b>Porcentaje de asegurados esperado:
+                      </b>{{porcentajeAsegurados}}%</div>
+                    <div><b>Edad promedio: </b>{{edadPromedio}}</div>
+                    <div><b>Valor Asegurado: </b>{{valorAsegurado | currency: 'USD' : 'symbol' : '1.0-4'}}</div>
+                    <div *ngIf="uploadErrorSummary.withErrors">
+                      Descargar resumen de registros fallidos <a href="javascript(void)" style="cursor: pointer;"
+                        (click)="downloadFailedFile($event)">aquí</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <div *ngIf="!ErrorDistriCargue" class="thin-text sm">
+              <span  class="text-danger">La distribución de asegurados
+                por opción es diferente al numero de asegurados procesados</span>
+            </div>
+          </div>
+        </div>
+        <div fxFlex="30%" fxLayout="column" class="upload-file-info-container" *ngIf="showCargarAsegurados">
+          <div class="thin-text sm">
+            <div class="title">
+              <mat-icon class="text-info">info</mat-icon>
+              &nbsp; Información del archivo
+            </div>
+            <div class="content">
+              <p>
+                <b>IMPORTANTE - </b>Es obligatorio que el archivo que se dispone a cargar tenga los campos mencionados
+                en cada tabla, de lo contrario la carga no será exitosa.
+              </p>
+              <p>Los encabezados del archivo deben cumplir con lo siguiente:</p>
+              <ul>
+                <li>Mayúsculas</li>
+                <li>Espacios</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxFlex="100%" fxLayout="column" *ngIf="capturaRangos">
+        <div style="padding: 20px 0;">
+          <app-range-profiles *ngIf="rangosPerfilEdadLoaded" (rangosChange)="onRangosChange($event)"
+            [submitted]="submitted" [model]="rangosPerfilEdad" [data]="rangosArray"></app-range-profiles>
+        </div>
+        <div *ngIf="form.rangos.errors" class="text-danger" style="text-align: left;">
+          <div *ngIf="form.rangos.errors.required">
+            <b class="error-message">Al menos un rango es requerido</b>
+          </div>
+        </div>
+        <div *ngIf="errorNumAseg" class="text-danger" style="text-align: left;">
+          <div *ngIf="errorNumAseg">
+            <b class="error-message">El número de asegurados de las opciones debe ser igual al número de asegurados de los rangos</b>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

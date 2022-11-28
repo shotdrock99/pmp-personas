@@ -1,0 +1,74 @@
+<h1 mat-dialog-title>{{title}}</h1>
+<div mat-dialog-content>
+    <p class=thin-text sm>Complete la siguiente información</p>
+    <form>
+
+        <div class="row">
+            <div class="col-6">
+                <mat-form-field class="full-width">
+                    <input matInput upperCase type="text" id="nombres" name="nombres" [(ngModel)]="model.Nombres"
+                        placeholder="Nombres" required>
+                </mat-form-field>
+            </div>
+
+            <div class="col-6">
+                <mat-form-field class="full-width">
+                    <input matInput upperCase type="text" id="apellidos" name="apellidos" [(ngModel)]="model.Apellidos"
+                        placeholder="Apellidos" required>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <mat-form-field class="full-width">
+                    <input matInput upperCase class="thin-text sm" type="text" placeholder="Tipo de Documento"
+                        aria-label="TipoDocumento" [formControl]="acTipoDocumento" [matAutocomplete]="tipoDocumento"
+                        [(ngModel)]="model.tipoDocumento" matTooltip="TipoDocumento">
+                    <mat-autocomplete #tipoDocumento="matAutocomplete">
+                        <mat-option *ngFor="let tipoDoc of filteredTiposDocumento|async"
+                            [value]="tipoDoc.nombreReducido|charLimit:35">
+                            <span class="thin-text sm">{{tipoDoc.nombreReducido}}</span>
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </div>
+
+            <div class="col-6">
+                <mat-form-field class="full-width">
+                    <input matInput upperCase type="text" id="numDocumento" name="numDocumento"
+                        [(ngModel)]="model.NumeroDocumento" placeholder="Número de documento" required>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <mat-form-field class="full-width">
+                    <input matInput upperCase type="number" id="edad" name="edad" [(ngModel)]="model.Edad"
+                        placeholder="Edad" required>
+                </mat-form-field>
+            </div>
+
+            <div class="col-6">
+                <mat-form-field class="full-width">
+                    <input matInput upperCase class="thin-text sm" type="text" placeholder="Género" aria-label="Genero"
+                        formControlName="Genero" [matAutocomplete]="genero" matTooltip="Género">
+                    <mat-autocomplete #genero="matAutocomplete">
+                        <mat-option *ngFor="let genero of generos" [value]="genero.Value">
+                            <span class="thin-text sm">{{genero.Value}}</span>
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</div>
+<div mat-dialog-actions class="float-right">
+    <div class="row">
+        <div>
+            <button mat-raised-button (click)="onNoClick()">Cancelar</button>
+            <button mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>Aceptar</button>
+        </div>
+    </div>
+</div>

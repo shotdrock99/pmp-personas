@@ -1,0 +1,27 @@
+.opciones a {
+  padding: 0 5px;
+  cursor: pointer;
+}
+.edades-main-container .actions-container {
+  margin-bottom: 10px;
+}
+.edades-main-container .table-container .table-header {
+  border-bottom: 1px solid #8e8e8e;
+}
+.edades-main-container .table-container .table-header div {
+  text-align: center;
+}
+.edades-main-container .table-container .table-row {
+  padding: 4px 0;
+}
+.edades-main-container .table-container .table-row div {
+  text-align: center;
+}
+.edades-main-container .table-container .table-row .edit input[type="text"] {
+  border: none;
+  border-bottom: 1px solid #eee;
+  margin: 0 10px;
+  width: 100px;
+  outline: none;
+  text-align: center;
+}

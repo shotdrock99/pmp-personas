@@ -1,0 +1,21 @@
+<div>
+  <p>
+    Seleccione la tasa con la que desea continuar el proceso de cotización.
+  </p>
+  <div class="options-container">
+    <mat-button-toggle-group #group="matButtonToggleGroup" [value]="selectedTasa">
+      <mat-button-toggle class="btn-xxl" [value]="item.codigoTasa" *ngFor="let item of tasas">
+        <div>
+          <p class="thin-text">{{item.nombreTasa}}</p>
+          <b>{{item.value/100 | percent:'1.0-4'}}</b>
+        </div>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <div>
+    <div mat-dialog-actions class="float-right">
+      <button mat-raised-button (click)="onDismiss()">Cancelar</button>
+      <button mat-raised-button color="primary" (click)="onConfirm()">Aceptar</button>
+    </div>
+  </div>
+</div>

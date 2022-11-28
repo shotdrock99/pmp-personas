@@ -1,0 +1,113 @@
+<div class="mat-elevation-z8">
+  <mat-card>
+    <div [formGroup]="filterForm" fxLayout="column">
+      <div fxLayout="row" fxLayoutGap="30px">
+        <div fxFlex="25%">
+          <mat-form-field class="full-width">
+            <mat-label>Zona</mat-label>
+            <mat-select formControlName="codigoZona">
+              <mat-option *ngFor="let item of zonasList" [value]="item.codigoZona">
+                {{item.nombreZona}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxFlex="25%">
+          <mat-form-field class="full-width">
+            <mat-label>Sucursal</mat-label>
+            <mat-select formControlName="codigoSucursal">
+              <mat-option *ngFor="let item of sucursalesList" [value]="item.codigoSucursal">
+                {{item.nombreSucursal}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxFlex="25%">
+          <mat-form-field class="full-width">
+            <mat-label>Ramo</mat-label>
+            <mat-select formControlName="codigoRamo">
+              <mat-option *ngFor="let item of ramosList" [value]="item.codigoRamo">
+                {{item.nombreAbreviado}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxFlex="25%">
+          <mat-form-field class="full-width">
+            <mat-label>Subramo</mat-label>
+            <mat-select formControlName="codigoSubramo">
+              <mat-option *ngFor="let item of subramosList" [value]="item.codigoSubRamo">
+                {{item.nombreSubRamo}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div fxLayout="row" fxLayoutGap="30px">
+        <div fxFlex="25%">
+          <mat-form-field class="full-width">
+            <mat-label>Estado</mat-label>
+            <mat-select formControlName="codigoEstado">
+              <mat-option *ngFor="let item of estadosList" [value]="item.codigoEstado">
+                {{item.nombreEstado|uppercase}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxFlex="25%">
+          <mat-form-field class="full-width">
+            <mat-label>Fecha desde</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="fechaDesde">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div fxFlex="25%">
+          <mat-form-field class="full-width">
+            <mat-label>Fecha hasta</mat-label>
+            <input matInput [matDatepicker]="picker2" formControlName="fechaHasta">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div fxFlex="25%">
+          <mat-form-field class="full-width">
+            <mat-label>Número Cotización</mat-label>
+            <input matInput placeholder="Número de Cotización" formControlName="numeroCotizacion" value="">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div fxLayout="row" fxLayoutGap="30px">
+        <div fxFlex="25%">
+          <mat-form-field class="full-width">
+            <mat-label>Usuario</mat-label>
+            <input matInput placeholder="codigoUsuario" formControlName="codigoUsuario" #input [value]="input.value.toUpperCase()">
+          </mat-form-field>
+        </div>
+        <div fxFlex="25%">
+          <mat-form-field class="full-width">
+            <mat-label>Tipo Documento</mat-label>
+            <mat-select formControlName="codigoTipoDocumento">
+              <mat-option *ngFor="let item of tiposDocumentoList" [value]="item.codigoTipoDocumento">
+                {{item.nombreReducido}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxFlex="25%">
+          <mat-form-field class="full-width">
+            <mat-label>Número Documento</mat-label>
+            <input matInput placeholder="Número Documento" formControlName="numeroDocumento" value="">
+          </mat-form-field>
+        </div>
+        <div fxFlex="25%"></div>
+      </div>
+    </div>
+    <div fxLayoutAlign="end" fxLayout="row" fxLayoutGap="20px">
+      <button class="mat-small" mat-raised-button (click)="clearFilter()">Limpiar Filtro</button>
+      <button class="mat-small" mat-raised-button color="primary" (click)="applyFilter()">Aplicar Filtro</button>
+    </div>
+  </mat-card>
+</div>

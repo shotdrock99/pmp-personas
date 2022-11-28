@@ -1,0 +1,70 @@
+<div fxFlex="100%" fxLayout="column" class="edades-main-container">
+  <div class="actions-container">
+    <button mat-raised-button (click)="addItem()" [disabled]="readonly">Agregar registro</button>
+  </div>
+  <mat-card>
+    <div fxFlex="100%" fxLayout="column" class="table-container">
+      <div fxLayout="row wrap" class="table-header">
+        <div fxFlex="10%">Edad desde</div>
+        <div fxFlex="10%">Edad hasta</div>
+        <div fxFlex="20%">Valor individual desde</div>
+        <div fxFlex="20%">Valor individual hasta</div>
+        <div fxFlex="15%">Requisitos</div>
+        <div fxFlex="25%">Acciones</div>
+      </div>
+      <div fxLayout="row wrap" *ngFor="let item of data; let i=index;" class="table-row thin-text sm">
+        <div fxFlex="10%">
+          <div *ngIf="!item._isEdit">{{item.edadDesde}}</div>
+          <div class="edit" *ngIf="item._isEdit">
+            <input type="text" [(ngModel)]="item.edadDesde" [readonly]="readonly" (change)="inputValueChange()" />
+          </div>
+        </div>
+        <div fxFlex="10%">
+          <div *ngIf="!item._isEdit">{{item.edadHasta}}</div>
+          <div class="edit" *ngIf="item._isEdit">
+            <input type="text" [(ngModel)]="item.edadHasta" [readonly]="readonly" (change)="inputValueChange()"/>
+          </div>
+        </div>
+        <div fxFlex="20%">
+          <div *ngIf="!item._isEdit">{{item.valorIndividualDesde|currency: 'USD' : 'symbol' : '1.0-4'}}</div>
+          <div class="edit" *ngIf="item._isEdit">
+            <input type="text" mask="separator.2" prefix="$" thousandSeparator="."
+              [(ngModel)]="item.valorIndividualDesde" [readonly]="readonly" (change)="inputValueChange()"/>
+          </div>
+        </div>
+        <div fxFlex="20%">
+          <div *ngIf="!item._isEdit">{{item.valorIndividualHasta|currency: 'USD' : 'symbol' : '1.0-4'}}</div>
+          <div class="edit" *ngIf="item._isEdit">
+            <input type="text" mask="separator.2" prefix="$" thousandSeparator="."
+              [(ngModel)]="item.valorIndividualHasta" [readonly]="readonly" (change)="inputValueChange()"/>
+          </div>
+        </div>
+        <div fxFlex="15%">
+          <div *ngIf="!item._isEdit">{{item.requisitos}}</div>
+          <div class="edit" *ngIf="item._isEdit">
+            <select [(ngModel)]="item.requisitos" style="width:80%;" [disabled]="readonly" (change)="inputValueChange()" >
+              <option *ngFor="let item of requisitos">{{item}}</option>
+            </select>
+          </div>
+        </div>
+        <div fxFlex="25%">
+          <div class="opciones" fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="center">
+            <a *ngIf="!item._isEdit" (click)="removeItem(i, item)" class="error bold text-danger" >Eliminar</a>
+            <a class="edit" *ngIf="item._isEdit" (click)="saveItem(i, item)" class="bold text-success" >Guardar</a>
+            <a class="edit" *ngIf="item._isEdit" (click)="cancelEdit(i, item)" class="bold text-danger" >Cancelar</a>
+            <!-- <a *ngIf="!item._isEdit" (click)="editItem(i, item)" class="bold text-info">Editar</a> -->
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="text-danger" *ngFor="let error of errors" [innerHTML]="error">
+        </div>
+      </div>
+      <div fxLayout="row wrap" *ngIf="!isEdit" class="table-row">
+        <div fxFlex="100%" class="text-center thin-text sm" *ngIf="data.length===0">
+          No hay registros
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>

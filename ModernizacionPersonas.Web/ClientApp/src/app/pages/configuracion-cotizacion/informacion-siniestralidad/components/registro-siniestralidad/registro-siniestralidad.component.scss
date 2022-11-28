@@ -1,0 +1,31 @@
+.row {
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+
+  .dateinput {
+    &.editable {
+      border-bottom: 1px solid #888;
+      cursor: pointer;
+      max-width: 150px;
+    }
+  }
+
+  input {
+    &.light {
+      max-width: 150px;
+      outline-width: 0;
+      border: 0;
+      border-bottom: 1px solid #888;
+      text-align: right;
+      background-color: #fff;
+      margin: 5px;
+    }
+  }
+}
+
+.form-errors-container {
+  color: red;
+  font-weight: bold;
+}
+

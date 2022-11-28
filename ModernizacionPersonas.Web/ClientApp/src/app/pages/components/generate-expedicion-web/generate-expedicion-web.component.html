@@ -1,0 +1,41 @@
+<div [formGroup]="generateForm">
+  <h5>Solicitud Expedición</h5>
+  <b>Cotización No. {{data.numeroCotizacion }}</b>
+  <span class="badge badge-pill badge-sol">V{{data.version}}</span>
+  <p>
+    Se enviará una notificación de <b>expedición</b> según la información configurada en la cotización.
+  </p>
+  <div>
+    <mat-form-field class="full-width">
+      <mat-label>Dirigido a</mat-label>
+      <input type="email" matInput formControlName="to">
+      <!-- <span matSuffix>@solidaria.com.co</span> -->
+    </mat-form-field>
+    <div *ngIf="(submitted || form.to.touched) && form.to.errors" class="text-danger">
+      <div *ngIf="form.to.errors.required">
+        <b class="error-message">Campo obligatorio</b>
+      </div>
+      <div *ngIf="form.to.errors.email">
+        <b class="error-message">Debe ingresar un correo válido</b>
+      </div>
+    </div>
+  </div>
+  <div>
+    <mat-form-field class="full-width">
+      <mat-label>Observaciones</mat-label>
+      <textarea type="text" matInput formControlName="observaciones" rows="3"></textarea>
+    </mat-form-field>
+    <div *ngIf="(submitted || form.observaciones.touched) && form.observaciones.errors" class="text-danger">
+      <div *ngIf="form.observaciones.errors.required">
+        <b class="error-message">Campo obligatorio</b>
+      </div>
+    </div>
+  </div>
+  <div>
+    ¿Confirma la adjudicación de la <b>Expedición</b>?
+  </div>
+  <div mat-dialog-actions class="float-right">
+    <button mat-raised-button (click)="onDismiss()">Cancelar</button>
+    <button mat-raised-button (click)="onConfirm()" color="primary">Aceptar</button>
+  </div>
+</div>

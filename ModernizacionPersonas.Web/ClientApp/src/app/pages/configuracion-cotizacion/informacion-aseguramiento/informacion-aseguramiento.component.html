@@ -1,0 +1,359 @@
+<form [formGroup]="informacionNegocioForm" autocomplete="off">
+  <div fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutGap="20px">
+
+    <div class="form-group" fxFlex="0 1 calc(50% - 20px)">
+      <mat-form-field class="full-width">
+        <mat-label>Director Comercial</mat-label>
+        <mat-select aria-label="DirectorComercial" formControlName="DirectorComercial" matTooltip="DirectorComercial">
+          <mat-option *ngFor="let item of directoresComerciales" [value]="item">
+            {{item.nombreUsuario}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="(submitted || form.DirectorComercial.touched) && form.DirectorComercial.errors" class="text-danger">
+        <div *ngIf="form.DirectorComercial.errors.required">
+          <b class="error-message">El campo es requerido</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" fxFlex="0 1 calc(25% - 20px)">
+      <mat-form-field class="full-width">
+        <input matInput upperCase placeholder="Nombre Aseguradora Actual" formControlName="NombreAseguradora" />
+      </mat-form-field>
+      <div *ngIf="(submitted || form.NombreAseguradora.touched) && form.NombreAseguradora.errors" class="text-danger">
+        <div *ngIf="form.NombreAseguradora.errors.required">
+          <b class="error-message">El campo es requerido</b>
+        </div>
+        <div *ngIf="form.NombreAseguradora.errors.maxlength">
+          <b class="error-message">El valor del campo excedió el límite de caracteres permitido</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" fxFlex="0 1 calc(25% - 20px)">
+      <mat-form-field class="full-width">
+        <mat-label>Periodo de Facturación</mat-label>
+        <mat-select aria-label="PeridoFacturacion" formControlName="PeriodoFacturacion"
+          matTooltip="Periodo de Facturación">
+          <mat-option *ngFor="let item of periodosFacturacion" [value]="item">
+            {{item.nombrePeriodo}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="(submitted || form.PeriodoFacturacion.touched) && form.PeriodoFacturacion.errors" class="text-danger">
+        <div *ngIf="form.PeriodoFacturacion.errors.required">
+          <b class="error-message">El campo es requerido</b>
+        </div>
+        <div *ngIf="form.PeriodoFacturacion.errors.incorrect">
+          <b class="error-message">El valor ingresado es invalido</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" fxFlex="0 1 calc(25% - 20px)">
+      <mat-form-field>
+        <input matInput upperCase placeholder="Fecha Inicio" [min]="minDate" [matDatepicker]="fechaInicioPicker"
+          formControlName="FechaInicio" />
+        <mat-datepicker-toggle matSuffix [for]="fechaInicioPicker"></mat-datepicker-toggle>
+        <mat-datepicker #fechaInicioPicker></mat-datepicker>
+      </mat-form-field>
+      <mat-datepicker #fechaInicioPicker></mat-datepicker>
+      <div *ngIf="(submitted || form.FechaInicio.touched) && form.FechaInicio.errors" class="text-danger">
+        <div *ngIf="form.FechaInicio.errors.required">
+          <b class="error-message">El campo es requerido</b>
+        </div>
+        <div *ngIf="form.FechaInicio.errors.invalid">
+          <b class="error-message">El valor de Fecha Inicio es invalido</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" fxFlex="0 1 calc(25% - 20px)">
+      <mat-form-field>
+        <input matInput upperCase placeholder="Fecha Fin" [min]="minDate" [matDatepicker]="fechaFinPicker"
+          formControlName="FechaFin" />
+        <mat-datepicker-toggle matSuffix [for]="fechaFinPicker"></mat-datepicker-toggle>
+        <mat-datepicker #fechaFinPicker></mat-datepicker>
+      </mat-form-field>
+      <mat-datepicker #fechaFinPicker></mat-datepicker>
+      <div *ngIf="(submitted || form.FechaFin.touched) && form.FechaFin.errors" class="text-danger">
+        <div *ngIf="form.FechaFin.errors.required">
+          <b class="error-message">El campo es requerido</b>
+        </div>
+        <div *ngIf="form.FechaFin.errors.invalid">
+          <b class="error-message">El valor de Fecha Final es invalido</b>
+        </div>
+        <div *ngIf="form.FechaFin.errors.gtInitial">
+          <b class="error-message">El valor no puede ser menor a la Fecha Inicial</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" fxFlex="0 1 calc(25% - 20px)">
+      <mat-form-field class="full-width">
+        <mat-label>Sector</mat-label>
+        <mat-select formControlName="Sector">
+          <mat-option *ngFor="let option of sectores" [value]="option.codigoSector">
+            {{ option.nombreSector | uppercase }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="(submitted || form.Sector.touched) && form.Sector.errors" class="text-danger">
+        <div *ngIf="form.Sector.errors.required">
+          <b class="error-message">El campo es requerido</b>
+        </div>
+        <div *ngIf="form.Sector.errors.incorrect">
+          <b class="error-message">El valor ingresado es invalido</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" fxFlex="0 1 calc(75% - 20px)">
+      <mat-form-field class="full-width">
+        <input style="font-size: inherit; height: 100%;" matInput upperCase placeholder="Actividad"
+          formControlName="Actividad" />
+        <mat-hint class="Actividad-hit">Recuerde que para clasificar de forma correcta la actividad se debe verificar en
+          el manual técnico sección: ACTIVIDADES RESTRINGIDAS.</mat-hint>
+      </mat-form-field>
+      <div *ngIf="(submitted || form.Actividad.touched) && form.Actividad.errors" class="text-danger">
+        <div *ngIf="form.Actividad.errors.required">
+          <b class="error-message">El campo es requerido</b>
+        </div>
+        <div *ngIf="form.Actividad.errors.maxlength">
+          <b class="error-message">El valor del campo excedió el límite de caracteres permitido</b>
+        </div>
+        <div *ngIf="form.Actividad.errors.pattern">
+          <b class="error-message">El campo solo permite letras y espacios</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" fxFlex="0 1 calc(25% - 20px)">
+      <mat-form-field class="full-width">
+        <mat-label>Clasificación Actividad</mat-label>
+        <mat-select formControlName="TipoRiesgo">
+          <mat-option *ngFor="let option of tiposRiesgo" [value]="option.codigoRiesgoActividad"
+            [matTooltip]="option.detalleRiesgoActividad" [matTooltipPosition]="'left'"
+            [matTooltipClass]="'Info-tooltip'">
+            {{ option.nombreRiesgoActividad | uppercase }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="(submitted || form.TipoRiesgo.touched) && form.TipoRiesgo.errors" class="text-danger">
+        <div *ngIf="form.TipoRiesgo.errors.required">
+          <b class="error-message">El campo es requerido</b>
+        </div>
+        <div *ngIf="form.TipoRiesgo.errors.incorrect">
+          <b class="error-message">El valor ingresado es invalido</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" fxFlex="0 1 calc(25% - 20px)">
+      <mat-form-field class="full-width">
+        <mat-label>Tipo Negocio</mat-label>
+        <mat-select formControlName="TipoNegocio">
+          <mat-option *ngFor="let option of tiposNegocio" [value]="option.codigoTipoNegocio">
+            {{ option.nombreTipoNegocio | uppercase }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="(submitted || form.TipoNegocio.touched) && form.TipoNegocio.errors" class="text-danger">
+        <div *ngIf="form.TipoNegocio.errors.required">
+          <b class="error-message">El campo es requerido</b>
+        </div>
+        <div *ngIf="form.TipoNegocio.errors.incorrect">
+          <b class="error-message">El valor ingresado es invalido</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" fxFlex="0 1 calc(25% - 20px)">
+      <mat-form-field class="full-width">
+        <mat-label>Tipo Contratación</mat-label>
+        <mat-select formControlName="TipoContratacion">
+          <mat-option *ngFor="let option of tiposContratacion" [value]="option.codigoTipoContratacion">
+            {{ option.nombreTipoContratacion | uppercase }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="(submitted || form.TipoContratacion.touched) && form.TipoContratacion.errors" class="text-danger">
+        <div *ngIf="form.TipoContratacion.errors.required">
+          <b class="error-message">El campo es requerido</b>
+        </div>
+        <div *ngIf="form.TipoContratacion.errors.incorrect">
+          <b class="error-message">El valor ingresado es invalido</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" fxFlex="0 1 calc(25% - 20px)">
+      <mat-form-field class="full-width">
+        <mat-label> Modalidad de Tasa 1 </mat-label>
+        <mat-select formControlName="TipoTasa1">
+          <mat-option *ngFor="let option of tiposTasa1" [value]="option.codigoTasa">
+            {{ option.nombreTasa | uppercase }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="(submitted || form.TipoTasa1.touched) && form.TipoTasa1.errors" class="text-danger">
+        <div *ngIf="form.TipoTasa1.errors.required">
+          <b class="error-message">El campo es requerido</b>
+        </div>
+        <div *ngIf="form.TipoTasa1.errors.incorrect">
+          <b class="error-message">El valor ingresado es invalido</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" fxFlex="0 1 calc(25% - 20px)">
+      <mat-form-field class="full-width">
+        <mat-label>Modalidad de Tasa 2 </mat-label>
+        <mat-select formControlName="TipoTasa2">
+          <mat-option>NINGUNA</mat-option>
+          <mat-option *ngFor="let option of tiposTasa2" [value]="option.codigoTasa">
+            {{ option.nombreTasa | uppercase }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="(submitted || form.TipoTasa2.touched) && form.TipoTasa2.errors" class="text-danger">
+        <div *ngIf="form.TipoTasa2.errors.required">
+          <b class="error-message">El campo es requerido</b>
+        </div>
+        <div *ngIf="form.TipoTasa2.errors.incorrect">
+          <b class="error-message">El valor ingresado es invalido</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" fxFlex="0 1 calc(25% - 20px)" *ngIf="conAnyosSiniestralidad">
+      <mat-form-field class="full-width">
+        <mat-label>Años de siniestralidad</mat-label>
+        <mat-select formControlName="AnyosSiniestralidad">
+          <mat-option *ngFor="let item of [].constructor(this.parametrizacionAnyosSiniestralidad); let option = index"
+            [value]="option+1">{{option+1}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="(submitted || form.AnyosSiniestralidad.touched) && form.AnyosSiniestralidad.errors"
+        class="text-danger">
+        <div *ngIf="form.AnyosSiniestralidad.errors.required">
+          <b class="error-message">El campo es requerido</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" fxFlex="0 1 calc(25% - 20px)">
+      <mat-form-field class="full-width">
+        <input matInput upperCase type="text" mask="percent" suffix="%" placeholder="% de Retorno"
+          formControlName="PorcentajeRetorno" matTooltip="Porcentaje de Retorno" [dropSpecialCharacters]="false" />
+      </mat-form-field>
+      <div *ngIf="(submitted || form.PorcentajeRetorno.touched) && form.PorcentajeRetorno.errors" class="text-danger">
+        <div *ngIf="form.PorcentajeRetorno.errors.required">
+          <b class="error-message">El campo es requerido</b>
+        </div>
+        <div *ngIf="form.PorcentajeRetorno.errors.max">
+          <b class="error-message">El valor ingresado no puede ser mayor a 100</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" fxFlex="0 1 calc(25% - 20px)">
+      <mat-form-field class="full-width">
+        <input matInput upperCase type="text" mask="percent" suffix="%" id="porcentajeOtrosGastos"
+          name="porcentajeOtrosGastos" placeholder="% Otros Gastos" formControlName="PorcentajeOtrosGastos"
+          matTooltip="Porcentaje Otros Gastos" [dropSpecialCharacters]="false" />
+      </mat-form-field>
+      <div *ngIf="(submitted || form.PorcentajeOtrosGastos.touched) && form.PorcentajeOtrosGastos.errors"
+        class="text-danger">
+        <div *ngIf="form.PorcentajeOtrosGastos.errors.required">
+          <b class="error-message">El campo es requerido</b>
+        </div>
+        <div *ngIf="form.PorcentajeOtrosGastos.errors.max">
+          <b class="error-message">El valor no puede ser mayor a 100</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" fxFlex="0 1 calc(25% - 20px)" *ngIf="showOtrosGastos">
+      <mat-form-field class="full-width">
+        <input matInput upperCase placeholder="Otros Gastos" formControlName="OtrosGastos" />
+      </mat-form-field>
+      <div *ngIf="(submitted || form.OtrosGastos.touched) && form.OtrosGastos.errors" class="text-danger">
+        <div *ngIf="form.OtrosGastos.errors.required">
+          <b class="error-message">El campo es requerido</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" fxFlex="0 1 calc(25% - 20px)" *ngIf="showPorcentajeComision">
+      <mat-form-field class="full-width">
+        <input matInput upperCase type="text" mask="percent" suffix="%" placeholder="% de Comisión"
+          formControlName="PorcentajeComision" matTooltip="Porcentaje de Comisión" [dropSpecialCharacters]="false" />
+      </mat-form-field>
+      <div *ngIf="(submitted || form.PorcentajeComision.touched) && form.PorcentajeComision.errors" class="text-danger">
+        <div *ngIf="form.PorcentajeComision.errors.required">
+          <b class="error-message">El campo es requerido</b>
+        </div>
+        <div *ngIf="form.PorcentajeComision.errors.max">
+          <b class="error-message">El valor ingresado no puede ser mayor a 100</b>
+        </div>
+        <div *ngIf="form.PorcentajeComision.errors.min">
+          <b class="error-message">El valor ingresado no puede ser menor a 1</b>
+        </div>
+      </div>
+    </div>
+
+    <div fxFlex="100%">
+      <div fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutGap="20px">
+        <div class="form-group" fxFlex="0 1 calc(25% - 20px)">
+          <section>
+            <mat-checkbox formControlName="EsNegocioDirecto">Es Negocio Directo</mat-checkbox>
+          </section>
+        </div>
+        <div class="form-group" fxFlex="0 1 calc(25% - 20px)">
+          <section>
+            <mat-checkbox formControlName="ConListaAsegurados">Con Lista de Asegurados</mat-checkbox>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" fxFlex="0 1 calc(25% - 20px)" *ngIf="showCapturaPerfilEdades">
+      <mat-form-field class="full-width">
+        <mat-label> Perfil por Edades </mat-label>
+        <mat-select formControlName="PerfilEdad">
+          <mat-option *ngFor="let option of perfilesEdad" [value]="option.codigoPerfil">
+            {{ option.nombrePerfil | uppercase }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="submitted && form.PerfilEdad.errors" class="text-danger">
+        <div *ngIf="form.PerfilEdad.errors.required">
+          <b class="error-message">El campo es requerido</b>
+        </div>
+        <div *ngIf="form.PerfilEdad.errors.incorrect">
+          <b class="error-message">El valor ingresado es invalido</b>
+        </div>
+      </div>
+    </div>
+    <div class="form-group" fxFlex="0 1 calc(25% - 20px)" *ngIf="showCapturaPerfilValores">
+      <mat-form-field class="full-width">
+        <mat-label> Perfil por Valores </mat-label>
+        <mat-select formControlName="PerfilValor">
+          <mat-option *ngFor="let option of perfilesValor" [value]="option.codigoPerfil">
+            {{ option.nombrePerfil | uppercase }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="(submitted || form.PerfilValor.touched) && form.PerfilValor.errors" class="text-danger">
+        <div *ngIf="form.PerfilValor.errors.required">
+          <b class="error-message">El campo es requerido</b>
+        </div>
+        <div *ngIf="form.PerfilValor.errors.incorrect">
+          <b class="error-message">El valor ingresado es invalido</b>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

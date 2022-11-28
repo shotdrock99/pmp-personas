@@ -1,0 +1,27 @@
+<!-- The following menu items will be hidden on both SM and XS screen sizes -->
+<div fxFlex fxLayout fxLayoutAlign="flex-end">
+  <a href="/" mat-button>
+    <mat-icon class="material-icons">notifications</mat-icon>
+  </a>
+  <a mat-icon-button [matMenuTriggerFor]="menu" [ngClass]="{ 'disabled' : !permitLogout }"aria-label="User menu">
+    <mat-icon>account_circle</mat-icon>
+  </a>
+  <div class="username-container" fxShow="true" fxHide.lt-md="true">{{user.userName}}</div>
+  <mat-menu #menu="matMenu">
+    <div class="user-menu-container">
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <div class="initials-user-container">
+          {{user.userName|initials}}
+        </div>
+        <div class="user-info-container" fxLayout="column" fxLayoutAlign="center start">
+          <div class="user-name-label">{{user.userName}}</div>
+          <div class="user-email-label">{{user.email}}</div>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <a mat-menu-item style="outline: none;" (click)="logout()">
+        <span>Cerrar sesión</span>
+      </a>
+    </div>
+  </mat-menu>
+</div>

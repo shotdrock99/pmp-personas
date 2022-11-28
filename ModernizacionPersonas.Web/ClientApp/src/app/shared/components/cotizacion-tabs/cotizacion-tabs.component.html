@@ -1,0 +1,8 @@
+<div fxLayout="row" class="tabs-container">
+  <div *ngFor="let tab of tabs" (click)="navigate($event, tab.index)" [fxFlex]="tabWidth">
+    <button mat-menu-item [disabled]="tab.disabled" class="tab"
+      [ngClass]="{'disabled': tab.disabled, 'active': tab.active}">
+      {{tab.label}}
+    </button>
+  </div>
+</div>

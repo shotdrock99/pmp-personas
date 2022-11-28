@@ -1,0 +1,91 @@
+.upload-modal-content {
+  width: 100%;
+}
+
+.upload-file-info-container {
+  border-left: 1px solid #eee;
+  padding-left: 1em;
+
+  .title {
+    display: inline-flex;
+    font-weight: 700;
+  }
+}
+
+.asegurados-info-container {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 10px;
+
+  .options {
+    margin: 5px 0;
+  }
+}
+
+.btn {
+  &.btn-info {
+    &.custom {
+      color: #fff;
+      background-color: #004173;
+      border-color: #a5a5a5;
+    }
+  }
+}
+
+table {
+  width: 100%;
+  margin-top: 1em;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  font-size: small;
+
+  th, td {
+    width: 33%;
+    padding: 0.1em;
+  }
+
+  th {
+    text-align: center;
+  }
+
+  td {
+    text-align: right;
+  }
+}
+
+th {
+  background-color: var(--gris-solidaria);
+  color: #fff;
+}
+
+.icon::selection {
+  background-color: #fff;
+}
+
+.icon {
+  margin-top: 1em;
+  margin-right: 0.5em;
+}
+
+.primary-tooltip {
+  background-color: #3F51B5;
+}
+
+.checkbox {
+  margin-top: 1.5em;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-ripple .mat-ripple-element {
+  background-color: #fcaf17!important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: #fcaf17!important;
+}
+
+::ng-deep .Info-tooltip {
+  font-size: 14px;
+}

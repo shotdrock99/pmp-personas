@@ -1,0 +1,40 @@
+.view-container {
+  .view-title {
+    background: #fefefe;
+    padding: 10px 20px;
+    width: 100%;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 10px;
+  }
+
+  .filter-container {
+    padding: 0 20px;
+  }
+
+  table {
+    padding: 0 20px 20px;
+    overflow: auto;
+
+    th {
+      &.mat-header-cell {
+        text-align: center !important;
+      }
+    }
+
+    td {
+      .role-container {
+        .badge {
+          padding: 8px;
+          margin: 2px;
+        }
+      }
+    }
+  }
+
+  .table-footer {
+    width: 100%;
+    text-align: right;
+    padding: 10px 20px;
+    font-weight: bold;
+  }
+}

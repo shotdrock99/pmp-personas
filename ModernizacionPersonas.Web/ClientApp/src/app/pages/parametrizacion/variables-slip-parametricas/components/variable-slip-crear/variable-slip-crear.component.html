@@ -1,0 +1,59 @@
+<h2 mat-dialog-title>{{title}}</h2>
+
+<mat-dialog-content [formGroup]="createForm">
+
+  <mat-form-field class="mat-form-field-text">
+    <mat-label>Nombre Variable</mat-label>
+    <input matInput #nombre maxlength="100" formControlName="nombreVariable">
+    <mat-error *ngIf="createForm.get('nombreVariable').hasError('required') && (createForm.get('nombreVariable').dirty || createForm.get('nombreVariable').touched)">
+      Nombre requerido.
+    </mat-error>
+    <mat-hint align="end">{{nombre.value.length}} / 100</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field class="mat-form-field-text">
+    <mat-label>Descripción Variable</mat-label>
+    <input matInput #descripcion maxlength="200" formControlName="descripcionVariable">
+    <mat-error *ngIf="createForm.get('descripcionVariable').hasError('required') && (createForm.get('descripcionVariable').dirty || createForm.get('descripcionVariable').touched)">
+      Descripción requerida.
+    </mat-error>
+    <mat-hint align="end">{{descripcion.value.length}} / 200</mat-hint>
+  </mat-form-field>
+  
+  <mat-form-field style="width: 80%;">
+    <mat-label>Grupo</mat-label>
+    <mat-select [(ngModel)]="tipoDato" formControlName="tipoDato">
+      <mat-option *ngFor="let td of tiposDatos" [value]="td.value" [disabled]="td.value === 'S'">
+        {{td.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <mat-form-field *ngIf="tipoDato !== 'VC'" style="padding-right: 4em;">
+    <mat-label>Valor Variable</mat-label>
+    <input type="number" matInput formControlName="valorVariable">
+    <mat-error *ngIf="createForm.get('valorVariable').hasError('min') && (createForm.get('valorVariable').dirty || createForm.get('valorVariable').touched)">
+      No puede ser un valor menor a 0.
+    </mat-error>
+    <mat-error *ngIf="createForm.get('valorVariable').hasError('required')">
+      Valor requerido.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="tipoDato !== 'VC'">
+    <mat-label>Valor Tope Variable</mat-label>
+    <input type="number" matInput formControlName="valorTope">
+    <mat-error *ngIf="createForm.get('valorTope').hasError('min') && (createForm.get('valorTope').dirty || createForm.get('valorTope').touched)">
+      No puede ser un valor menor a 0.
+    </mat-error>
+    <mat-error *ngIf="createForm.get('valorTope').hasError('required')">
+      Valor requerido.
+    </mat-error>
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions class="mat-container">
+  <button mat-raised-button mat-dialog-close>Cancelar</button>
+  <button mat-raised-button color="primary" (click)="create()">Crear</button>
+</mat-dialog-actions>

@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>{{title}}</h2>
+
+<mat-dialog-content [formGroup]="createRolForm">
+
+  <mat-form-field class="mat-form-field-text">
+    <mat-label>Nombre Rol</mat-label>
+    <input matInput #nombre maxlength="100" formControlName="nombre">
+    <mat-error *ngIf="createRolForm.get('nombre').hasError('required') && (createRolForm.get('nombre').dirty || createRolForm.get('nombre').touched)">
+      Nombre requerido.
+    </mat-error>
+    <mat-hint align="end">{{nombre.value.length}} / 100</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field class="mat-form-field-text">
+    <mat-label>Descripcion Rol</mat-label>
+    <input matInput #descripcion maxlength="200" formControlName="descripcion">
+    <mat-error *ngIf="createRolForm.get('descripcion').hasError('required') && (createRolForm.get('descripcion').dirty || createRolForm.get('descripcion').touched)">
+      Descripción requerida.
+    </mat-error>
+    <mat-hint align="end">{{descripcion.value.length}} / 200</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field style="width: 60%;">
+    <mat-label>Permisos</mat-label>
+    <mat-select multiple [(ngModel)]="permisos" formControlName="permisos">
+      <mat-option *ngFor="let permiso of permisosRol" [value]="permiso" [disabled]="permiso.codigo === -1">
+        {{permiso.nombre}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions class="mat-container">
+  <button mat-raised-button mat-dialog-close>Cancelar</button>
+  <button mat-raised-button color="primary" (click)="create()">Crear</button>
+</mat-dialog-actions>

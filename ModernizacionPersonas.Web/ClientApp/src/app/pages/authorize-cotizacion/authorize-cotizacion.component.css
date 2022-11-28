@@ -1,0 +1,85 @@
+.main-container {
+  font-size: 10pt;
+  padding: 10px;
+  position: relative;
+}
+.main-container .title-icon {
+  font-size: 2em;
+  color: #3f51b5;
+  padding: 0 8px;
+}
+.main-container .autorizaciones-container {
+  margin: 10px;
+}
+
+.main-container .history-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 350px;
+  bottom: 0;
+  z-index: 1;
+  background-color: white;
+  -webkit-box-shadow: -2px 0px 10px -5px #ababab;
+  -moz-box-shadow: -2px 0px 10px -5px #ababab;
+  box-shadow: -2px 0px 10px -5px #ababab;
+  overflow: auto;
+}
+.main-container .history-container .history-container-title {
+  padding: 5px 10px;
+  border-bottom: 1px solid #eee;
+}
+.main-container .history-container .history-container-title .mat-icon {
+  cursor: pointer;
+}
+.main-container .auth-container {
+  padding: 20px 10px;
+}
+.main-container .auth-container .title {
+  padding: 10px;
+  background-color: #eee;
+  margin-bottom: 10px;
+}
+.main-container .card-container {
+  padding: 4px 60px;
+  margin-bottom: 20px;
+}
+.main-container
+  .card-container
+  .autorizacion-container
+  .upload-file-container
+  .btn,
+.main-container
+  .card-container
+  .autorizacion-container
+  .upload-file-container
+  .mat-raised-button {
+  border-radius: 0;
+  font-size: 10pt;
+}
+.main-container
+  .card-container
+  .autorizacion-container
+  .informacion-cotizacion-container {
+  margin-bottom: 40px;
+  border-left: 4px solid #ef8e00;
+  padding-left: 20px;
+}
+.main-container
+  .card-container
+  .autorizacion-container
+  input[type="text"].borderless {
+  border: none;
+  border-bottom: 1px solid #8e8e8e;
+  max-width: 50px;
+  outline: none;
+  text-align: right;
+  background-color: transparent;
+}
+.main-container .options-container {
+  text-align: right;
+  margin: 0 60px;
+}
+.main-container .options-container button {
+  margin: 0 2px;
+}

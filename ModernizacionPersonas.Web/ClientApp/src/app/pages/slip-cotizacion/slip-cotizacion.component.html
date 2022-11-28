@@ -1,0 +1,183 @@
+<div class="unload-overlay" *ngIf="!pageLoaded">
+  <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate">
+  </mat-progress-spinner>
+  <b class="thin-text md">Cargando información del Slip...</b>
+</div>
+
+<div *ngIf="pageLoaded" fxLayout="column" class="view-container">
+  <div>
+    <app-cotizacion-tabs [disabledTab$]="disabledTabSubject.asObservable()"></app-cotizacion-tabs>
+  </div>
+
+  <div class="actions-container">
+    <app-page-toolbar [data]="toolbarConfig.items"></app-page-toolbar>
+  </div>
+
+  <div *ngIf="numeroCotizacion" class="num-cotizacion-container">
+    Cotizacion No. {{numeroCotizacion}}
+    <small> version {{version}} </small>
+  </div>
+
+  <app-readonly-cotizacion-toast [data]="cotizacion" [readonly]="readonly" [estado]="estadoCotizacion">
+  </app-readonly-cotizacion-toast>
+
+  <div class="view-content" *ngIf="!showPDFPreview">
+    <!--*ngIf="!showPDFPreview"-->
+    <div class="slip-container">
+      <div class="slip-content" fxLayout="column" #printarea>
+        <div *ngIf="false" class="product-image-container">
+          <img [src]="model.imagenProductoUri" />
+        </div>
+        <p *ngIf="false" [innerHTML]="model.descripcion">
+        </p>
+
+        <div class="afterClass"></div>
+
+        <p>
+          <span [innerHTML]="model.ciudad + ', ' + model.fechaString"></span>
+        </p>
+
+        <div>
+          <b>Señores:</b>
+          <div [innerHTML]="model.tomador.nombre"></div>
+          <div>
+            <b>Dirección:&nbsp;</b> <span [innerHTML]="model.tomador.direccion"></span>
+          </div>
+          <div>
+            <b>Teléfono:&nbsp;</b> <span [innerHTML]="model.tomador.telefono"></span>
+          </div>
+        </div>
+
+        <br />
+        <br />
+
+        <p>
+          <b>ASUNTO:&nbsp;</b> <span [innerHTML]="model.asunto"></span>
+        </p>
+
+        <p>
+          Respetados Señores:
+        </p>
+        <br />
+        <p *ngIf="tieneVigencia">
+          Aseguradora Solidaria de Colombia se permite presentar los términos y condiciones de la póliza <b
+            [innerHTML]="model.tipoPoliza"></b>,
+          para la vigencia comprendida entre el <span [innerHTML]="model.vigencia.desdeString"></span> hasta
+          el <span [innerHTML]="model.vigencia.hastaString"></span>
+        </p>
+        <p *ngIf="!tieneVigencia">
+          Aseguradora Solidaria de Colombia se permite presentar los términos y condiciones de la póliza <b
+            [innerHTML]="model.tipoPoliza"></b>,
+          con vigencia por definir.
+        </p>
+
+        <p>
+          <b>TOMADOR:&nbsp;</b> <span [innerHTML]="model.tomador.nombre"></span>
+          <br />
+          <b>IDENTIFICACION TOMADOR
+            <span *ngIf="model.tomador.codigoTipoDocumento==3">(NIT)</span>
+            <span *ngIf="model.tomador.codigoTipoDocumento==1">(CC)</span>:&nbsp;</b> <span
+            [innerHTML]="model.tomador.numeroDocumento"></span>
+        </p>
+
+        <b>ACTIVIDAD:</b>
+        <p>
+          <span [innerHTML]="model.tomador.actividad"></span>
+        </p>
+
+        <!-- Informacion general -->
+        <div>
+          <h4 class="hidden">{{model.infoGeneral.tituloSeccion}}</h4>
+          <div *ngFor="let seccion of model.infoGeneral.secciones">
+            <h5>{{seccion.tituloSeccion}}</h5>
+            <p [innerHTML]="seccion.texto"></p>
+          </div>
+        </div>
+
+        <!-- Seccion Amparos -->
+        <div>
+          <app-slip-seccion-amparos [data]="model.amparos"></app-slip-seccion-amparos>
+        </div>
+
+        <!-- Seccion Grupos Asegurados -->
+        <div>
+          <app-slip-grupos-asegurados [data]="model.gruposAsegurados"></app-slip-grupos-asegurados>
+        </div>
+
+        <!-- Seccion clausulas -->
+        <div>
+          <app-slip-seccion-clausulas [data]="model.clausulas"></app-slip-seccion-clausulas>
+        </div>
+
+        <!-- Seccion Condiciones -->
+        <div>
+          <app-slip-seccion-condiciones [data]="model.condiciones"></app-slip-seccion-condiciones>
+        </div>
+
+        <!-- Disposiciones finales -->
+        <div *ngIf="model.disposiciones.secciones.length>0">
+          <h4>{{model.disposiciones.tituloSeccion}}</h4>
+          <hr />
+          <div *ngFor="let seccion of model.disposiciones.secciones">
+            <h5 class="hidden">{{seccion.tituloSeccion}}</h5>
+            <p [innerHTML]="seccion.texto"></p>
+          </div>
+        </div>
+        <div>
+          <p>Cordial Saludo,</p>
+          <div class="signature-container">
+            <img *ngIf="false" [src]="model.imagenFirmaUri" />
+            <span>FIRMA AUTORIZADA</span>
+          </div>
+          <div>
+            <span>Agencia {{model.nombreSucursal | titlecase}}</span>
+          </div>
+        </div>
+        <!--Tablas Anexos-->
+        <div *ngFor="let amparo of amparosTables">
+          <!-- BENEFICIOS POR DESMEMBRACION -->
+
+          <div *ngIf=" amparo.codigoAmparo ==='51' || amparo.codigoAmparo==='4'">
+            <app-tabla-indemnizaciones [data]="amparo.codigoAmparo" class="table" name="tabla-indemnizaciones">
+            </app-tabla-indemnizaciones>
+          </div>
+          <div *ngIf="amparo.codigoAmparo ==='6'">
+            <app-tabla-inutilizacion [data]="amparo.codigoAmparo" class="table" name="tabla-indemnizaciones">
+            </app-tabla-inutilizacion>
+          </div>
+          <div *ngIf="amparo.codigoAmparo ==='15' && amparo.codigoSeccion === '29'">
+            <div style="font-weight: bold;" fxLayoutAlign="center"
+              class="row header">
+              ANEXO TABLA GASTOS DE TRASLADO
+            </div>
+            <div fxLayout="column" class="main-container">
+              <table class="table-indemnizaciones thin-text sm">
+                <thead>
+                  <tr style="text-align: center;">
+                    <th style="border: 1px solid #8e8e8e"colspan="3">SERVICIOS GASTOS DE TRASLADO</th>
+                  </tr>
+                  <tr style="text-align: center;">
+                    <th style="border: 1px solid #8e8e8e;">EVALUACION DE LA CONDICION DEL ASEGURADO</th>
+                    <th style="border: 1px solid #8e8e8e;">MECANISMO DE TRASLADO</th>
+                    <th style="border: 1px solid #8e8e8e;">EJEMPLO</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of dataGastosTraslado">
+                    <td style='border: 1px solid #8e8e8e; font-size: 10pt; font-family: "Lato Light", "Helvetica", "helvetica", "normal", "WinAnsiEncoding";'>{{item.column1}}</td>
+                    <td style='border: 1px solid #8e8e8e; font-size: 10pt; font-family: "Lato Light", "Helvetica", "helvetica", "normal", "WinAnsiEncoding";'>{{item.column2}}</td>
+                    <td style='border: 1px solid #8e8e8e; font-size: 10pt; font-family: "Lato Light", "Helvetica", "helvetica", "normal", "WinAnsiEncoding";'>{{item.column3}}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="view-content" id="base64_file" *ngIf="showPDFPreview">
+    <embed id="PDFView" width="100%" height="330px" src="" type="application/pdf">
+  </div>
+</div>

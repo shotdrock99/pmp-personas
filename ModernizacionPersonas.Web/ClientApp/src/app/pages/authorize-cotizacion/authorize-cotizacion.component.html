@@ -1,0 +1,225 @@
+<div fxLayout="column" class="view-container">
+  <div fxFlex="100%" fxLayout="column" fxLayoutGap="20px">
+    <div fxLayout="row" class="view-title">
+      <div class="toolbar" fxFlex="100%">
+        <div fxFlex="20%" fxLayout="row" fxLayoutAlign="start center">
+          <div class="thin-text">
+            Controles de Autorización
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions-container">
+      <div fxLayout="row">
+        <div fxFlex="100%">
+          <app-page-toolbar [data]="toolbarConfig.items"></app-page-toolbar>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="numeroCotizacion" class="num-cotizacion-container">
+      Cotizacion No. {{numeroCotizacion}}
+      <small> version {{version}} </small>
+    </div>
+
+    <div class="view-content">
+      <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar class="title-icon">
+            <mat-icon class="md-36">security</mat-icon>
+          </div>
+          <mat-card-title>
+            INFORMACIÓN AUTORIZACIÓN
+          </mat-card-title>
+          <mat-card-subtitle>
+            Resumen de controles de autorización
+            <div>
+              <b>Usuario Notificado: </b><span>{{notifiedUser}}</span>
+            </div>
+          </mat-card-subtitle>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-card-header>
+        <div class="card-container" fxLayout="column">
+          <!-- TODO ngFor autorizaciones -->
+          <div [formGroup]="autorizacionForm" fxLayout="column" class="autorizacion-container">
+
+            <app-authorization-control-list [data]="authorizations"></app-authorization-control-list>
+
+            <div fxLayout="row">
+              <div class="form-container" fxLayout="column" fxFlexFill>
+                <div *ngFor="let control of authorizationComments; let i=index;" fxLayout="column"
+                  class="auth-container">
+                  <ng-container [formGroup]="control">
+                    <div fxLayout="row" class="title">
+                      <div fxFlex="50%">
+                        <b>Rol Pasivo: </b>
+                        <span [innerHTML]="control.get('codigo').value"></span> - <span
+                          [innerHTML]="control.get('nombreRol').value"></span>
+                      </div>
+                      <div fxFlex="50%" fxLayoutAlign="end center">
+                        <div *ngIf="control.get('especial').value" class="badge badge-info badge-md">Condición
+                          Especial</div>
+                      </div>
+                    </div>
+                    <div fxLayout="row" fxFlex="100%">
+                      <mat-form-field class="full-width">
+                        <textarea upperCase formControlName="observaciones" (change)= "validateText()"matInput style="resize: none;"
+                          placeholder="Observaciones"></textarea>
+                      </mat-form-field>
+                      <div *ngIf="(submitted)"
+                      class="text-danger">
+                      <div id="controlsInd{{i}}" class ="hideElement">
+                        <b class="error-message">El campo es requerido</b>
+                      </div>
+                    </div>
+                    </div>
+                  </ng-container>
+                </div>
+                <div fxLayout="column" class="auth-container">
+                  <div fxLayout="row" class="title">
+                    <div fxFlex="50%">
+                      <div>
+                        <b>Usuario Autorizador: </b><span>{{loggedUser.userName}}</span>
+                      </div>
+                    </div>
+                    <div fxFlex="50%"></div>
+                  </div>
+                  <div fxFlex="100%">
+                    <mat-form-field class="full-width">
+                      <textarea upperCase formControlName="observaciones" matInput style="resize: none;"
+                        placeholder="Observaciones"></textarea>
+                    </mat-form-field>
+                    <div *ngIf="(submitted || form.observaciones.touched)  && form.observaciones.errors"
+                      class="text-danger">
+                      <div *ngIf="form.observaciones.errors.required">
+                        <b class="error-message">El campo es requerido</b>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div fxFlex="100%" fxLayout="column">
+                  <div class="upload-file-container" fxFlex="100%" fxLayoutAlign="end center">
+                    <form>
+                      <div fxLayout="row">
+                        <div class="form-group">
+                          <input id="files" type="file" accept=".jpeg, .png, .xls, .xlsx, .doc, .docx, .bmp, .tif, .ppt, .pptx, .pdf, .msg" formControlname="archivoAdjunto" (change)="onFileChange($event)"
+                            multiple style="visibility: hidden;font-size: 0ch" />
+                          <label for="files" class="btn btn-info custom">
+                            <span *ngIf="!showLoading">Adjuntar soportes</span>
+                            <span *ngIf="showLoading">Cargando soportes...</span>
+                          </label>
+                          <div class="thin-text sm text-right hidden">{{fileName}}</div>
+                        </div>
+                      </div>
+                      <div class="thin-text sm bold" *ngIf="uploadFail">
+                        <div class="text-danger" style="text-align:left;">Hubo un error cargando el archivo</div>
+                        <a class="thin-text xs hidden" (click)="showError=!showError" style="cursor: pointer;">Ver
+                          detalles</a>
+                        <div *ngIf="showError" style="max-height: 200px; overflow: auto;">
+                          {{uploadError}}
+                        </div>
+                      </div>
+                      <div *ngIf="uploadCompleted&&!uploadFail">
+                        <div class="thin-text sm">
+                          <div>
+                            <span *ngIf="!uploadSuccessfully" class="text-success">El archivo fue cargado
+                              exitosamente</span>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div *ngIf="(submitted || form.archivoAdjunto.touched)  && form.archivoAdjunto.errors"
+                    class="text-danger">
+                    <div *ngIf="form.archivoAdjunto.errors.required">
+                      <b class="error-message">Se requiere adjuntar soportes en esta autorización</b>
+                    </div>
+                  </div>
+                </div>
+                <div fxLayout="column">
+                  <div fxLayout="row">
+                    <div fxFlex="50%">
+                      <div class="informacion-cotizacion-container thin-text sm" fxLayout="column">
+                        <h5> Información de cotización </h5>
+                        <div fxLayout="row" fxFlex="100%">
+                          <div fxLayout="row" fxFlex="50%">
+                            <div fxFlex="50%">Gastos Compañía</div>
+                            <div fxFlex="50%">
+                              <input type="text" class="borderless" [readonly]="infoReadonly" formControlName="gastosCompania" mask="percent"
+                                [dropSpecialCharacters]="false" suffix="%" />
+                              <div *ngIf="(submitted || form.gastosCompania.touched)  && form.gastosCompania.errors"
+                                class="text-danger">
+                                <div *ngIf="form.gastosCompania.errors.required">
+                                  <b class="error-message">El campo es requerido</b>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div fxLayout="row" fxFlex="50%">
+                            <div fxFlex="30%">Utilidad</div>
+                            <div fxFlex="70%">
+                              <input type="text" class="borderless" [readonly]="infoReadonly" formControlName="utilidadCompania" mask="percent"
+                                [dropSpecialCharacters]="false" suffix="%" />
+                              <div *ngIf="(submitted || form.utilidadCompania.touched)  && form.utilidadCompania.errors"
+                                class="text-danger">
+                                <div *ngIf="form.utilidadCompania.errors.required">
+                                  <b class="error-message">El campo es requerido</b>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <hr>
+                        <div style="width:45em;height:10em;border:1px solid #cccccc; border-radius:10px; padding: 1em; ">
+                          <div fxLayout="row" fxFlex="49%">
+                            <div>
+                              <mat-icon class="text-info">info</mat-icon>
+                            </div>
+                            <div>
+                              Esta opción aplicará los cambios realizados en los <b>Gastos de Compañía</b> y <b>Utilidad</b> de la cotización.
+                            </div>
+                            <div style="padding-top: 6em;">
+                              <button mat-raised-button color="primary" (click)="applyChanges()">
+                                Aplicar
+                              </button>
+                            </div>
+                          </div>
+                          <div fxLayout="row" fxFlex="2%" style="border-right: 1px solid #cccccc; height: 8em; padding-left: 1em;"></div>
+                          <div fxLayout=row fxFlex="49%" style="padding-left: 1em;">
+                            <div>
+                              <mat-icon class="text-info">info</mat-icon>
+                            </div>
+                            <div>
+                              Esta opción restaurará los valores de los <b>Gastos de Compañía</b> y <b>Utilidad</b> de la cotización.
+                            </div>
+                            <div style="padding-top: 6em;">
+                              <button mat-raised-button color="primary" (click)="resetChanges()">
+                                Restablecer
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div fxLayout="20%">
+                <div class="history-container" *ngIf="showHistory" (blur)="onBlurHistoryContainer($event)">
+                  <div class="history-container-title" fxLayout="row">
+                    <div fxFlex="80%" class="text-left thin-text md">
+                      Movimientos de Autorizaciones
+                    </div>
+                  </div>
+                  <app-cotizacion-transactions></app-cotizacion-transactions>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

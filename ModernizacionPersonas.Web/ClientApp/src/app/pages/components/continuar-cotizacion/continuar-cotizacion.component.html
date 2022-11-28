@@ -1,0 +1,22 @@
+<div [formGroup]="continuarCotizacionForm">
+  <h5>Continuar Cotización</h5>
+  <b> Cotizacion No. {{data.numeroCotizacion}}</b><span class="badge badge-pill badge-sol">v{{data.version}}</span>
+  <p>Ultimo usuario {{lastModifyUser}}</p>
+  <p>
+    Ingrese las causales por las que desea continuar la cotización
+  </p>
+  <div>
+    <mat-form-field class="full-width">
+      <textarea formControlName="observaciones" matInput style="resize: none;" placeholder="Observaciones"></textarea>
+    </mat-form-field>
+    <div *ngIf="(form.observaciones.touched) && form.observaciones.errors" class="text-danger">
+      <div *ngIf="form.observaciones.errors.required">
+        <b class="error-message">Debe ingresar los detalles de continuación</b>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions class="float-right">
+    <button mat-raised-button (click)="onDismiss()">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="onConfirm()">Aceptar</button>
+  </div>
+</div>

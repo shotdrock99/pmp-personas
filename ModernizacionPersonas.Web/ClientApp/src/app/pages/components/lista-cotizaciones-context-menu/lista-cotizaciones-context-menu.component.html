@@ -1,0 +1,15 @@
+<div>
+  <button class="btn-more-horiz" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu Cotizacion"
+    (click)="$event.stopPropagation()">
+    <mat-icon class="medium">more_horiz</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <div *ngFor="let item of menuItems">
+      <button mat-menu-item [title]="item.tooltip" (click)="itemClick($event, item)"
+        [ngStyle]="{'display' : item.isEnabled && item.isContextItem ? 'block':'none'}">
+        <mat-icon>{{item.icon_path}}</mat-icon>
+        <span>{{item.label}}</span>
+      </button>
+    </div>
+  </mat-menu>
+</div>

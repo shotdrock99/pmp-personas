@@ -1,0 +1,31 @@
+<div class="main-container">
+  <h4>{{model.tituloSeccion}}</h4>
+  <hr />
+
+  <div *ngFor="let amparo of model.amparos">
+    <h5>{{amparo.tituloSeccion}}</h5>
+    <p [innerHTML]="amparo.texto"></p>
+    <!-- BENEFICIOS POR DESMEMBRACION -->
+    <!--<div *ngIf="amparo.codigoAmparo==='51' || amparo.codigoAmparo==='6'">
+      <div fxLayout="column" class="main-container">
+        <div fxLayout="column">
+          <p>
+            Las pérdidas no enunciadas en la tabla anterior, aunque sean de menor impacto, serán indemnizadas en relación con
+            su gravedad, comparándolas con las aquí indicadas.
+          </p>
+          <p>
+            Cuando a consecuencia de un accidente, se afecten varias desmembraciones o inutilizaciones, estas no se acumularan
+            entre sí, sino que la indemnización se determinara por la mayor de dichas desmembraciones o inutilizaciones.
+          </p>
+          <p>
+            En caso de constar en la solicitud que el asegurado es zurdo, se invertirán los porcentajes de indemnización
+            fijados por la pérdida de los miembros superiores.
+          </p>
+          <p>
+            Esta cobertura es excluyente de los amparos de muerte e incapacidad total y permanente otorgados por esta póliza.
+          </p>
+        </div>
+      </div>
+    </div>-->
+  </div>
+</div>

@@ -1,0 +1,19 @@
+@import "../../../fonts";
+
+.sidenav-container {
+  height: calc(100% - 50px);
+  .mat-sidenav-content {
+    overflow: hidden;
+  }
+}
+
+.sidenav-options-container {
+  min-width: 230px;
+  min-height: 100%;
+  background-color: #fff;
+}
+
+.content {
+  height: 100%;
+  background-color: #fff;
+}

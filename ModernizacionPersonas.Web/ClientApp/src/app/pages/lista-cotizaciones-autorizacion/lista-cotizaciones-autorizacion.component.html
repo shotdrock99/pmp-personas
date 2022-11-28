@@ -1,0 +1,146 @@
+<div class="view-container" fxLayout="column">
+  <div fxLayout="row" class="view-title">
+    <div class="toolbar" fxFlex="100%">
+      <div fxFlex="20%" fxLayout="row" fxLayoutAlign="start center">
+        <div class="thin-text">
+          Cotizaciones pendientes de Autorización
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions-container">
+    <div fxLayout="row">
+      <div fxFlex="80%">
+        <app-page-toolbar [data]="toolbarConfig.items"></app-page-toolbar>
+      </div>
+      <div fxFlex="20%" fxLayoutAlign="end">
+        <div>
+          <button mat-menu-item (click)="showFilter=!showFilter" title="Filtrar">
+            <mat-icon *ngIf="!showFilter">filter_list</mat-icon>
+            <mat-icon *ngIf="showFilter">clear</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="filter-container" *ngIf="showFilter">
+    <app-cotizaciones-filter-panel (filter)="onFilterChange($event)" [data]="data"></app-cotizaciones-filter-panel>
+  </div>
+
+  <div fxLayout="row" fxFlex="100%" class="view-content">
+    <div fxFlex="0%">
+
+    </div>
+    <div fxFlex="100%">
+      <div class="table-container">
+        <div fxFLex="100%">
+          <table mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="numeroCotizacion">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                <span>Numero de Cotización</span>
+                <br>
+                <span>Versión</span>
+              </th>
+              <td mat-cell *matCellDef="let row" class="text-center">
+                <div fxLayout="row">
+                  <div fxFlex="100%" fxLayoutAlign="center center" fxLayout="column">
+                    <span>{{row.numeroCotizacion|trimzero}}</span>
+                    <small>versión {{row.version}}</small>
+                  </div>
+                </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="sucursal">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 
+                <span>Sucursal</span>
+                <br>
+                <span>Zona</span>
+              </th>
+              <td mat-cell *matCellDef="let row" class="text-center">
+                <div fxLayout="column">
+                  <span>{{row.sucursal}} </span>
+                  <small>Zona: {{row.zona}}</small>
+                </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ramo">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                <span>Ramo</span>
+                <br>
+                <span>Subramo</span>
+              </th>
+              <td mat-cell *matCellDef="let row" class="text-center">
+                <div fxLayout="column">
+                  <span>{{row.ramo}}</span>
+                  <small>Subramo: {{row.subramo}}</small>
+                </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="tomador">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Tomador </th>
+              <td mat-cell *matCellDef="let row" class="text-center">
+                <div title="{{row.tomador}}"> {{row.tomador | charLimit:20}} </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ultimoUsuario">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Usuario Cotizador </th>
+              <td mat-cell *matCellDef="let row" class="text-center">
+                <div title="{{row.lastAuthor}}"> {{row.lastAuthor}} </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="usrNotificado">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Usuario Notificado </th>
+              <td mat-cell *matCellDef="let row" class="text-center">
+                <div title="{{row.lastAuthor}}"> {{row.usuarioNotificado}} </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="fechaModificacion">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha Modificación</th>
+              <td mat-cell *matCellDef="let row" class="text-center">
+                {{row.fechaModificacion | date:'dd/MM/yyyy hh:mm'}}
+              </td>
+            </ng-container>
+
+            <ng-container style="width:150px;" matColumnDef="opciones">
+              <th mat-header-cell *matHeaderCellDef> Opciones </th>
+              <td mat-cell *matCellDef="let element">
+                <div class="button-group" class="text-center">
+                  <button mat-raised-button class="mat-x-small" matTooltip="Ver"
+                    [routerLink]="['/cotizaciones', element.codigoCotizacion, 'authorize']">Ver</button>
+                </div>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+          <div fxLayoutAlign="center center" style="padding: 20px 0;">
+            <div class="thin-text sm" *ngIf="itemsCount===0&&!isLoading">
+              No hay cotizaciones pendientes por autorizar
+            </div>
+          </div>
+
+          <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator> -->
+          <div class="table-footer thin-text sm" *ngIf="!isLoading&&itemsCount>0">
+            Cantidad de registros: {{itemsCount}}
+          </div>
+
+          <mat-card *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+            <mat-card-content>
+              <b class="thin-text md">Cargando cotizaciones...</b>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

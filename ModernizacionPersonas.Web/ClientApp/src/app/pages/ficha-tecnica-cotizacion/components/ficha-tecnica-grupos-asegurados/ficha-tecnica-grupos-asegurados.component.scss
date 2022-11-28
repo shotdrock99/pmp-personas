@@ -1,0 +1,46 @@
+.grupos-asegurados-container {
+  .grupo-asegurados-container {
+    margin-bottom: 10px;
+
+    .mat-icon {
+      cursor: pointer;
+    }
+
+    .h-divider {
+      min-height: 10px;
+    }
+
+    table {
+      width: 100%;
+      border: 1px solid #d0d0d0;
+
+      &.w80 {
+        width: 80%;
+      }
+
+      tr {
+        &.title-h2 {
+          background-color: #eee;
+        }
+      }
+
+      th,
+      td {
+        padding: 2px 10px;
+        border: 1px solid #d0d0d0;
+        width: 200px;
+
+        &.title {
+          background-color: #f0f8ff;
+          color: #000;
+          font-weight: bold;
+        }
+
+        .currency-container,
+        .percent-container {
+          text-align: right;
+        }
+      }
+    }
+  }
+}

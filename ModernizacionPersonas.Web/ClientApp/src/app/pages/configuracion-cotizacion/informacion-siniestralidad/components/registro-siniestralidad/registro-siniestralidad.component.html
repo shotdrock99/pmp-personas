@@ -1,0 +1,71 @@
+<div class="row" fxFlex="100%" fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex="10%">{{model.anno}}</div>
+  <div fxFlex="22%" fxLayoutAlign="center" fxLayout="column">
+    <div fxFlex="100%">
+      <mat-form-field>
+        <input matInput upperCase [min]="minDate" [max]="maxDate" [matDatepicker]="fechaInicioPickerR1" [(ngModel)]="model.fechaInicial"
+          (dateChange)="validate($event)" [disabled]="model.fechaInicialReadonly||readonly" />
+        <mat-datepicker-toggle matSuffix [for]="fechaInicioPickerR1"></mat-datepicker-toggle>
+        <mat-datepicker #fechaInicioPickerR1></mat-datepicker>
+      </mat-form-field>
+      <mat-datepicker #fechaInicioPickerR1></mat-datepicker>
+    </div>
+    <div fxFlex="100%" style="text-align: left;padding: 0 60px;">
+      <div *ngIf="model.errors" class="form-errors-container thin-text sm">
+        <div *ngIf="model.errors.invalidDate">
+          <small>La fecha ingresada no es valida</small>
+        </div>
+        <div *ngIf="model.errors.inicialRequired">
+          <small>La fecha inicial es requerida.</small>
+        </div>
+        <div *ngIf="model.errors.inicialGtbsiblingfinal">
+          <small>La fecha inicial no puede ser menor a la fecha final del registro anterior.</small>
+        </div>
+        <div *ngIf="model.errors.inicialGtFinal">
+          <small>La fecha inicial no puede ser mayor a la fecha final.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div fxFlex="22%" fxLayoutAlign="center" fxLayout="column">
+    <div fxFlex="100%">
+      <mat-form-field>
+        <input matInput upperCase [matDatepicker]="fechaFinalPickerR1" [(ngModel)]="model.fechaFinal"
+          (dateChange)="validate($event)" [disabled]="model.fechaFinalReadonly||readonly" />
+        <mat-datepicker-toggle matSuffix [for]="fechaFinalPickerR1"></mat-datepicker-toggle>
+        <mat-datepicker #fechaFinalPickerR1></mat-datepicker>
+      </mat-form-field>
+      <mat-datepicker #fechaFinalPickerR1></mat-datepicker>
+    </div>
+    <div fxFlex="100%" style="text-align: left;padding: 0 60px;">
+      <div *ngIf="model.errors" class="form-errors-container thin-text sm">
+        <div *ngIf="model.errors.finalRequired">
+          <small>La fecha final es requerida.</small>
+        </div>
+        <div *ngIf="model.errors.finalLtYear">
+          <small>La fecha final no puede ser menor a un año de la fecha inicial.</small>
+        </div>
+        <div *ngIf="model.errors.inicialGtFinal">
+          <small>La fecha final no puede ser menor a la final inicial.</small>
+        </div>
+        <!-- <div *ngIf="model.errors.finalGtToday">
+          <small>La fecha final no puede ser mayor al día de ayer.</small>
+        </div> -->
+        <div *ngIf="model.errors.finalRange">
+          <small>En la vigencia {{anyosSiniestralidad}}, la fecha final debe estar en un rango de mínimo 10 meses y máximo 12 meses.</small>
+        </div>
+        <div *ngIf="model.errors.finalToday">
+          <small>En la vigencia {{anyosSiniestralidad}}, la fecha final no puede ser mayor a la actual</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div fxFlex="26%">
+    <input class="light" type="text" mask="separator.2" prefix="$" thousandSeparator="."
+      [(ngModel)]="model.valorIncurrido" (change)="validate($event)" [disabled]="readonly" />
+  </div>
+  <div fxFlex="20%">
+    <input class="light" type="text" prefix="$" [(ngModel)]="model.numeroCasos" [disabled]="readonly"
+      (change)="validate($event)" />
+  </div>
+</div>

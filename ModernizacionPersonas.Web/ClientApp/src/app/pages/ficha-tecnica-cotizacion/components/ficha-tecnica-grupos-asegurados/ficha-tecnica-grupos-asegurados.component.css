@@ -1,0 +1,53 @@
+.grupos-asegurados-container .grupo-asegurados-container {
+  margin-bottom: 10px;
+}
+.grupos-asegurados-container .grupo-asegurados-container .mat-icon {
+  cursor: pointer;
+}
+.grupos-asegurados-container .grupo-asegurados-container .h-divider {
+  min-height: 10px;
+}
+.grupos-asegurados-container .grupo-asegurados-container table {
+  width: 100%;
+  border: 1px solid #d0d0d0;
+}
+.grupos-asegurados-container .grupo-asegurados-container table.w80 {
+  width: 80%;
+}
+.grupos-asegurados-container .grupo-asegurados-container table tr.title-h2 {
+  background-color: #eee;
+}
+.grupos-asegurados-container .grupo-asegurados-container table th,
+.grupos-asegurados-container .grupo-asegurados-container table td {
+  padding: 2px 10px;
+  border: 1px solid #d0d0d0;
+  width: 200px;
+}
+.grupos-asegurados-container .grupo-asegurados-container table th.title,
+.grupos-asegurados-container .grupo-asegurados-container table td.title {
+  background-color: #f0f8ff;
+  color: #000;
+  font-weight: bold;
+}
+.grupos-asegurados-container
+  .grupo-asegurados-container
+  table
+  th
+  .currency-container,
+.grupos-asegurados-container
+  .grupo-asegurados-container
+  table
+  th
+  .percent-container,
+.grupos-asegurados-container
+  .grupo-asegurados-container
+  table
+  td
+  .currency-container,
+.grupos-asegurados-container
+  .grupo-asegurados-container
+  table
+  td
+  .percent-container {
+  text-align: right;
+}

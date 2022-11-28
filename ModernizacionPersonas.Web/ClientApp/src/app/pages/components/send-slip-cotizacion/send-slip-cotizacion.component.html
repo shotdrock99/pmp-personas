@@ -1,0 +1,100 @@
+<div [formGroup]="sendSlipCotizacionForm">
+  <h5 *ngIf="!readonly">Enviar Slip de Cotización</h5>
+  <h5 *ngIf="readonly">Reenviar Slip de Cotización</h5>
+  <b> Cotizacion No. {{data.numeroCotizacion | trimzero}}</b><span
+    class="badge badge-pill badge-sol">v{{data.version}}</span>
+  <hr />
+  <div *ngIf="!resend">
+    <div>
+      <b> {{para.esIntermediario ? 'Intermediario ' : 'Tomador '}} </b>
+    </div>
+    <span>Para: {{para.nombre | titlecase}}</span>
+    <div class="cc-contacts-container" style="display: inline-block;">
+      <span class="badge badge-email-contact" style="display: inline-block;">{{para.email | lowercase}}</span>
+    </div>
+  </div>
+  <div *ngIf="!resend">
+    <div fxLayout="row" class="cc-contacts-container">
+      <div>Cc:</div>
+      <div class="badge badge-info badge-email-contact" *ngFor="let item of firmas">
+        <b>{{item.cargo === 16 ? ' Dir. Comercial: ' : item.cargo === 43 ? ' Dir. Técnico: ' : item.cargo === 9 ? '
+          Gerente Ag: ' : ' Dir. Zonal: '}}</b>
+        <span>{{item.email}}</span>
+      </div>
+    </div>
+    <hr>
+  </div>
+  <br>
+  <div>
+    <div>
+      <b>IMPORTANTE</b>
+      <p>
+        Ingrese los destinatarios separados por una coma seguida de un espacio.
+      </p>
+      <mat-form-field class="full-width">
+        <textarea formControlName="recipients" matInput style="resize: none;"
+          placeholder="Otros Destinatarios"></textarea>
+      </mat-form-field>
+      <div *ngIf="(submitted || form.recipients.touched) && form.recipients.errors" class="text-danger">
+        <div *ngIf="form.recipients.errors.required">
+          <b class="error-message">Debe ingresar al menos un destinatario</b>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <p>
+      Ingrese comentarios adicionales
+    </p>
+    <div>
+      <mat-form-field class="full-width">
+        <textarea formControlName="comments" matInput style="resize: none;" rows="3"
+          placeholder="Comentarios"></textarea>
+      </mat-form-field>
+      <div *ngIf="(submitted || form.comments.touched) && form.comments.errors" class="text-danger">
+        <div *ngIf="form.comments.errors.required">
+          <b class="error-message">Los comentarios son requeridos</b>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!readonly">
+    <div class="form-group" fxLayoutAlign="end">
+      <input type="file" accept=".jpeg, .png, .xls, .xlsx, .doc, .docx, .bmp, .tif, .ppt, .pptx, .pdf, .msg" id="files"
+        (change)="onFileChange($event)" multiple style="visibility: hidden;font-size: 0ch;" />
+      <label style="padding-right: 1em;padding-top: 0.3em;">Por favor adjunte solo un archivo a la vez</label>
+      <label for="files" class="btn btn-info custom">
+        <span *ngIf="!showLoading">Adjuntar soportes</span>
+        <span *ngIf="showLoading">Cargando soportes...</span>
+      </label>
+      <div class="thin-text sm text-right hidden">{{fileName}}</div>
+    </div>
+    <div class="thin-text sm bold" *ngIf="uploadFail">
+      <div class="text-danger" style="text-align:left;">Hubo un error cargando el archivo</div>
+      <a class="thin-text xs hidden" (click)="showError=!showError" style="cursor: pointer;">Ver
+        detalles</a>
+      <div *ngIf="showError" style="max-height: 200px; overflow: auto;">
+        {{uploadError}}
+      </div>
+    </div>
+    <div *ngIf="uploadCompleted&&!uploadFail">
+      <div class="thin-text sm">
+        <div>
+          <span *ngIf="!uploadSuccessfully" class="text-success">El archivo fue cargado
+            exitosamente</span>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="ocultarDirector && !readonly">
+      <div class="thin-text sm">
+        <div>
+          <span *ngIf="ocultarDirector" class="text-warning">La cotización no tiene un Director Comercial asignado</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions class="float-right">
+    <button mat-raised-button (click)="onDismiss()">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="onConfirm()">Enviar</button>
+  </div>
+</div>

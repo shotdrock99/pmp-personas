@@ -1,0 +1,43 @@
+.main-container {
+  .title-icon {
+    font-size: 2em;
+    color: #004173;
+    padding: 0 8px;
+  }
+
+  .cursor-pointer {
+    cursor: pointer;
+  }
+
+  .history-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 350px;
+    bottom: 0;
+    z-index: 1;
+    background-color: white;
+    -webkit-box-shadow: -2px 0px 10px -5px #ababab;
+    -moz-box-shadow: -2px 0px 10px -5px #ababab;
+    box-shadow: -2px 0px 10px -5px #ababab;
+    overflow: auto;
+
+    .history-container-title {
+      padding: 5px 10px;
+      border-bottom: 1px solid #eee;
+
+      .mat-icon {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .float-right {
+    position: absolute;
+    right: 30px;
+  }
+
+  .notification-actions-container {
+    margin: 10px 20px;
+  }
+}

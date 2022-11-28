@@ -1,0 +1,36 @@
+﻿XXXX – 330 – (consecutivo de la agencia)
+Ciudad, {{fecha}}
+
+
+Señores
+_____________________________
+{{representanteLegal}}
+Gerente
+Ciudad
+
+
+Referencia: Respuesta de vinculación.
+
+
+Respetados señores:
+
+Nos permitimos informarle que de acuerdo con las políticas internas de nuestra  compañía y teniendo en cuenta que las disposiciones legales 
+que regulan la actividad de las compañías de seguros que operan en Colombia consagran como regla general la facultad de estas entidades de seleccionar y asumir, 
+en forma autónoma, los riesgos objeto de aseguramiento, con excepción de aquellos cubiertos a través de los seguros obligatorios establecidos por la ley, 
+tal como lo dispone el artículo 191 del Estatuto Orgánico del Sistema Financiero “Solamente por ley podrán crearse seguros obligatorios”. 
+
+En efecto, el artículo 1056 del Código de Comercio, disposición de carácter general vigente desde 1971 año en que se expidió el Decreto 410, 
+establece que “Con las restricciones legales, el asegurador podrá, a su arbitrio, asumir  todos o algunos de los riesgos a que estén expuestos el interés o la cosa asegurados, 
+el patrimonio o la persona del asegurado”. El cual se traduce no en otra cosa sino en el principio de la autonomía de la voluntad en materia contractual; 
+nos abstenemos de otorgar la cobertura de seguro  para del producto {{ramo}} referente al cliente {{nombreCliente}} 
+identificado con cédula de ciudadanía número {{numeroIdentificacion}}.
+
+Así mismo, es pertinente indicar que cuando una compañía de seguros no asuma los riesgos que el usuario requiera, 
+este tiene la oportunidad de acudir a las demás entidades aseguradoras autorizadas para explotar el respectivo ramo.
+
+Atentamente,
+
+
+{{gerente}}
+Gerente
+Agencia {{agencia}}

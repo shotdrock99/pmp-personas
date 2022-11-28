@@ -1,0 +1,10 @@
+.toolbar-container {
+  background-color: #fff;
+  margin-bottom: 5px;
+}
+.toolbar-container .vertical-divider {
+  border-left: 1px solid #eee;
+}
+.toolbar-container button {
+  outline: none;
+}

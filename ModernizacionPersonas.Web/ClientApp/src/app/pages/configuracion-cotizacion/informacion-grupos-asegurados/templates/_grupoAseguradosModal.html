@@ -1,0 +1,56 @@
+<h1 mat-dialog-title>Agregar Grupo de Asegurados</h1>
+<div mat-dialog-content>
+    <p class=thin-text sm>Complete la siguiente información</p>
+    <form [formGroup]="grupoAseguradoForm">
+        <div class="row">
+            <div class="col-12">
+                <mat-form-field class="full-width">
+                    <input matInput upperCase placeholder="Nombre" [formControlName]="Nombre">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <mat-form-field class="full-width">
+                    <mat-label>Tipo Suma Asegurada</mat-label>
+                    <mat-select formControlName="TipoSumaAsegurada">
+                        <mat-option *ngFor="let option of tiposSumaAsegurada" [value]="option.codigoTipoSumaAsegurada">
+                            {{option.nombreTipoSumaAsegurada|uppercase}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div *ngIf="(submitted || form.TipoSumaAsegurada.touched) && form.TipoSumaAsegurada.errors"
+                    class="text-danger">
+                    <div *ngIf="form.TipoSumaAsegurada.errors.required">
+                        <b class="error-message">El campo es requerido</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="mostrarSumasMinMax">
+            <div class="col-6">
+                <mat-form-field class="full-width">
+                    <input matInput upperCase type="number" id="sumaAseguradaMinima" name="sumaAseguradaMinima"
+                        [(ngModel)]="model.sumaAseguradaMinima" placeholder="Suma asegurada mínima">
+                </mat-form-field>
+            </div>
+
+            <div class="col-6">
+                <mat-form-field class="full-width">
+                    <input matInput upperCase type="number" id="sumaAseguradaMaxima" name="sumaAseguradaMaxima"
+                        [(ngModel)]="model.sumaAseguradaMaxima" placeholder="Suma asegurada máxima">
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</div>
+<div mat-dialog-actions class="float-right">
+    <div class="row">
+        <div>
+            <button mat-raised-button (click)="onNoClick()">Cancelar</button>
+            <button mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>Aceptar</button>
+        </div>
+    </div>
+</div>

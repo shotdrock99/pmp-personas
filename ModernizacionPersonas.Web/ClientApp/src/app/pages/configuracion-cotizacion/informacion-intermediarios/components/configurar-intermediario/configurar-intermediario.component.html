@@ -1,0 +1,189 @@
+<h1 mat-dialog-title>{{ title }}</h1>
+<div mat-dialog-content>
+  <p class="thin-text" sm>Complete la siguiente información</p>
+  <form [formGroup]="intermediarioForm">
+    <div fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutGap="20px">
+      <div class="form-group" fxFlex="100%">
+        <mat-form-field class="full-width">
+          <input matInput upperCase #clave inputRestriction="integer" type="text" formControlName="Clave"
+            placeholder="Clave" (blur)="onClaveBlur($event)" />
+          <input-loading [loading]="loadingConfig.clave"></input-loading>
+        </mat-form-field>
+        <div *ngIf="form.Clave.errors" class="text-danger">
+          <div *ngIf="(submitted || form.Clave.touched)">
+            <div *ngIf="form.Clave.errors.required">
+              <b class="error-message">El campo es requerido</b>
+            </div>
+          </div>
+          <div *ngIf="form.Clave.errors.inactive">
+            <b class="error-message">La clave esta inactiva</b>
+          </div>
+          <div *ngIf="form.Clave.errors.showNoExisteClave">
+            <b class="error-message">No existe un registro asociado a esta Clave</b>
+          </div>
+          <div *ngIf="form.Clave.errors.unregistered">
+            <b class="error-message">La clave no esta registrada en la sucursal. Detalles:
+              {{intermediario.nombreEstado}}</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group" fxFlex="100%">
+        <mat-form-field class="full-width">
+          <mat-label>Tipo de Documento</mat-label>
+          <mat-select aria-label="TipoDocumento" formControlName="TipoDocumento" matTooltip="Tipo de Documento">
+            <mat-option *ngFor="let item of tipoDocumentos" [value]="item">
+              {{item.nombreReducido}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div *ngIf="(submitted || form.TipoDocumento.touched) && form.TipoDocumento.errors" class="text-danger">
+          <div *ngIf="form.TipoDocumento.errors.required">
+            <b class="error-message">El campo es requerido</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group" fxFlex="100%">
+        <mat-form-field class="full-width">
+          <input matInput upperCase type="text" formControlName="NumeroDocumento" placeholder="Número de documento"
+            (blur)="onNumeroDocumentoBlur($event)" (keydown)="onNumeroDocumentoKeyDown($event)" required />
+          <input-loading [loading]="loadingConfig.numeroDocumento"></input-loading>
+        </mat-form-field>
+        <div *ngIf="form.NumeroDocumento.errors" class="text-danger">
+          <div *ngIf="(submitted || form.NumeroDocumento.touched)">
+            <div *ngIf="form.NumeroDocumento.errors.required">
+              <b class="error-message">El campo es requerido</b>
+            </div>
+            <div *ngIf="form.NumeroDocumento.errors.maxlength">
+              <b class="error-message">El valor del campo excedió el límite de caracteres permitido</b>
+            </div>
+            <div *ngIf="form.NumeroDocumento.errors.pattern">
+              <b class="error-message">El valor del campo contiene caracteres no permitidos</b>
+            </div>
+            <div *ngIf="!form.NumeroDocumento.errors.pattern&&showNoExisteNumDoc">
+              <b class="error-message">No existe un registro asociado a este Documento</b>
+            </div>
+            <div *ngIf="form.NumeroDocumento.errors.inactive">
+              <b class="error-message">La clave esta inactiva</b>
+            </div>
+            <div *ngIf="form.NumeroDocumento.errors.unregistered">
+              <b class="error-message">La clave no esta registrada en la sucursal. Detalles:
+                {{intermediario.nombreEstado}}</b>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-group" fxFlex="100%" *ngIf="!esPersonaNatural">
+        <mat-form-field class="full-width">
+          <input matInput upperCase placeholder="Razón Social" formControlName="RazonSocial"
+            [ngClass]="{ 'is-invalid': submitted && form.RazonSocial.errors }" />
+        </mat-form-field>
+        <div *ngIf="(submitted || form.RazonSocial.touched) && form.RazonSocial.errors" class="text-danger">
+          <div *ngIf="form.RazonSocial.errors.required">
+            <b class="error-message">El campo es requerido</b>
+          </div>
+          <div *ngIf="form.RazonSocial.errors.maxlength">
+            <b class="error-message">El valor del campo excedió el límite de caracteres permitido</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group" fxFlex="0 1 calc(50% - 20px)" *ngIf="esPersonaNatural">
+        <mat-form-field class="full-width">
+          <input matInput upperCase inputRestriction="alphabeticOnly" type="text" formControlName="PrimerNombre"
+            placeholder="Primer Nombre" required />
+        </mat-form-field>
+        <div *ngIf="(submitted || form.PrimerNombre.touched) && form.PrimerNombre.errors" class="text-danger">
+          <div *ngIf="form.PrimerNombre.errors.required">
+            <b class="error-message">El campo es requerido</b>
+          </div>
+          <div *ngIf="form.PrimerNombre.errors.maxlength">
+            <b class="error-message">El valor del campo excedió el límite de caracteres permitido</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group" fxFlex="0 1 calc(50% - 20px)" *ngIf="esPersonaNatural">
+        <mat-form-field class="full-width">
+          <input matInput upperCase inputRestriction="alphabeticOnly" type="text" formControlName="SegundoNombre"
+            placeholder="Segundo Nombre" />
+        </mat-form-field>
+        <div *ngIf="(submitted || form.SegundoNombre.touched) && form.SegundoNombre.errors" class="text-danger">
+          <div *ngIf="form.SegundoNombre.errors.maxlength">
+            <b class="error-message">El valor del campo excedió el límite de caracteres permitido</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group" fxFlex="0 1 calc(50% - 20px)" *ngIf="esPersonaNatural">
+        <mat-form-field class="full-width">
+          <input matInput upperCase inputRestriction="alphabeticOnly" type="text" formControlName="PrimerApellido"
+            placeholder="Primer Apellido" required />
+        </mat-form-field>
+        <div *ngIf="(submitted || form.PrimerApellido.touched) && form.PrimerApellido.errors" class="text-danger">
+          <div *ngIf="form.PrimerApellido.errors.required">
+            <b class="error-message">El campo es requerido</b>
+          </div>
+          <div *ngIf="form.PrimerApellido.errors.maxlength">
+            <b class="error-message">El valor del campo excedió el límite de caracteres permitido</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group" fxFlex="0 1 calc(50% - 20px)" *ngIf="esPersonaNatural">
+        <mat-form-field class="full-width">
+          <input matInput upperCase inputRestriction="alphabeticOnly" type="text" formControlName="SegundoApellido"
+            placeholder="Segundo Apellido" />
+        </mat-form-field>
+        <div *ngIf="(submitted || form.SegundoApellido.touched) && form.SegundoApellido.errors" class="text-danger">
+          <div *ngIf="form.SegundoApellido.errors.maxlength">
+            <b class="error-message">El valor del campo excedió el límite de caracteres permitido</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group" fxFlex="0 1 calc(100% - 20px)">
+        <mat-form-field class="full-width">
+          <input matInput upperCase type="text" formControlName="Email" placeholder="Correo Electrónico" />
+        </mat-form-field>
+        <div *ngIf="(submitted || form.Email.touched) && form.Email.errors" class="text-danger">
+          <div *ngIf="form.Email.errors.required">
+            <b class="error-message">El campo es requerido</b>
+          </div>
+          <div *ngIf="form.Email.errors.email">
+            <b class="error-message">El valor ingresado no es un correo válido</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group" fxFlex="0 1 calc(50% - 20px)">
+        <mat-form-field class="full-width">
+          <input matInput type="text" upperCase mask="percent" suffix="%" #porcentajeParticipacion
+            placeholder="% de Participación" formControlName="PorcentajeParticipacion"
+            matTooltip="Porcentaje de Participación" required [dropSpecialCharacters]="false"/>
+        </mat-form-field>
+        <div *ngIf="(submitted || form.PorcentajeParticipacion.touched) && form.PorcentajeParticipacion.errors"
+          class="text-danger">
+          <div *ngIf="form.PorcentajeParticipacion.errors.required">
+            <b class="error-message">El campo es requerido</b>
+          </div>
+          <div *ngIf="form.PorcentajeParticipacion.errors.invalid">
+            <b class="error-message">El valor supera el Porcentaje de Participación permitido</b>
+          </div>
+          <div *ngIf="form.PorcentajeParticipacion.errors.maxlength">
+            <b class="error-message">El valor supera el Porcentaje de Participación permitido</b>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions fxLayout="row" fxLayoutAlign="end center" fxLayout.lt-md="column" fxLayoutGap="5px"
+  fxLayoutAlign.lt-md="end stretch">
+  <button mat-raised-button (click)="clearForm()" *ngIf="!isEdit">Limpiar Forma</button>
+  <button mat-raised-button (click)="onNoClick()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="onAcceptClick()">Guardar</button>
+</div>

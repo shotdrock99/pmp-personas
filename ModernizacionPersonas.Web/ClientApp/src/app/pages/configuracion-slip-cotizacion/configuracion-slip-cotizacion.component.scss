@@ -1,0 +1,125 @@
+// shared definitions
+%input-noborder {
+  overflow: visible;
+  max-width: 80px;
+  border: none;
+  border-bottom: 1px solid #8e8e8e;
+  padding: 0 8px;
+  text-align: right;
+  background-color: transparent;
+  outline: none;
+}
+
+.unload-overlay {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: x-large;
+}
+
+.toolbar {
+  min-height: 42px;
+  background-color: #fff;
+
+  &.fixed-toolbar {
+    position: fixed;
+    top: 50px;
+    left: 250px;
+    z-index: 9999;
+    width: calc(100% - 250px);
+    height: 50px;
+  }
+}
+
+.view-content {
+  font-size: 10pt;
+  padding: 10px;
+
+  .options-container {
+    border-bottom: 1px solid #eee;
+    margin: 0 15px 5px;
+    padding-bottom: 10px;
+  }
+
+  .form-container {
+    margin: 10px auto;
+    width: 60%;
+    .title {
+      background-color: #eee;
+      font-weight: bold;
+      padding: 3px;
+    }
+
+    .divider-h {
+      padding: 10px;
+    }
+
+    input[type="text"].noborder,
+    input[type="number"].noborder {
+      @extend %input-noborder;
+    }
+
+    .popover-errors {
+      .mat-icon {
+        font-size: 12pt;
+        padding-top: 0.2em;
+        cursor: pointer;
+      }
+    }
+
+    .autorizaciones-container,
+    .notificaciones-container {
+      margin: 20px 0 40px;
+    }
+
+    .table {
+      margin: 2px 0;
+      border: 1px solid #888;
+      border-bottom: 1px solid #888;
+
+      .row {
+        margin-left: 0;
+        margin-right: 0;
+
+        padding: 2px;
+
+        &.subtitle {
+          background-color: #eee;
+          font-weight: bold;
+          padding: 3px;
+        }
+      }
+
+      .value-container {
+        float: right;
+        margin: 2px;
+
+        &.inline {
+          display: inline-flex;
+        }
+
+        input[type="text"] {
+          @extend %input-noborder;
+          &:disabled {
+            border: none;
+          }
+        }
+      }
+
+      .bottom-bordered {
+        border-bottom: 1px solid #888;
+      }
+
+      .left-bordered {
+        border-left: 1px solid #888;
+        padding-left: 4px;
+      }
+    }
+  }
+}
+
+.no-margin-right {
+  margin-right: 0 !important;
+}

@@ -1,0 +1,95 @@
+<form [formGroup]="form">
+  <div class="table-container">
+    <div *ngIf="form.errors">
+      <div *ngIf="form.errors.ivalid">
+        <b class="error-message">Debe completar los datos antes de continuar.</b>
+      </div>
+    </div>
+    <table id="tableValoresAsegurados" mat-table #tableValoresAmparos [dataSource]="dataSource" matSort formArrayName="valoresAsegurados">
+      <ng-container matColumnDef="amparo">
+        <th mat-header-cell *matHeaderCellDef>Amparos Seleccionados</th>
+        <td mat-cell *matCellDef="let element; let i = index;">
+            <span *ngIf="false">({{element.amparo.nombreCortoGrupoAmparo}})</span> {{ element.amparo.nombreAmparo }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="opcion1porcentaje">
+        <th mat-header-cell *matHeaderCellDef class="odd-column">{{headers.porcentajeColumnHeaderText}}</th>
+        <td mat-cell *matCellDef="let element; let i = index;" class="odd-column">
+          <app-option-percent *ngIf="element.amparo.codigoGrupoAmparo!==3" [dataSource]="dataSourceComplete"
+            [element]="element" [optionIndex]="1" [index]="i" [readonly]="readonly"></app-option-percent>
+          <app-option-prima *ngIf="element.amparo.codigoGrupoAmparo===3" [dataSource]="dataSourceComplete" [element]="element"
+            [optionIndex]="1" [index]="i" [readonly]="readonly"></app-option-prima>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="opcion1valor" *ngIf="capturaValorAsegurado">
+        <th mat-header-cell *matHeaderCellDef class="odd-column">{{headers.valorColumnHeaderText}}</th>
+        <td mat-cell *matCellDef="let element; let i = index;" class="odd-column">
+          <app-option-value *ngIf="element.amparo.codigoGrupoAmparo!==3" [dataSource]="dataSourceComplete" [element]="element"
+            [optionIndex]="1" [readonly]="readonly"></app-option-value>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="numerosueldos" *ngIf="capturaSalarios">
+        <th mat-header-cell *matHeaderCellDef class="odd-column">Número de Sueldos</th>
+        <td mat-cell *matCellDef="let element; let i = index;">
+          <app-option-salarios [dataSource]="dataSourceComplete" [element]="element" [readonly]="readonly"></app-option-salarios>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="opcion2porcentaje" *ngIf="esTipoSumaFija">
+        <th mat-header-cell *matHeaderCellDef>%</th>
+        <td mat-cell *matCellDef="let element; let i = index;">
+          <app-option-percent *ngIf="element.amparo.codigoGrupoAmparo!==3" [dataSource]="dataSourceComplete"
+            [element]="element" [optionIndex]="2" [index]="i" [readonly]="readonly"></app-option-percent>
+          <app-option-prima *ngIf="element.amparo.codigoGrupoAmparo===3" [dataSource]="dataSourceComplete" [element]="element"
+            [optionIndex]="2" [index]="i" [readonly]="readonly"></app-option-prima>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="opcion2valor" *ngIf="esTipoSumaFija">
+        <th mat-header-cell *matHeaderCellDef>Valor</th>
+        <td mat-cell *matCellDef="let element; let i = index;">
+          <app-option-value *ngIf="element.amparo.codigoGrupoAmparo!==3" [dataSource]="dataSourceComplete" [element]="element"
+            [optionIndex]="2" [readonly]="readonly"></app-option-value>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="opcion3porcentaje" *ngIf="esTipoSumaFija">
+        <th mat-header-cell *matHeaderCellDef class="odd-column">%</th>
+        <td mat-cell *matCellDef="let element; let i = index;" class="odd-column">
+          <app-option-percent *ngIf="element.amparo.codigoGrupoAmparo!==3" [dataSource]="dataSourceComplete"
+            [element]="element" [optionIndex]="3" [index]="i" [readonly]="readonly"></app-option-percent>
+          <app-option-prima *ngIf="element.amparo.codigoGrupoAmparo===3" [dataSource]="dataSourceComplete" [element]="element"
+            [optionIndex]="3" [index]="i" [readonly]="readonly"></app-option-prima>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="opcion3valor" *ngIf="esTipoSumaFija">
+        <th mat-header-cell *matHeaderCellDef class="odd-column">Valor</th>
+        <td mat-cell *matCellDef="let element; let i = index;" class="odd-column">
+          <app-option-value *ngIf="element.amparo.codigoGrupoAmparo!==3" [dataSource]="dataSourceComplete" [element]="element"
+            [optionIndex]="3" [readonly]="readonly"></app-option-value>
+        </td>
+      </ng-container>
+
+      <ng-container *matHeaderRowDef="displayedColumns">
+        <tr class="mat-header-row header-group-row" *ngIf="esTipoSumaFija">
+          <th class="mat-header-cell" role="columnheader"></th>
+          <th class="mat-header-cell" colspan="2" class="odd-column header-cell">
+            Opción 1
+          </th>
+          <th class="mat-header-cell" colspan="2" class="header-cell">
+            Opción 2
+          </th>
+          <th class="mat-header-cell" colspan="2" class="odd-column header-cell">
+            Opción 3
+          </th>
+        </tr>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns; let i=index"></tr>
+    </table>
+  </div>
+</form>

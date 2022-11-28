@@ -1,0 +1,18 @@
+table {
+  width: 100%;
+  border: 1px solid #d0d0d0;
+}
+table.w80 {
+  width: 80%;
+}
+table th,
+table td {
+  padding: 2px 10px;
+  border: 1px solid #d0d0d0;
+}
+table th.title,
+table td.title {
+  background-color: #f0f8ff;
+  color: #000;
+  font-weight: bold;
+}

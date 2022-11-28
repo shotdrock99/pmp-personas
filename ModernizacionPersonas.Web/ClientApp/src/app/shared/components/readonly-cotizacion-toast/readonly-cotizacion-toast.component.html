@@ -1,0 +1,14 @@
+<div>
+  <div fxLayoutGap="10px" class="alert" [ngClass]="alertClass" *ngIf="readonly">
+    <div fxLayout="row">
+      <div fxFlex="90%" [innerHTML]="message"></div>
+      <div fxFlex>
+        <div fxLayoutAlign="end center">
+          <button mat-raised-button color="primary" *ngIf="allowRequest"  (click)="requireContinueCotizacion()">
+            Requerir cotización
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

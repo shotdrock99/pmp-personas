@@ -1,0 +1,83 @@
+<div class="intermediarios-section-container">
+  <div fxFlex="100%">
+    <section class="toolbar">
+      <button mat-raised-button color="primary" [disabled]="!allowAgregarIntermediario"
+        (click)="abrirAgregarIntermediario()">Agregar Intermediario</button>
+    </section>
+
+    <div class="table-container">
+      <table mat-table #tableIntermediarios [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="clave">
+          <th mat-header-cell *matHeaderCellDef> Clave </th>
+          <td mat-cell *matCellDef="let element">
+            <span class="mobile-label">Clave:</span>
+            {{element.Clave}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element">
+            <span class="mobile-label">Nombre:</span>
+            {{element.Nombre}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tipodocumento">
+          <th mat-header-cell *matHeaderCellDef> Tipo Documento </th>
+          <td mat-cell *matCellDef="let element">
+            <span class="mobile-label">Tipo Documento:</span>
+            {{element.TipoDocumento.nombreReducido}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="numerodocumento">
+          <th mat-header-cell *matHeaderCellDef> Documento </th>
+          <td mat-cell *matCellDef="let element">
+            <span class="mobile-label">Documento:</span>
+            {{element.NumeroDocumento}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="porcentajeparticipacion">
+          <th mat-header-cell *matHeaderCellDef> % Participación </th>
+          <td mat-cell *matCellDef="let element">
+            <span class="mobile-label">% Participación:</span>
+            {{element.PorcentajeParticipacion}}% </td>
+        </ng-container>
+
+        <ng-container style="width:100px;" matColumnDef="opciones">
+          <th mat-header-cell *matHeaderCellDef> Opciones </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="button-group">
+              <button mat-raised-button class="mat-x-small" matTooltip="Editar" *ngIf="!readonly"
+                (click)="abrirEditarIntermediario($event, element)">Editar</button>
+              <button mat-raised-button class="mat-x-small" matTooltip="Ver" *ngIf="readonly"
+                (click)="abrirEditarIntermediario($event, element)">Ver</button>
+              <button mat-raised-button class="mat-x-small" color="warn" matTooltip="Eliminar" *ngIf="!readonly"
+                (click)="eliminarIntermediario($event, element)">Eliminar</button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <div class="table-footer thin-text sm">
+        Total de registros: {{itemsCount}}
+      </div>
+    </div>
+
+    <div *ngIf="submitted && intermediariosForm.errors" class="form-errors-container thin-text xs">
+      <ul>
+        <li *ngIf="intermediariosForm.errors.empty">
+          <b>No se han agregado intermediarios. Al menos un intermediario debe ser agregado.</b>
+        </li>
+        <li *ngIf="intermediariosForm.errors.under100||showUnder100">
+          <b>Debe completar los porcentajes de participación de los intermediarios</b>
+        </li>
+        <li *ngIf="intermediariosForm.errors.over100||showOver100">
+          <b>Los porcentajes de participación exceden el valor permitido</b>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>

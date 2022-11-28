@@ -1,0 +1,32 @@
+.mat-toolbar {
+  background: var(--azul-solidaria);
+  color: #fff;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+
+  &.mat-toolbar-multiple-rows {
+    min-height: 50px;
+
+    .mat-toolbar-row {
+      height: 50px;
+    }
+  }
+
+  .title {
+    outline: none;
+    cursor: pointer;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: #fff;
+  }
+}
+
+.toolbar-icon {
+  padding: 0 14px;
+  cursor: pointer;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}

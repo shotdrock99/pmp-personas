@@ -1,0 +1,204 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+
+    <!-- Set this to true if you enable server-side prerendering -->
+    <BuildServerSideRenderer>false</BuildServerSideRenderer>
+    <RootNamespace>ModernizacionPersonas.Web</RootNamespace>
+    <AssemblyName>ModernizacionPersonas.Web</AssemblyName>
+    <Configurations>Debug;Release;Development;Test;Staging</Configurations>
+    <UserSecretsId>ebc0fc03-c014-4e75-be2b-504012fd5fdd</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Handlebars.Net" Version="1.10.1" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.6.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
+    <PackageReference Include="Rotativa.AspNetCore" Version="1.1.1" />
+    <PackageReference Include="Z.BulkOperations" Version="3.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\**" />
+    <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="ClientApp\**" />
+    <None Remove="ClientApp\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ClientApp\angular.json" />
+    <Content Include="ClientApp\config.json" />
+    <Content Include="ClientApp\e2e\tsconfig.e2e.json" />
+    <Content Include="ClientApp\package-lock.json" />
+    <Content Include="ClientApp\package.json" />
+    <Content Include="ClientApp\src\app\app.component.html" />
+    <Content Include="ClientApp\src\app\cotizacion\cotizacion.component.html" />
+    <Content Include="ClientApp\src\app\datosbasicostomador\datosbasicostomador.component.html" />
+    <Content Include="ClientApp\src\app\gruposasegurados\gruposasegurados.component.html" />
+    <Content Include="ClientApp\src\app\informacionaseguramiento\informacionaseguramiento.component.html" />
+    <Content Include="ClientApp\src\app\informacionintermediarios\informacionintermediarios.component.html" />
+    <Content Include="ClientApp\src\app\navbar\navbar.component.html" />
+    <Content Include="ClientApp\src\app\perfilusuario\perfilusuario.component.html" />
+    <Content Include="ClientApp\src\app\templates\_agregarGrupoAseguradosModal.html" />
+    <Content Include="ClientApp\src\app\templates\_aseguradoModal.html" />
+    <Content Include="ClientApp\src\app\templates\_cargarAseguradosModal.html" />
+    <Content Include="ClientApp\src\app\templates\_intermediarioModal.html" />
+    <Content Include="ClientApp\src\favicon.ico" />
+    <Content Include="ClientApp\src\index.html" />
+    <Content Include="ClientApp\src\tsconfig.app.json" />
+    <Content Include="ClientApp\src\tsconfig.spec.json" />
+    <Content Include="ClientApp\src\tslint.json" />
+    <Content Include="ClientApp\tsconfig.json" />
+    <Content Include="ClientApp\tslint.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="ClientApp\.editorconfig" />
+    <None Include="ClientApp\.gitignore" />
+    <None Include="ClientApp\e2e\protractor.conf.js" />
+    <None Include="ClientApp\README.md" />
+    <None Include="ClientApp\src\app\app.component.scss" />
+    <None Include="ClientApp\src\app\cotizacion\cotizacion.component.scss" />
+    <None Include="ClientApp\src\app\datosbasicostomador\datosbasicostomador.component.scss" />
+    <None Include="ClientApp\src\app\gruposasegurados\gruposasegurados.component.scss" />
+    <None Include="ClientApp\src\app\informacionaseguramiento\informacionaseguramiento.component.scss" />
+    <None Include="ClientApp\src\app\informacionintermediarios\informacionintermediarios.component.scss" />
+    <None Include="ClientApp\src\app\navbar\navbar.component.scss" />
+    <None Include="ClientApp\src\app\perfilusuario\perfilusuario.component.scss" />
+    <None Include="ClientApp\src\assets\.gitkeep" />
+    <None Include="ClientApp\src\browserslist" />
+    <None Include="ClientApp\src\karma.conf.js" />
+    <None Include="ClientApp\src\styles.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ModernizacionPersonas.Common\ModernizacionPersonas.Common.csproj" />
+    <ProjectReference Include="..\ModernizacionPersonas.Entities\ModernizacionPersonas.Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\e2e\src\app.e2e-spec.ts" />
+    <TypeScriptCompile Include="ClientApp\e2e\src\app.po.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\app-routing.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\app.component.spec.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\app.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\app.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\cotizacion\cotizacion.component.spec.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\cotizacion\cotizacion.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\datosbasicostomador\datosbasicostomador.component.spec.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\datosbasicostomador\datosbasicostomador.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\gruposasegurados\gruposasegurados.component.spec.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\gruposasegurados\gruposasegurados.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\informacionaseguramiento\informacionaseguramiento.component.spec.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\informacionaseguramiento\informacionaseguramiento.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\informacionintermediarios\informacionintermediarios.component.spec.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\informacionintermediarios\informacionintermediarios.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\grupo-asegurado.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\index.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\intermediario.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\ramo.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\sub-ramo.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\sucursal.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\navbar\navbar.component.spec.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\navbar\navbar.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\perfilusuario\perfilusuario.component.spec.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\perfilusuario\perfilusuario.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\parametrizacion-reader.service.spec.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\parametrizacion-reader.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\environments\environment.prod.ts" />
+    <TypeScriptCompile Include="ClientApp\src\environments\environment.ts" />
+    <TypeScriptCompile Include="ClientApp\src\main.ts" />
+    <TypeScriptCompile Include="ClientApp\src\polyfills.ts" />
+    <TypeScriptCompile Include="ClientApp\src\test.ts" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <EnvironmentName>Development</EnvironmentName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Development|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <EnvironmentName>Development</EnvironmentName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <EnvironmentName>Test</EnvironmentName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Staging|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <EnvironmentName>Staging</EnvironmentName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <EnvironmentName>Production</EnvironmentName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="appsettings.json" />
+    <Content Remove="appsettings.*.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="appsettings.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="appsettings.*.json" Exclude="appsettings.$(EnvironmentName).json" DependentUpon="appsettings.json" CopyToOutputDirectory="Never" />
+    <Content Include="appsettings.$(EnvironmentName).json" DependentUpon="appsettings.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <Target Name="RenameAppsettings" AfterTargets="Publish">
+    <Move SourceFiles="$(PublishDir)\appsettings.$(EnvironmentName).json" DestinationFiles="$(PublishDir)\appsettings.json" />
+  </Target>
+  
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />    
+  </Target>
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <!--<Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />-->
+
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --prod" Condition="'$(Configuration)' == 'Release'" />
+    <!--<Exec WorkingDirectory="$(SpaRoot)" Command="npm run build-dev" Condition="'$(Configuration)' == 'Development'" />-->
+    <!--<Exec WorkingDirectory="$(SpaRoot)" Command="npm run build-test" Condition="'$(Configuration)' == 'Test'" />-->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build" Condition="'$(Configuration)' == 'Debug'" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build:ssr -- --prod" Condition=" '$(BuildServerSideRenderer)' == 'true' " />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
+      <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>  
+</Project>

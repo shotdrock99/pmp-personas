@@ -1,0 +1,107 @@
+<div class="main-container">
+  <table *ngIf="false">
+    <thead>
+      <tr>
+        <th>EDADES</th>
+        <th>VALOR ASEGURADO INDIVIDUAL</th>
+        <th>REQUISITOS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="3">Hasta {{maxAge}} años + 364 días</td>
+        <td>Hasta {{maxValueA|currency: 'USD' : 'symbol' : '1.0-4'}}</td>
+        <td>A</td>
+      </tr>
+      <tr>
+        <td>De {{maxValueA+1|currency: 'USD' : 'symbol' : '1.0-4'}} a {{maxValueB|currency: 'USD' : 'symbol' : '1.0-4'}}</td>
+        <td>B</td>
+      </tr>
+      <tr>
+        <td>Superior a {{maxValueB+1|currency: 'USD' : 'symbol' : '1.0-4'}}</td>
+        <td>C</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Edad desde</th>
+        <th>Edad hasta</th>
+        <th>Valor individual desde</th>
+        <th>Valor individual hasta</th>
+        <th>Requisitos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td>
+          <div style="text-align: center;">{{item.edadDesde}}</div>
+        </td>
+        <td>
+          <div style="text-align: center;">{{item.edadHasta}}</div>
+        </td>
+        <td>
+          <div style="text-align: center;">{{item.valorIndividualDesde|currency: 'USD' : 'symbol' : '1.0-4'}}</div>
+        </td>
+        <td>
+          <div style="text-align: center;">{{item.valorIndividualHasta|currency: 'USD' : 'symbol' : '1.0-4'}}</div>
+        </td>
+        <td>
+          <div class="bold" style="text-align: center;">{{item.requisitos}}</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="divider-h-20"></div>
+  <table>
+    <thead>
+      <tr>
+        <th>A</th>
+        <th>B</th>
+        <th>C</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="5">Solicitud Individual (declaración de asegurabilidad)</td>
+        <td>Solicitud Individual</td>
+        <td>Solicitud Individual</td>
+      </tr>
+      <tr>
+        <td>Examen Médico General (Forma SV-03)</td>
+        <td>Examen Médico General (Forma SV-03)</td>
+      </tr>
+      <tr>
+        <td>Análisis de Orina Completo</td>
+        <td>Análisis de Orina Completo</td>
+      </tr>
+      <tr>
+        <td>Análisis de Orina Completo</td>
+        <td>Análisis de Orina Completo</td>
+      </tr>
+      <tr>
+        <td>Electrocardiograma en reposo</td>
+        <td>Electrocardiograma en reposo</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>
+          Análisis de sangre (completo)
+          <ul>
+            <li>Hemograma</li>
+            <li>Glicemia</li>
+            <li>Creatinina</li>
+            <li>Colesterol</li>
+            <li>Triglicéridos</li>
+            <li>Transaminasas</li>
+            <li>Prueba H.I.V (Elisa)</li>
+          </ul>
+        </td>
+        
+      </tr>
+    </tbody>
+  </table>
+</div>

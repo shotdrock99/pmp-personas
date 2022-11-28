@@ -1,0 +1,12 @@
+.cc-contacts-container {
+  padding: 5px;
+  border-bottom: 1px solid #949494;
+}
+.cc-contacts-container .badge-email-contact {
+  padding: 6px;
+  margin: 2px;
+  background-color: #fff;
+  color: gray;
+  border: 1px solid #949494;
+  border-radius: 20px;
+}

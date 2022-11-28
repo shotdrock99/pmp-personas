@@ -1,0 +1,86 @@
+.table-container {
+  padding-top: 30px;
+  max-height: 430px;
+  overflow: auto;
+  table {
+    tr {
+      th {
+        &.mat-header-cell {
+          text-align: center;
+        }
+      }
+
+      &.mat-header-row {
+        height: 32px;
+      }
+
+      &.mat-row {
+        height: 32px;
+        &.disable-row {
+          background-color: #fafafa;
+        }
+      }
+
+      &.amparo-error {
+        td:first-child {
+          background-color: #ff7c7c;
+          color: #fff;
+          font-weight: bold;
+        }
+      }
+
+      td {
+        &.mat-cell {
+          &.mat-cell-disabled {
+            input[type="text"] {
+              max-width: 100px;
+              outline-width: 0;
+              border: 0 !important;
+              background-color: #fafafa;
+              text-align: center;
+            }
+          }
+
+          &.edad-value-container {
+            min-width: 80px;
+            padding: 0 10px;
+            text-align: center;
+
+            input[type="text"] {
+              max-width: 32px;
+              outline-width: 0;
+              border: 0;
+              border-bottom: 1px solid #888;
+              text-align: center;
+
+              &.input-error {
+                border-bottom-color: red;
+                color: red;
+              }
+            }
+          }
+
+          &.odd-column {
+            background-color: #fafafa;
+
+            input[type="text"] {
+              background-color: #fafafa !important;
+            }
+          }
+
+          .errors-popover {
+            .mat-icon {
+              font-size: 20px;
+              color: red;
+              cursor: pointer;
+            }
+
+            li {
+              list-style: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

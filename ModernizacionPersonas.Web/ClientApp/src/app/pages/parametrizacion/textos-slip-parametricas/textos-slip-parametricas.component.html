@@ -1,0 +1,111 @@
+<div class="unload-overlay" *ngIf="!pageLoaded">
+  <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate">
+  </mat-progress-spinner>
+  <b class="thin-text md">Cargando información</b>
+</div>
+
+<div *ngIf="pageLoaded" fxLayout="column" class="view-container">
+  <div fxLayout="row" class="view-title">
+    <div class="toolbar" fxFlex="100%">
+      <div fxFlex="20%" fxLayout="row" fxLayoutAlign="start center">
+        <h4 class="thin-text">
+          Listado de Textos del Slip
+        </h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions-container">
+    <div fxLayout="row">
+      <div fxFlex="55%">
+        <app-page-toolbar [data]="toolbarConfig.items"></app-page-toolbar>
+      </div>
+      <div fxFlex="5%" style="padding-top: 1em;">
+        <b>Filtros</b>
+        <mat-icon style="padding-left: 0.5em;">search</mat-icon>
+      </div>
+      <div fxFlex="40%">
+        <form [formGroup]="formControl">
+          <mat-form-field style="padding-right: 1em;">
+            <input matInput formControlName="ramo" #input [value]="input.value.toUpperCase()">
+            <mat-label>Ramo</mat-label>
+          </mat-form-field>
+          <mat-form-field style="padding-right: 1em;">
+            <input matInput formControlName="subramo" #input1 [value]="input1.value.toUpperCase()">
+            <mat-label>Subramo</mat-label>
+          </mat-form-field>
+          <mat-form-field style="padding-right: 1em;">
+            <input matInput formControlName="sector" #input4 [value]="input4.value.toUpperCase()">
+            <mat-label>Sector</mat-label>
+          </mat-form-field>
+          <mat-form-field style="padding-right: 1em;">
+            <input matInput formControlName="amparo" #input2 [value]="input2.value.toUpperCase()">
+            <mat-label>Amparo</mat-label>
+          </mat-form-field>
+          <mat-form-field style="padding-right: 1em;">
+            <input matInput formControlName="seccion" #input3 [value]="input3.value.toUpperCase()">
+            <mat-label>Sección</mat-label>
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="view-content" fxLayout="column">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="nombreRamo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ramo </th>
+        <td mat-cell *matCellDef="let row" class="text-center"> {{row.nombreRamo}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="subramo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Subramo </th>
+        <td mat-cell *matCellDef="let row" class="text-center"> {{row.nombreSubramo}} </td>
+      </ng-container>
+      <ng-container matColumnDef="sector">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Sector </th>
+        <td mat-cell *matCellDef="let row" class="text-center"> {{row.nombreSector}} </td>
+      </ng-container>
+      <ng-container matColumnDef="amparo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 30em;"> Amparo </th>
+        <td mat-cell *matCellDef="let row" class="text-center"> {{row.nombreAmparo}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="seccion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header > Sección </th>
+        <td mat-cell *matCellDef="let row" class="text-center"> {{row.nombreSeccion}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="usuarioModifica">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Usuario Modifica </th>
+        <td mat-cell *matCellDef="let row" class="text-center">{{row.usuario}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="fechaModifica">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Modifica </th>
+        <td mat-cell *matCellDef="let row" class="text-center">{{row.fechaMovimiento | date:'dd/MM/yyyy hh:mm'}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="opciones">
+        <th mat-header-cell *matHeaderCellDef> Opciones </th>
+        <td mat-cell *matCellDef="let row">
+          <div class="button-group text-center">
+            <button mat-raised-button color="primary" (click)="editTextoSlip(row)" class="mat-md">
+              Editar
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+    <div class="table-footer">
+      Cantidad de registros: {{itemsCount}}
+    </div>
+  </div>
+
+</div>

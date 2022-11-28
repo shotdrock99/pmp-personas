@@ -1,0 +1,62 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <Configurations>Debug;Release;Development;Test;Staging</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Templates\approved_authorization_template.html" />
+    <None Remove="Templates\approved_cotization_template.html" />
+    <None Remove="Templates\carta_aceptacion_riesgo.txt" />
+    <None Remove="Templates\notify_authorization_template.html" />
+    <None Remove="Templates\refused_authorization_template.html" />
+    <None Remove="Templates\refused_cotization_template.html" />
+    <None Remove="Templates\return_review_template.html" />
+    <None Remove="Templates\send_slip_inter_come_template.html" />
+    <None Remove="Templates\send_slip_tomador_template.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Templates\approved_authorization_template.html" />
+    <EmbeddedResource Include="Templates\approved_cotization_template.html" />
+    <EmbeddedResource Include="Templates\carta_aceptacion_riesgo.txt" />
+    <EmbeddedResource Include="Templates\refused_authorization_template.html" />
+    <EmbeddedResource Include="Templates\refused_cotization_template.html" />
+    <EmbeddedResource Include="Templates\return_review_template.html" />
+    <EmbeddedResource Include="Templates\notify_authorization_template.html" />
+    <EmbeddedResource Include="Templates\send_slip_tomador_template.html" />
+    <EmbeddedResource Include="Templates\send_slip_inter_come_template.html" />
+    <EmbeddedResource Include="Templates\send_expedicion_template.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNetCore.NPOI" Version="1.2.2" />
+    <PackageReference Include="EASendMail" Version="7.9.0.6" />
+    <PackageReference Include="EPPlus" Version="4.5.3" />
+    <PackageReference Include="Handlebars.Net" Version="1.10.1" />
+    <PackageReference Include="iTextSharp.LGPLv2.Core" Version="1.6.7" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.6.0" />
+    <PackageReference Include="PDFsharp-MigraDoc-GDI" Version="1.50.5147" />
+    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ModernizacionPersonas.Common\ModernizacionPersonas.Common.csproj" />
+    <ProjectReference Include="..\ModernizacionPersonas.DAL\ModernizacionPersonas.DAL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\newtonsoft.json\11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IdentityModel.Tokens.Jwt">
+      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\system.identitymodel.tokens.jwt\5.3.0\lib\netstandard2.0\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

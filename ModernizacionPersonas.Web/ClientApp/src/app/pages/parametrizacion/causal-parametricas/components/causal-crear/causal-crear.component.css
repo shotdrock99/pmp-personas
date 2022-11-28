@@ -1,0 +1,23 @@
+.causal-title {
+  background: #fefefe;
+  padding: 10px 20px;
+  width: 100%;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 10px;
+}
+.crear-container {
+  margin: 10px 20px 20px 20px;
+  padding: 0 20px 20px;
+  overflow: auto;
+}
+.crear-button {
+  text-align: right;
+  float: right;
+}
+.mat-form-field-text {
+  width: -webkit-fill-available;
+}
+.mat-container {
+  justify-content: flex-end;
+}
+

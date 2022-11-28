@@ -1,0 +1,53 @@
+.cotizacion-list-container .filter-container {
+  padding: 10px 20px;
+}
+.cotizacion-list-container .table-container {
+  margin: 0 15px;
+  overflow: auto;
+}
+.cotizacion-list-container .table-container table .mat-row .more-container {
+  min-width: 30px;
+}
+.cotizacion-list-container
+  .table-container
+  table
+  .mat-row
+  .more-container
+  .context-menu {
+  display: none;
+}
+.cotizacion-list-container .table-container table .mat-row.hovered {
+  background: #eee;
+}
+.cotizacion-list-container
+  .table-container
+  table
+  .mat-row.hovered
+  .more-container
+  .context-menu {
+  display: block;
+  outline: none;
+}
+.cotizacion-list-container .table-container table .mat-row.highlighted {
+  background: #f5f5f5;
+}
+.cotizacion-list-container .table-container table th.mat-header-cell {
+  text-align: center !important;
+}
+.cotizacion-list-container .table-container table td .badge {
+  padding: 6px;
+  font-size: 85%;
+}
+.cotizacion-list-container .table-container table td .badge.badge-state {
+  min-width: 150px;
+  min-height: 20px;
+}
+.cotizacion-list-container .table-container table td .color-steelblue {
+  color: steelblue;
+  font-weight: 600;
+}
+.cotizacion-list-container .table-container .table-footer {
+  text-align: right;
+  padding: 10px 20px;
+  font-weight: bold;
+}

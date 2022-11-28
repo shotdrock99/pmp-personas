@@ -1,0 +1,18 @@
+﻿{
+  "ProviderId": "Microsoft.VisualStudio.ConnectedService.Wcf",
+  "Version": "15.0.31022.994",
+  "ExtendedData": {
+    "inputs": [
+      "http://192.1.3.180:8088/WCFTablasParametrizacion/Service1.svc"
+    ],
+    "collectionTypes": [
+      "System.Array",
+      "System.Collections.Generic.Dictionary`2"
+    ],
+    "namespaceMappings": [
+      "*, ParametrizacionServiceReference"
+    ],
+    "targetFramework": "netcoreapp2.2",
+    "typeReuseMode": "None"
+  }
+}

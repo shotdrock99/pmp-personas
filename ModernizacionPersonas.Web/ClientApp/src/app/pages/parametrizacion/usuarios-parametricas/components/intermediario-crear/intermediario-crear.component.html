@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>{{title}}</h2>
+
+<mat-dialog-content [formGroup]="createForm">
+
+  <mat-form-field class="mat-form-field-text">
+    <mat-label>Código Intermediario</mat-label>
+    <input matInput (change)="change($event)" formControlName="codigoIntermediario" #input [value]="input.value.toUpperCase()">
+    <mat-error *ngIf="createForm.get('codigoIntermediario').hasError('required') && (createForm.get('codigoIntermediario').dirty || createForm.get('codigoIntermediario').touched)">
+      Código requerido.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="mat-form-field-text">
+    <mat-label>Razón Social</mat-label>
+    <input matInput formControlName="razonSocial" readonly>
+  </mat-form-field>
+
+  <mat-form-field class="mat-form-field-text">
+    <mat-label>Email Intermediario</mat-label>
+    <input matInput formControlName="email" readonly>
+  </mat-form-field>
+  
+</mat-dialog-content>
+
+<mat-dialog-actions class="mat-container">
+  <button mat-raised-button mat-dialog-close>Cancelar</button>
+  <button mat-raised-button color="primary" (click)="create()">Crear</button>
+</mat-dialog-actions>

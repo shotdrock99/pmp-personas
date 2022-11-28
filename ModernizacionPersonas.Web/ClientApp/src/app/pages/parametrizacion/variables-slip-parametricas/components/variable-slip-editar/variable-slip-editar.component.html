@@ -1,0 +1,51 @@
+<h2 mat-dialog-title>{{title}}</h2>
+
+<mat-dialog-content [formGroup]="editForm">
+
+  <mat-form-field class="mat-form-field-text">
+    <mat-label>Nombre Variable</mat-label>
+    <input matInput formControlName="nombreVariable">
+  </mat-form-field>
+
+  <mat-form-field class="mat-form-field-text">
+    <mat-label>Descripción Variable</mat-label>
+    <input matInput formControlName="descripcionVariable">
+  </mat-form-field>
+  
+  <mat-form-field style="width: 80%;">
+    <mat-label>Grupo</mat-label>
+    <mat-select [(ngModel)]="tipoDato" formControlName="tipoDato" disabled>
+      <mat-option *ngFor="let td of tiposDatos" [value]="td.value">
+        {{td.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <mat-form-field *ngIf="tipoDato !== 'VC'" style="padding-right: 4em;">
+    <mat-label>Valor Variable</mat-label>
+    <span *ngIf="tipoDato === 'MO'" matPrefix>$ &nbsp;</span>
+    <div *ngIf="tipoDato === 'IN'">
+      <input type="number" matInput formControlName="valorVariable">
+    </div>
+    <div *ngIf="tipoDato === 'MO'">
+      <input type="number" min="1" step="any" matInput formControlName="valorVariable">
+    </div>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="tipoDato !== 'VC'">
+    <mat-label>Valor Tope Variable</mat-label>
+    <span *ngIf="tipoDato === 'MO'" matPrefix>$ &nbsp;</span>
+    <div *ngIf="tipoDato === 'IN'">
+      <input type="number" matInput formControlName="valorTope">
+    </div>
+    <div *ngIf="tipoDato === 'MO'">
+      <input type="number" min="1" step="any" matInput formControlName="valorTope">
+    </div>
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions class="mat-container">
+  <button mat-raised-button mat-dialog-close>Cancelar</button>
+  <button mat-raised-button color="primary" (click)="edit()">Editar</button>
+</mat-dialog-actions>

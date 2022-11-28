@@ -1,0 +1,48 @@
+<div fxLayout="column" fxFlexFill>
+  <header style="height: 22%;">
+    <div class="header" fxFlex="100%" fxLayout="column">
+      <div class="top-header">
+        <span class="description main-description">
+          LINEA NACIONAL SOLIDARIA:
+        </span>
+        <i class="material-icons md-18" style="padding: 0 0.5rem 0 0.5rem;">phone</i>
+        <span class="description">Gratis desde cualquier lugar del país:
+        </span>
+        <span class="info">018000 512021</span>
+
+        <i class="material-icons md-18" style="padding: 0 0.5rem 0 0.5rem;">phone</i>
+        <span class="description">En Bogotá: </span>
+        <span class="info">(031)291 6868</span>
+
+        <i class="material-icons md-18" style="padding: 0 0.5rem 0 0.5rem;">phonelink_ring</i>
+        <span class="description">Gratis desde tu celular: </span>
+        <span class="info">#789</span>
+      </div>
+
+      <div fxFlex="100%" fxLayout="row">
+        <div fxFlex="20%" class="header-logo">
+          <img src="./assets/LogoAseguradoraSolidaria.png" alt="Aseguradora Solidaria de Colombia" />
+          <a href="">
+          </a>
+        </div>
+        <div fxFlex="80%" fxLayoutAlign="end center" style="padding-right: 10px;">
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <div class="thin-text lg">Cotizador de Productos</div>
+            <div class="thin-text lg">Seguros de Personas</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <app-navbar></app-navbar>
+
+  <div class="app-container">
+    <router-outlet></router-outlet>
+  </div>
+
+  <footer fxFlexOffset="auto">
+    <img src="./assets/VigiladoSuperIntendencia.png" alt="Vigilado Super Intendencia" />
+  </footer>
+</div>

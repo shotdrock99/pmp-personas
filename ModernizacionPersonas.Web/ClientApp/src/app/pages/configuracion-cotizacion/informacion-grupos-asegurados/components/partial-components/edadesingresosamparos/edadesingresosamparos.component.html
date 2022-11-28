@@ -1,0 +1,77 @@
+<div>
+  <div class="table-container">
+    <table mat-table #tableEdades [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="amparo">
+        <th mat-header-cell *matHeaderCellDef>Amparos seleccionados</th>
+        <td mat-cell *matCellDef="let element; let i = index;">
+          {{ element.amparo.nombreAmparo }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="edadminima">
+        <th mat-header-cell *matHeaderCellDef class="odd-column"> Edad Mínima </th>
+        <td mat-cell *matCellDef="let element; let i = index;" class="edad-value-container odd-column"
+          [ngClass]="{'mat-cell-disabled': element.edadMinimaIngreso.disabled}">
+          <input type="text" mask="000" [disabled]="element.edadMinimaIngreso.disabled" [readonly]="readonly"
+            data-column="edadMinimaIngreso" (blur)="changeValue(element, $event)"
+            value="{{element.edadMinimaIngreso.valor}}" />
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="edadmaxima">
+        <th mat-header-cell *matHeaderCellDef> Edad Máxima </th>
+        <td mat-cell *matCellDef="let element; let i = index;" class="edad-value-container"
+          [ngClass]="{'mat-cell-disabled': element.edadMaximaIngreso.disabled}">
+          <input type="text" mask="000" [disabled]="element.edadMaximaIngreso.disabled" [readonly]="readonly"
+            data-column="edadMaximaIngreso" (blur)="changeValue(element, $event)"
+            value="{{element.edadMaximaIngreso.valor}}" />
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="edadmaxpermanencia">
+        <th mat-header-cell *matHeaderCellDef class="odd-column"> Edad Máxima de Permanencia </th>
+        <td mat-cell *matCellDef="let element; let i = index;" class="edad-value-container odd-column"
+          [ngClass]="{'mat-cell-disabled': element.edadMaximaPermanencia.disabled}">
+          <input type="text" mask="000" [disabled]="element.edadMaximaPermanencia.disabled" [readonly]="readonly"
+            data-column="edadMaximaPermanencia" (blur)="changeValue(element, $event)"
+            value="{{element.edadMaximaPermanencia.valor}}" />
+        </td>
+      </ng-container>
+
+      <!--<ng-container matColumnDef="numdiascarencia" style="display: none;">
+        <th mat-header-cell *matHeaderCellDef> Nro. Días Carencia </th>
+        <td mat-cell *matCellDef="let element; let i = index;" class="edad-value-container"
+          [ngClass]="{'mat-cell-disabled': element.numeroDiasCarencia.disabled}">
+          <input type="text" mask="000" [disabled]="element.numeroDiasCarencia.disabled" [readonly]="readonly"
+            data-column="numeroDiasCarencia" (blur)="changeValue(element, $event)"
+            value="{{element.numeroDiasCarencia.valor}}" />
+        </td>
+      </ng-container>-->
+
+      <ng-container matColumnDef="opciones">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element; let i = index;">
+          <div *ngIf="element.errors&&element.errors.length>0" class="errors-popover">
+            <mat-icon [mdePopoverTriggerFor]="appPopover" mdePopoverTriggerOn="click"
+              #popoverTrigger="mdePopoverTrigger">error_outline</mat-icon>
+            <mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
+              <mat-card style="max-width: 300px">
+                <mat-card-content>
+                  <div *ngFor="let error of element.errors" style="color:red;">
+                    {{error.message}}
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </mde-popover>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+        [ngClass]="{'disable-row': row.amparo.codigoGrupoAmparo===3}">
+        {{row}}
+      </tr>
+    </table>
+  </div>
+</div>

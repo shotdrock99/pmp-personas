@@ -1,0 +1,107 @@
+.main-container {
+  padding: 10px;
+}
+.main-container .modal-title {
+  margin: 15px;
+}
+.main-container .avatar {
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin: 0 8px 0 0;
+  border-radius: 50%;
+  font-size: 17px;
+  font-weight: 600;
+  text-align: center;
+  border: 1px solid #8e8e8e;
+  background-color: steelblue;
+  color: #fff;
+}
+.main-container .messages {
+  margin-top: 25px;
+  max-height: 400px;
+  position: relative;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.main-container .messages .empty-messages {
+  text-align: center;
+}
+.main-container .messages .message-row {
+  position: relative;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-align: start;
+  align-items: flex-start;
+  -webkit-box-pack: end;
+  justify-content: flex-end;
+  padding: 0 16px 4px;
+}
+.main-container .messages .message-row.contact .bubble {
+  background-color: #526fbb;
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+}
+.main-container .messages .message-row.contact .comments ul {
+  list-style: none;
+  padding-inline-start: 0;
+}
+.main-container .messages .message-row .message-container {
+  width: 100%;
+}
+.main-container .messages .message-row .message-container .time {
+  text-align: right;
+}
+.main-container .messages .message-row .message-container .time.secondary-text {
+  font-size: small;
+}
+.main-container .messages .message-row .message-container .avatar {
+  position: absolute;
+  left: -32px;
+  margin: 0;
+}
+.main-container .messages .message-row .message-container .avatar.right {
+  left: auto;
+  right: -32px;
+}
+.main-container
+  .messages
+  .message-row
+  .message-container
+  .attachment-container {
+  border-top: 1px solid #eee;
+  width: 100%;
+  margin-top: 10px;
+  padding: 5px 0;
+  text-align: right;
+}
+.main-container
+  .messages
+  .message-row
+  .message-container
+  .attachment-container
+  a {
+  display: inline-flex;
+  color: #fff;
+}
+.main-container
+  .messages
+  .message-row
+  .message-container
+  .attachment-container
+  a:hover {
+  color: #fff;
+}
+.main-container
+  .messages
+  .message-row
+  .message-container
+  .attachment-container
+  a
+  span {
+  margin-right: 5px;
+}

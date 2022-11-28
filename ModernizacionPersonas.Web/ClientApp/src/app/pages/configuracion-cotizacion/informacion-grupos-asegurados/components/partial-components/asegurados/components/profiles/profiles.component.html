@@ -1,0 +1,72 @@
+<div>
+  <div class="form-group">
+    <button mat-raised-button color="primary" [disabled]="!allowCreateRango" (click)="addRango()">
+      Crear nuevo rango
+    </button>
+  </div>
+  <div class="profiles-container thin-text sm">
+    <table>
+      <thead>
+        <th>Rango</th>
+        <th>Edad Mínima</th>
+        <th>Edad Máxima</th>
+        <th>Cantidad de Asegurados</th>
+        <th>Valor Asegurado</th>
+        <th>Opciones</th>
+      <tbody>
+        <tr *ngIf="rangos.length===0">
+          <td colspan="6">No hay registros disponibles</td>
+        </tr>
+        <tr *ngFor="let rango of rangos; let i=index">
+          <td>
+            {{i+1}}
+          </td>
+          <td>
+            <span *ngIf="!rango.isEdit">{{rango.edadMinAsegurado}}</span>
+            <input type="text" mask="999" *ngIf="rango.isEdit" [(ngModel)]="rango.edadMinAsegurado" />
+          </td>
+          <td>
+            <span *ngIf="!rango.isEdit">{{rango.edadMaxAsegurado}}</span>
+            <input type="text" mask="999" *ngIf="rango.isEdit" [(ngModel)]="rango.edadMaxAsegurado" />
+          </td>
+          <td>
+            <span *ngIf="!rango.isEdit">{{rango.numeroAsegurados}}</span>
+            <input type="text" mask="999" *ngIf="rango.isEdit" [(ngModel)]="rango.numeroAsegurados" />
+          </td>
+          <td class="valaseg" style="text-align: right;">
+            <span *ngIf="!rango.isEdit">{{rango.valorAsegurado | currency: 'USD' : 'symbol' : '1.0-4'}}</span>
+            <input type="text" mask="separator.2" prefix="$" thousandSeparator="." *ngIf="rango.isEdit"
+              [(ngModel)]="rango.valorAsegurado" />
+          </td>
+          <td class="opciones">
+            <a *ngIf="!rango.isEdit" (click)="editRango(i, rango)" class="bold text-info">Editar</a>
+            <a *ngIf="!rango.isEdit" (click)="removeRango(i, rango)" class="error bold text-danger">Eliminar</a>
+
+            <a *ngIf="rango.isEdit" (click)="cancelEditRango(i, rango)" class="bold text-danger">Cancelar</a>
+            <a *ngIf="rango.isEdit" (click)="saveRango(i, rango)" class="bold text-success">Guardar</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="(submitted && errors)" class="errors-container thin-text sm">
+      <div *ngIf="errors.edadMinLtLastMax" class="text-danger" style="text-align:left;">
+        <b>La edad mínima del rango no puede ser menor o igual a la edad máxima del último rango.</b>
+      </div>
+      <div *ngIf="errors.edadMinGtMax" class="text-danger" style="text-align:left;">
+        <b>La edad mínima no puede ser mayor a la edad máxima</b>
+      </div>
+      <div *ngIf="errors.edadesGtMaxPermitido" class="text-danger" style="text-align:left;">
+        <b>La edad mínima o máxima no puede ser mayor a 111</b>
+      </div>
+      <div *ngIf="errors.aseguradosZero" class="text-danger" style="text-align:left;">
+        <b>El número de asegurados no puede ser cero</b>
+      </div>
+      <div *ngIf="errors.valorAseguradoZero" class="text-danger" style="text-align:left;">
+        <b>El valor asegurado no puede ser cero</b>
+      </div>
+      <div *ngIf="errors.edadMinFirstRg" class="text-danger" style="text-align:left;">
+        <b>El valor mínimo del primer rango no puede ser menor al valor mínimo del amparo básico</b>
+      </div>
+    </div>
+  </div>
+</div>

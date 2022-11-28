@@ -1,0 +1,179 @@
+.unload-overlay {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: x-large;
+}
+.toolbar {
+  min-height: 42px;
+  background-color: #fff;
+}
+.toolbar.fixed-toolbar {
+  position: fixed;
+  top: 50px;
+  left: 250px;
+  z-index: 9999;
+  width: calc(100% - 250px);
+}
+.section-container {
+  padding: 10px 0;
+}
+.main-container {
+  font-size: 10pt;
+  padding: 10px;
+}
+.main-container .options-container {
+  border-bottom: 1px solid #eee;
+  margin: 0 15px 5px;
+  padding-bottom: 10px;
+}
+.main-container table.header-table tr.header-row-2 td.value-container,
+.main-container table.header-table tr.header-row-3 td.value-container {
+  float: right;
+}
+.main-container
+  table.header-table
+  tr.header-row-2
+  td
+  .column-container
+  .value-container,
+.main-container
+  table.header-table
+  tr.header-row-3
+  td
+  .column-container
+  .value-container {
+  float: right;
+}
+.main-container
+  table.header-table
+  tr.header-row-2
+  td
+  .column-container
+  .value-container
+  input[type="text"],
+.main-container
+  table.header-table
+  tr.header-row-3
+  td
+  .column-container
+  .value-container
+  input[type="text"] {
+  overflow: visible;
+  max-width: 80px;
+  border: none;
+  border-bottom: 1px solid #8e8e8e;
+  padding: 0 8px;
+  text-align: right;
+  background-color: transparent;
+  outline: none;
+}
+.main-container table tr.bg-gray {
+  background-color: #f5f5f5;
+}
+.grupos-asegurados-container .grupo-asegurados-container {
+  padding: 10px 0 0;
+}
+.grupos-asegurados-container .grupo-asegurados-container .mat-icon {
+  cursor: pointer;
+}
+.grupos-asegurados-container
+  .grupo-asegurados-container
+  .grupo-asegurados-content
+  table
+  tr.opciones {
+  font-weight: bold;
+}
+.grupos-asegurados-container
+  .grupo-asegurados-container
+  .grupo-asegurados-content
+  table
+  tr.opciones
+  td {
+  width: 260px;
+}
+.grupos-asegurados-container
+  .grupo-asegurados-container
+  .grupo-asegurados-content
+  table
+  tr
+  th {
+  padding: 2px 10px;
+  border: 1px solid #d0d0d0;
+}
+.grupos-asegurados-container
+  .grupo-asegurados-container
+  .grupo-asegurados-content
+  table
+  tr
+  td
+  .currency-container,
+.grupos-asegurados-container
+  .grupo-asegurados-container
+  .grupo-asegurados-content
+  table
+  tr
+  td
+  .percent-container {
+  text-align: right;
+}
+table {
+  width: 100%;
+  border: 1px solid #d0d0d0;
+}
+table.w80 {
+  width: 80%;
+}
+table.w40 {
+  width: 40%;
+}
+table tr.opciones {
+  text-align: center;
+}
+table tr.title-h2 th,
+table tr.title-h2 td {
+  background-color: #f0f8ff;
+  color: #000;
+}
+table tr td,
+table tr th {
+  padding: 2px 10px;
+  border: 1px solid #d0d0d0;
+}
+table tr td.title-h1,
+table tr th.title-h1 {
+  background-color: #eee;
+  color: #000;
+  font-weight: bold;
+}
+table tr td.title-h2,
+table tr th.title-h2 {
+  background-color: #f0f8ff;
+  color: #000;
+}
+table tr td.title-h3,
+table tr th.title-h3 {
+  background-color: #f5f5dc;
+  color: #000;
+}
+table tr td.currency,
+table tr td.value-container,
+table tr th.currency,
+table tr th.value-container {
+  text-align: right;
+}
+.footer {
+  padding: 8px 16px;
+  min-height: 42px;
+  border-bottom: 1px solid #e5e5e5;
+  background-color: #fff;
+  text-align: right;
+}
+.floating-toolbar {
+  display: none;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}

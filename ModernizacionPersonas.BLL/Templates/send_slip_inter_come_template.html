@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        html {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f1f1f1;
+        }
+
+        .logo {
+            text-align: center;
+            height: 150px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-position: center;
+        }
+
+        .main-container {
+            margin: 30px auto;
+            padding: 50px;
+            max-width: 600px;
+            background-color: #fff;
+            border: 1px solid #EEE;
+            border-radius: 20px;
+            box-shadow: 2px 2px 10px 0px #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="logo">
+            <img src="https://www.solidaria.com.co/img/Recursos/header.png" alt="header" style="height: inherit;">
+        </div>
+        <p>
+            {{bodyTemplate}}
+        </p>
+        <p>
+            {{comments}}
+        </p>
+        <p>
+            Favor remitir su respuesta o inquietudes a los siguientes funcionarios de nuestra agencia {{sucursal}}:
+        </p>
+        <div>
+            {{#each contacts}}
+            <div>{{NombreUsuario}}</div>
+            <div>{{EmailUsuario}}</div>
+            <br />
+            {{/each}}
+        </div>
+        <p>
+            Cordialmente,
+        </p>
+        <h4>FIRMA AUTORIZADA</h4>
+        <p>Agencia {{agencia}}</p>
+        <div class="logo">
+            <img src="https://www.solidaria.com.co/img/Recursos/footer.png" alt="footer" style="height: inherit;">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<div class="profiles-container thin-text sm">
+    <table>
+      <thead>
+        <th>Rango</th>
+        <th>Edad Míninma</th>
+        <th>Edad Máxima</th>
+        <th>Cantidad de Asegurados</th>
+        <th>Valor Asegurado</th>
+        <th></th>
+      <tbody>
+        <tr *ngIf="model.length===0">
+          <td colspan="6">No hay registros disponibles</td>
+        </tr>
+        <tr *ngFor="let rango of rangos; let i=index">
+          <td>
+            {{i+1}}
+          </td>
+          <td>
+            <span>{{rango.edadMinAsegurado}}</span>
+          </td>
+          <td>
+            <span>{{rango.edadMaxAsegurado}}</span>
+          </td>
+          <td>
+            <span *ngIf="!rango.isEdit">{{rango.numeroAsegurados}}</span>
+            <input type="text" mask="999" *ngIf="rango.isEdit" [(ngModel)]="rango.numeroAsegurados" />
+          </td>
+          <td class="valaseg">
+            <span *ngIf="!rango.isEdit">{{rango.valorAsegurado | currency: 'USD' : 'symbol' : '1.0-4'}}</span>
+            <input type="text" mask="separator.2" prefix="$" thousandSeparator="." *ngIf="rango.isEdit"
+              [(ngModel)]="rango.valorAsegurado" />
+          </td>
+          <td class="opciones">
+            <a *ngIf="!rango.isEdit" (click)="editRango(i, rango)" class="bold text-info">Configurar</a>
+            <a *ngIf="rango.isEdit" (click)="cancelEditRango(i, rango)" class="bold text-danger">Cancelar</a>
+            <a *ngIf="rango.isEdit" (click)="saveRango(i, rango)" class="bold text-success">Guardar</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="(submitted && errors)" class="errors-container thin-text sm">
+      <div *ngIf="errors.aseguradosZero" class="text-danger" style="text-align:left;">
+        <b>El número de asegurados no puede ser cero</b>
+      </div>
+      <div *ngIf="errors.valorAseguradoZero" class="text-danger" style="text-align:left;">
+        <b>El valor asegurado no puede ser cero</b>
+      </div>
+    </div>
+  </div>

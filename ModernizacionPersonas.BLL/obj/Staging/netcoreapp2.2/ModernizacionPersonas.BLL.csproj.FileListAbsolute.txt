@@ -1,0 +1,16 @@
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.BLL\bin\Staging\netcoreapp2.2\ModernizacionPersonas.BLL.deps.json
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.BLL\bin\Staging\netcoreapp2.2\ModernizacionPersonas.BLL.dll
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.BLL\bin\Staging\netcoreapp2.2\ModernizacionPersonas.BLL.pdb
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.BLL\bin\Staging\netcoreapp2.2\ModernizacionPersonas.Common.dll
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.BLL\bin\Staging\netcoreapp2.2\ModernizacionPersonas.DAL.dll
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.BLL\bin\Staging\netcoreapp2.2\ModernizacionPersonas.Entities.dll
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.BLL\bin\Staging\netcoreapp2.2\ModernizacionPersonas.Common.pdb
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.BLL\bin\Staging\netcoreapp2.2\ModernizacionPersonas.DAL.pdb
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.BLL\bin\Staging\netcoreapp2.2\ModernizacionPersonas.Entities.pdb
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.BLL\obj\Staging\netcoreapp2.2\ModernizacionPersonas.BLL.csprojAssemblyReference.cache
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.BLL\obj\Staging\netcoreapp2.2\ModernizacionPersonas.BLL.AssemblyInfoInputs.cache
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.BLL\obj\Staging\netcoreapp2.2\ModernizacionPersonas.BLL.AssemblyInfo.cs
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.BLL\obj\Staging\netcoreapp2.2\ModernizacionPersonas.BLL.csproj.CoreCompileInputs.cache
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.BLL\obj\Staging\netcoreapp2.2\ModernizacionPersonas.BLL.csproj.CopyComplete
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.BLL\obj\Staging\netcoreapp2.2\ModernizacionPersonas.BLL.dll
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.BLL\obj\Staging\netcoreapp2.2\ModernizacionPersonas.BLL.pdb

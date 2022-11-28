@@ -1,0 +1,449 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.Api\\ModernizacionPersonas.Api.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.Api\\ModernizacionPersonas.Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.Api\\ModernizacionPersonas.Api.csproj",
+        "projectName": "ModernizacionPersonas.Api",
+        "projectPath": "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.Api\\ModernizacionPersonas.Api.csproj",
+        "packagesPath": "C:\\Users\\ext.jsanchez\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.Api\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ext.jsanchez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "targetAlias": "netcoreapp2.2",
+            "projectReferences": {
+              "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.BLL\\ModernizacionPersonas.BLL.csproj": {
+                "projectPath": "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.BLL\\ModernizacionPersonas.BLL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "targetAlias": "netcoreapp2.2",
+          "dependencies": {
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            },
+            "Microsoft.AspNetCore.Razor.Design": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.BLL\\ModernizacionPersonas.BLL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.BLL\\ModernizacionPersonas.BLL.csproj",
+        "projectName": "ModernizacionPersonas.BLL",
+        "projectPath": "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.BLL\\ModernizacionPersonas.BLL.csproj",
+        "packagesPath": "C:\\Users\\ext.jsanchez\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.BLL\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ext.jsanchez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "targetAlias": "netcoreapp2.2",
+            "projectReferences": {
+              "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.Common\\ModernizacionPersonas.Common.csproj": {
+                "projectPath": "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.Common\\ModernizacionPersonas.Common.csproj"
+              },
+              "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.DAL\\ModernizacionPersonas.DAL.csproj": {
+                "projectPath": "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.DAL\\ModernizacionPersonas.DAL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "targetAlias": "netcoreapp2.2",
+          "dependencies": {
+            "DotNetCore.NPOI": {
+              "target": "Package",
+              "version": "[1.2.2, )"
+            },
+            "EASendMail": {
+              "target": "Package",
+              "version": "[7.9.0.6, )"
+            },
+            "EPPlus": {
+              "target": "Package",
+              "version": "[4.5.3, )"
+            },
+            "Handlebars.Net": {
+              "target": "Package",
+              "version": "[1.10.1, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[5.6.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "PDFsharp-MigraDoc-GDI": {
+              "target": "Package",
+              "version": "[1.50.5147, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[5.6.0, )"
+            },
+            "iTextSharp.LGPLv2.Core": {
+              "target": "Package",
+              "version": "[1.6.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.Common\\ModernizacionPersonas.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.Common\\ModernizacionPersonas.Common.csproj",
+        "projectName": "ModernizacionPersonas.Common",
+        "projectPath": "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.Common\\ModernizacionPersonas.Common.csproj",
+        "packagesPath": "C:\\Users\\ext.jsanchez\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ext.jsanchez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "targetAlias": "netcoreapp2.2",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "targetAlias": "netcoreapp2.2",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.5.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "System.ServiceModel.Duplex": {
+              "target": "Package",
+              "version": "[4.4.*, )"
+            },
+            "System.ServiceModel.Http": {
+              "target": "Package",
+              "version": "[4.4.*, )"
+            },
+            "System.ServiceModel.NetTcp": {
+              "target": "Package",
+              "version": "[4.4.*, )"
+            },
+            "System.ServiceModel.Security": {
+              "target": "Package",
+              "version": "[4.4.*, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.DAL\\ModernizacionPersonas.DAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.DAL\\ModernizacionPersonas.DAL.csproj",
+        "projectName": "ModernizacionPersonas.DAL",
+        "projectPath": "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.DAL\\ModernizacionPersonas.DAL.csproj",
+        "packagesPath": "C:\\Users\\ext.jsanchez\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.DAL\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ext.jsanchez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "targetAlias": "netcoreapp2.2",
+            "projectReferences": {
+              "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.Common\\ModernizacionPersonas.Common.csproj": {
+                "projectPath": "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.Common\\ModernizacionPersonas.Common.csproj"
+              },
+              "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.Entities\\ModernizacionPersonas.Entities.csproj": {
+                "projectPath": "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.Entities\\ModernizacionPersonas.Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "targetAlias": "netcoreapp2.2",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.0, )"
+            },
+            "Z.BulkOperations": {
+              "target": "Package",
+              "version": "[3.0.12, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.Entities\\ModernizacionPersonas.Entities.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.Entities\\ModernizacionPersonas.Entities.csproj",
+        "projectName": "ModernizacionPersonas.Entities",
+        "projectPath": "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.Entities\\ModernizacionPersonas.Entities.csproj",
+        "packagesPath": "C:\\Users\\ext.jsanchez\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.Entities\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ext.jsanchez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "targetAlias": "netcoreapp2.2",
+            "projectReferences": {
+              "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.Common\\ModernizacionPersonas.Common.csproj": {
+                "projectPath": "C:\\Users\\ext.jsanchez\\Documents\\Proyectos\\PMPUV\\ModernizacionPersonas.Common\\ModernizacionPersonas.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "targetAlias": "netcoreapp2.2",
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

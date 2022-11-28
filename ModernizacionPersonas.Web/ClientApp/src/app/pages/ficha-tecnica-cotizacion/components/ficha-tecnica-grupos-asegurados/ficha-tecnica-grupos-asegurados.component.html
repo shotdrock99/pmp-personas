@@ -1,0 +1,149 @@
+<div class="grupos-asegurados-container" *ngFor="let grupo of model">
+  <div class="grupo-asegurados-container" fxFlex="100%" fxLayout="row">
+    <div fxFlex="5%" fxFlex.gdGap.xs="8%" fxFlex.gt-sm="3%">
+      <span (click)="grupo.visible=!grupo.visible">
+        <mat-icon *ngIf="!grupo.visible">keyboard_arrow_right</mat-icon>
+        <mat-icon *ngIf="grupo.visible">keyboard_arrow_down</mat-icon>
+      </span>
+    </div>
+    <div fxFlex="95%" fxFlex.gdGap.xs="92%" fxFlex.gt-sm="97%" class="grupo-asegurados-content" [ngClass]="{'expanded':grupo.visible}">
+      <table>
+        <thead>
+          <tr>
+            <th colspan="5" class="title">
+              <div style="width:250px; display: inline-block;">Grupo de Asegurados:</div>
+              {{grupo.nombre}}
+            </th>
+          </tr>
+          <tr>
+            <th colspan="5">
+              <div style="width:250px; display: inline-block;">Tipo Suma Asegurada:</div>
+              {{grupo.tipoSumaAsegurada.nombreTipoSumaAsegurada}}
+            </th>
+          </tr>
+          <tr>
+            <th colspan="5">
+              <div style="width:250px; display: inline-block;">Listado Asegurados:</div>
+              {{grupo.conListaAsegurados?'SI':'NO'}}
+            </th>
+          </tr>
+          <tr>
+            <th colspan="5">
+              <div style="width:250px; display: inline-block;">Numero Asegurados:</div>
+              {{grupo.numeroAsegurados}}
+            </th>
+          </tr>
+          <tr *ngIf="mostrarNumeroAseguradosPotencial">
+            <th colspan="5">
+              <div style="width:250px; display: inline-block;">Numero Asegurados Potencial:</div>
+              {{grupo.numeroAsegurados * grupo.porcentajeEsperado / 100}}
+            </th>
+          </tr>
+          <tr *ngIf="mostrarPorcentajeEsperado">
+            <th colspan="5">
+              <div style="width:250px; display: inline-block;">Porcentaje Esperado:</div>
+              {{grupo.porcentajeEsperado/100 | percent:'1.0-4'}}
+            </th>
+          </tr>
+          <tr>
+            <th colspan="5">
+              <div style="width:250px; display: inline-block;">Edad Promedio:</div>
+              {{grupo.edadPromedio}}
+            </th>
+          </tr>
+          <tr *ngIf="grupo.conDistribucionAsegurados">
+            <th colspan="2">Numero de asegurados por opción</th>
+            <th *ngFor="let opcion of grupo.valoresAseguradosTotales; let i = index">
+              <div>
+                {{grupo['aseguradosOpcion' + (i+ 1)]}}</div>
+            </th>
+          </tr>
+          <tr>
+            <th colspan="2">Valor Asegurado Total</th>
+            <th *ngFor="let item of grupo.valoresAseguradosTotales">
+              <div class="currency-container"> {{item.valorAseguradoTotal | currency: 'USD' : 'symbol' : '1.0-4'}}
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody *ngIf="grupo.visible">
+          <tr class="opciones">
+            <td colspan="2">Detalle</td>
+            <td *ngFor="let opcion of grupo.valoresAseguradosTotales let idx=index;">
+              <span *ngIf="grupo.numeroOpciones===1">Valor Asegurado</span>
+              <span *ngIf="grupo.numeroOpciones>1">Opción {{idx+1}}</span>
+            </td>
+          </tr>
+          <!-- Listado de amparos sin filtros -->
+          <tr *ngFor="let amparo of grupo.amparos">
+            <td colspan="2">{{amparo.nombreAmparo}}</td>
+            <td *ngFor="let opcion of amparo.opcionesValores">
+              <div class="currency-container">{{opcion.valorAsegurado | currency: 'USD' : 'symbol' : '1.0-0'}}</div>
+            </td>
+          </tr>
+          <tr class="title-h2" *ngIf="grupo.tipoSumaAsegurada.codigoTipoSumaAsegurada===1">
+            <td colspan="2" style="text-align: right;">Prima Individual Anual <span class="hidden">según tasa</span>
+            </td>
+            <td *ngFor="let opcion of grupo.primas.primaIndividualAnual">
+              <div class="currency-container">{{opcion.valor | currency: 'USD' : 'symbol' : '1.0-0'}}</div>
+            </td>
+          </tr>
+          <tr class="title-h2" *ngIf="showAsistenciaField(grupo)">
+            <td colspan="2" style="text-align: right;">Total Prima Anual (Sin Asistencias) </td>
+            <td *ngFor="let opcion of grupo.primas.primaTotalAnual">
+              <div class="currency-container">{{opcion.valor | currency: 'USD' : 'symbol' : '1.0-0'}}</div>
+            </td>
+          </tr>
+          <tr *ngFor="let asistencia of grupo.asistencias | asistencias">
+            <td colspan="2">{{asistencia.nombreAmparo}}</td>
+            <td *ngFor="let opcion of asistencia.opcionesValores">
+              <div class="currency-container">{{opcion.valorAsegurado | currency: 'USD' : 'symbol' : '1.0-0'}}</div>
+            </td>
+          </tr>
+          <tr class="title-h2">
+            <td colspan="2" style="text-align: right;">TOTAL PRIMA AÑO </td>
+            <td *ngFor="let opcion of grupo.primas.totalPrimaAnual">
+              <div class="currency-container">{{opcion.valor | currency: 'USD' : 'symbol' : '1.0-0'}}</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="h-divider"></div>
+      <div *ngFor="let proyeccion of grupo.proyeccionesFinancieras | nosiniestralidad">
+        <table *ngIf="grupo.visible">
+          <tr>
+            <td class="title" colspan="2">PROYECCION FINANCIERA</td>
+            <td *ngFor="let opcion of grupo.valoresAseguradosTotales let idx=index;">
+              <span *ngIf="grupo.numeroOpciones===1">Valor Asegurado</span>
+              <span *ngIf="grupo.numeroOpciones>1">Opción {{idx+1}}</span>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">TASA COMERCIAL ANUAL</td>
+            <td *ngFor="let opcion of proyeccion.tasaComercialAnual">
+              <div class="percent-container">{{opcion.valor | number:'1.0-4'}}‰</div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">% DESCUENTO</td>
+            <td *ngFor="let opcion of proyeccion.porcentajeDescuento">
+              <div class="percent-container">{{opcion.valor/100| percent:'1.0-4'}}</div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">% RECARGO</td>
+            <td *ngFor="let opcion of proyeccion.porcentajeRecargo">
+              <div class="percent-container">{{opcion.valor/100| percent:'1.0-4'}}</div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">TASA COMERCIAL TOTAL</td>
+            <td *ngFor="let opcion of proyeccion.tasaComercialTotal">
+              <div class="percent-container">{{opcion.valor | number:'1.0-4'}}‰</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

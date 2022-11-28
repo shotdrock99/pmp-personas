@@ -1,0 +1,189 @@
+<div class="cotizacion-wizard">
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="indexView===0" (opened)="indexView=0" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div class="panel-title">
+            <div class="step-badge">{{sections.s0.labelIndex}}</div>
+            <div>
+              <small>Paso 1</small>
+              {{sections.s0.title}}
+            </div>
+          </div>
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <app-informacion-general #informacionBasica [model]="data.informacionBasica" [readonly]="readonly">
+      </app-informacion-general>
+
+      <mat-action-row *ngIf="!readonly">
+        <button mat-button color="primary" (click)="nextStep($event)">
+          {{btnInformacionBasicaText}}
+          <mat-icon>navigate_next</mat-icon>
+        </button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="indexView===1" (opened)="indexView=1" [disabled]="!sections.s1.initialized"
+      hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div class="panel-title">
+            <div class="step-badge">{{sections.s1.labelIndex}}</div>
+            <div>
+              <small>Paso 2</small>
+              {{sections.s1.title}}
+            </div>
+          </div>
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <app-informacion-tomador #datosBasicosTomador [model]="data.informacionBasicaTomador" [version]="data.version" [readonly]="readonly">
+      </app-informacion-tomador>
+
+      <mat-action-row *ngIf="!readonly">
+        <button mat-button (click)="prevStep()">
+          <mat-icon>navigate_before</mat-icon>
+          Anterior
+        </button>
+        <button mat-button color="primary" (click)="nextStep($event)">
+          Siguiente
+          <mat-icon>navigate_next</mat-icon>
+        </button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="indexView===2" (opened)="indexView=2" [disabled]="!sections.s2.initialized"
+      hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div class="panel-title">
+            <div class="step-badge">{{sections.s2.labelIndex}}</div>
+            <div>
+              <small>Paso 3</small>
+              {{sections.s2.title}}
+            </div>
+          </div>
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <app-informacion-aseguramiento #informacionAseguramiento [model]="data.informacionNegocio" [version]="data.version"
+        [readonly]="readonly" (OnEsNegocioDirectoEmitter)="OnInformacionNegocioChange($event)"
+        (OnApliqueSiniestralidadEmitter)="OnSiniestralidadChange($event)" (OnAnyosSiniestralidad)="OnAnyosSiniestralidadChange($event)" >
+      </app-informacion-aseguramiento>
+
+      <mat-action-row *ngIf="!readonly">
+        <button mat-button (click)="prevStep()">
+          <mat-icon>navigate_before</mat-icon>
+          Anterior
+        </button>
+        <button mat-button color="primary" (click)="nextStep($event)">
+          Siguiente
+          <mat-icon>navigate_next</mat-icon>
+        </button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="indexView===3" (opened)="indexView=3" [disabled]="!sections.s3.initialized"
+      hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div class="panel-title">
+            <div class="step-badge">{{sections.s3.labelIndex}}</div>
+            <div>
+              <small>Paso 4</small>
+              {{sections.s3.title}}
+            </div>
+          </div>
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <app-informacion-intermediarios #informacionIntermediarios [version]="data.version" [model]="data.informacionIntermediarios"
+        [readonly]="readonly" [esNegocioDirecto]="esNegocioDirecto">
+      </app-informacion-intermediarios>
+
+      <mat-action-row *ngIf="!readonly">
+        <button mat-button (click)="prevStep()">
+          <mat-icon>navigate_before</mat-icon>
+          Anterior
+        </button>
+        <button mat-button color="primary" (click)="nextStep($event)">
+          Siguiente
+          <mat-icon>navigate_next</mat-icon>
+        </button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="indexView===4" (opened)="indexView=4" [disabled]="!sections.s4.initialized"
+      hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div class="panel-title">
+            <div class="step-badge">{{sections.s4.labelIndex}}</div>
+            <div>
+              <small>Paso 5</small>
+              {{sections.s4.title}}
+            </div>
+          </div>
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <app-informacion-grupos-asegurados #grupoAsegurados [model]="data.informacionGruposAsegurados"
+        [readonly]="readonly" (sumaFijaUpdate)="updateValues($event)">
+      </app-informacion-grupos-asegurados>
+
+      <mat-action-row *ngIf="!readonly">
+        <button mat-button (click)="prevStep()">
+          <mat-icon>navigate_before</mat-icon>
+          Anterior
+        </button>
+        <button mat-button color="primary" (click)="nextStep($event)">
+          Siguiente
+          <mat-icon>navigate_next</mat-icon>
+        </button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="indexView===5" (opened)="indexView=5" [disabled]="!sections.s5.initialized"
+      *ngIf="tieneTasaSiniestralidad" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div class="panel-title">
+            <div class="step-badge">{{sections.s5.labelIndex}}</div>
+            <div>
+              <small>Paso 6</small>
+              {{sections.s5.title}}
+            </div>
+          </div>
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <app-informacion-siniestralidad #siniestralidad [data]="data.informacionSiniestralidad"
+        [anyosSiniestralidad$]="this.anyosSiniestralidadSubject.asObservable()"  [readonly]="readonly">
+      </app-informacion-siniestralidad>
+
+      <mat-action-row *ngIf="!readonly">
+        <button mat-button (click)="prevStep()">
+          <mat-icon>navigate_before</mat-icon>
+          Anterior
+        </button>
+        <button mat-button color="primary" (click)="nextStep($event)">
+          Siguiente
+          <mat-icon>navigate_next</mat-icon>
+        </button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

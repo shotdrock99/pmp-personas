@@ -1,0 +1,34 @@
+.header {
+  .top-header {
+    background: var(--amarillo-solidaria);
+    padding: 5px;
+    font-size: 0.85em;
+    color: #fff;
+    text-align: right;
+    font-weight: 600;
+    padding-right: 1.5em;
+
+    .description.main-description {
+      padding: 0.7em 0.5em;
+    }
+  }
+
+  .header-logo {
+    padding: 1em 1em;
+    background-color: #fff;
+
+    img {
+      height: auto;
+    }
+  }
+}
+
+footer {
+  padding: 1em 1em;
+  border-top: 20px solid var(--azul-solidaria);
+}
+
+.app-container {
+  height: 100%;
+  overflow: hidden;
+}

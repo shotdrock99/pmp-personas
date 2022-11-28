@@ -1,0 +1,36 @@
+<div class="view-container">
+  <div class="view-title">
+    <h4 class="thin-text">
+      Objetos Parametrizables
+    </h4>
+  </div>
+
+  <div class="view-content">
+    <div fxLayout="row wrap" fxLayoutGap="5em grid" fxLayoutAlign="center" class="card">
+      <div *ngFor="let card of cards">
+        <mat-card class="body-card">
+          <mat-card-header>
+            <div mat-card-avatar>
+              <mat-icon>{{card.icon}}</mat-icon>
+            </div>
+            <mat-card-title>{{card.title}}</mat-card-title>
+            <mat-card-subtitle>
+              <div style="min-height: 20px;">
+                <span *ngIf="card.related!== ''">Relación con: <b>{{card.related}}</b></span>
+              </div>
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              {{card.description}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <div fxFlex></div>
+            <button mat-raised-button color="primary" [routerLink]="card.route">Navegar</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

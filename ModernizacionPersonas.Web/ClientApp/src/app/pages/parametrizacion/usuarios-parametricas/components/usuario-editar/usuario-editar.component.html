@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>{{title}}</h2>
+
+<mat-dialog-content [formGroup]="form">
+
+  <mat-form-field class="mat-form-field-text">
+    <mat-label>Nombre Usuario</mat-label>
+    <input matInput formControlName="name" readonly>
+  </mat-form-field>
+  <mat-form-field class="mat-form-field-text">
+    <mat-label>Email</mat-label>
+    <input name="email" matInput formControlName="email" readonly>
+  </mat-form-field>
+  <mat-form-field class="mat-form-field-text">
+    <mat-label>Nick Usuario</mat-label>
+    <input matInput formControlName="userName" readonly>
+  </mat-form-field>
+  <br>
+  <mat-form-field style="width: 80%;">
+    <mat-label>Roles</mat-label>
+    <mat-select [(ngModel)]="roles" formControlName="roles">
+      <mat-option *ngFor="let rol of rolesUsuario" [value]="rol.roleId" [disabled]="rol.roleId === 0">
+        {{rol.roleName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions class="mat-container">
+  <button mat-raised-button mat-dialog-close>Cancelar</button>
+  <button mat-raised-button color="primary" (click)="edit()">Editar</button>
+</mat-dialog-actions>

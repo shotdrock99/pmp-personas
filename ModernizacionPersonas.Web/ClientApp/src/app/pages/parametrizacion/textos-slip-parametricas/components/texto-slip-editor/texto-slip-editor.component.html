@@ -1,0 +1,63 @@
+<h1 mat-dialog-title>
+  <!-- <div class="float-lg-right">
+    <button mat-button (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div> -->
+  Editar Texto Slip
+</h1>
+<div mat-dialog-content>
+  <div>
+    <small><b>Ramo: </b> {{model.nombreRamo}} <b>></b> <b>Subramo: </b> {{model.nombreSubramo}} <b>></b> <b>Amparo: </b> {{model.nombreAmparo}} <b>></b> <b>Sección: </b> {{model.nombreSeccion}}</small>
+  </div>
+  <div>
+    <p>
+      <small>Inserte las variables ubicando el cursor en el lugar en que desea insertar la variable y haga clic en
+        la
+        acción <b>Insertar</b> junto a cada variable de la lista.</small>
+    </p>
+  </div>
+  <div class="modal-content" fxLayout="row">
+    <div fxFlex="50%">
+      <div class="text-container">
+        <label>Texto</label>
+        <div #textoSlipArea class="texto-slip-area" ngDefaultControl contenteditable [innerHTML]="texto"></div>
+      </div>
+    </div>
+    <div fxFlex="50%">
+      <div style="padding:5px 10px;">
+        <label>Variables</label>
+        <div>
+          <div>
+            <mat-form-field class="full-width">
+              <mat-label>Buscar</mat-label>
+              <input matInput type="text" [(ngModel)]="searchValue">
+              <button mat-button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+          <div class="list-variables-container">
+            <ul>
+              <li *ngFor="let variable of variables | filterList :'nombreVariable' : searchValue : 'includes'">
+                <div fxLayout=" row">
+                  <div fxFlex="70%">
+                    {{variable.nombreVariable}}
+                  </div>
+                  <div fxFlex="30%">
+                    <button mat-button (click)="addVariable($event, variable)">Insertar</button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions fxLayout="row" fxLayoutAlign="end center" fxLayout.lt-md="column" fxLayoutGap="5px"
+  fxLayoutAlign.lt-md="end stretch">
+  <button mat-raised-button (click)="close()">Cancelar</button>
+  <button mat-raised-button color="soli-info" (click)="onAcceptClick()">Guardar</button>
+</div>

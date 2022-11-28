@@ -1,0 +1,56 @@
+<div fxFlex="100%" fxLayout="column" class="table thin-text sm">
+  <div fxLayout="row" fxFlex="100%" class="table-header thin-text">
+    <div fxFlex="34%"  fxFlex.gt-sm="60%"><b>DETALLE CONTROL A AUTORIZAR</b></div>
+    <div fxFlex="33%" fxFlex.gt-sm="20%"><b>GRUPO ASEGURADOS</b></div>
+    <div fxFlex="33%" fxFlex.gt-sm="20%"><b>TIPO AUTORIZACION</b></div>
+  </div>
+  <div fxLayout="column" fxFlex="100%" *ngFor="let item of data" class="table-data">
+    <div fxLayout="row">
+      <div fxFlex="34%" fxFlex.gt-sm="60%" fxLayoutAlign="start" fxLayout="column">
+        <span *ngIf="item.nombreAmparo"><b>{{item.nombreAmparo}}</b></span>
+        <span *ngIf="item.nombreSeccion"><b>{{item.nombreSeccion}}</b></span>
+        <div fxLayout="row">
+          <div>
+            <span class="cursor-pointer" *ngIf="item.items?.length>0" (click)="item.displayItems=!item.displayItems">
+              <mat-icon *ngIf="!item.displayItems">keyboard_arrow_right</mat-icon>
+              <mat-icon *ngIf="item.displayItems">keyboard_arrow_down</mat-icon>
+            </span>
+          </div>
+          <div>{{item.mensajeValidacion}}</div>
+        </div>
+      </div>
+      <div fxFlex="33%" fxFlex.gt-sm="20%" class="text-center">{{item.nombreGrupoAsegurado}}</div>
+      <div fxFlex="33%" fxFlex.gt-sm="20%" class="text-center">
+        <span *ngIf="item.codigoTipoAutorizacion===1" class="badge badge-primary">Por Delegación</span>
+        <span *ngIf="item.codigoTipoAutorizacion===2" class="badge badge-primary">Directa-G.S.P.</span>
+      </div>
+    </div>
+    <div fxFlex="100%" *ngIf="item.displayItems" fxLayout="column" fxLayoutAlign="center start"
+      style="padding-left: 50px;">
+      <div fxLayout="column" fxFlex="100%" *ngFor="let item of item.items" style="margin:15px; padding-left: 15px; border-left: 3px solid #ef8e00; width: 100%;
+        padding-right: 20px;">
+        <div class="bold">
+          <span (click)="item.displayItems=!item.displayItems" class="cursor-pointer">
+            <mat-icon *ngIf="!item.displayItems">keyboard_arrow_right</mat-icon>
+            <mat-icon *ngIf="item.displayItems">keyboard_arrow_down</mat-icon>
+          </span>
+          {{item.nombreGrupoAsegurado}}
+        </div>
+        <div fxLayout="column" *ngIf="item.displayItems">
+          <div fxLayout="column" fxFlex="100%" *ngFor="let item of item.items" class="table-data">
+            <div fxLayout="row">
+              <div fxFlex="34%" fxFlex.gt-sm="60%">
+                <b>{{item.nombreAmparo}}</b> - {{item.mensajeValidacion}}
+              </div>
+              <div fxFlex="33%" fxFlex.gt-sm="20%" class="text-center">{{item.nombreGrupoAsegurado}}</div>
+              <div fxFlex="33%" fxFlex.gt-sm="20%" class="text-center">
+                <span *ngIf="item.codigoTipoAutorizacion===1" class="badge badge-primary">Por Delegación</span>
+                <span *ngIf="item.codigoTipoAutorizacion===2" class="badge badge-primary">Directa-G.S.P.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

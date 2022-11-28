@@ -1,0 +1,41 @@
+<form [formGroup]="form">
+  <div class="grupo-asegurado-wizard">
+
+    <div *ngIf="!hasAmparosModalidad">
+      <app-valores-asegurados-normales [amparos]="dataSource.data" [tipoSumaAsegurada]=tipoSumaAsegurada [readonly]="readonly">
+      </app-valores-asegurados-normales>
+    </div>
+
+    <mat-horizontal-stepper #stepper [linear]="true" *ngIf="hasAmparosModalidad">
+
+      <mat-step [completed]="isValoresAseguradosANValid">
+        <ng-template matStepLabel>A</ng-template>
+        <div class="section-container">
+          <app-valores-asegurados-normales [amparos]="dataSource.data" [tipoSumaAsegurada]=tipoSumaAsegurada [readonly]="readonly">
+          </app-valores-asegurados-normales>
+        </div>
+        <div style="margin-top: 1em;">
+          <button mat-icon-button matStepperNext color="primary" [disabled]="!isValoresAseguradosANValid">
+            <!-- Siguiente -->
+            <mat-icon style="font-size: xxx-large;">navigate_next</mat-icon>
+          </button>
+        </div>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>B</ng-template>
+        <div class="section-container">
+          <valores-asegurados-modalidades [amparos]="dataSource.data" [tipoSumaAsegurada]=tipoSumaAsegurada [readonly]="readonly">
+          </valores-asegurados-modalidades>
+        </div>
+        <div style="margin-top: 1em;">
+          <button mat-icon-button matStepperPrevious>
+            <mat-icon style="font-size: xxx-large;">navigate_before</mat-icon>
+            <!-- Anterior -->
+          </button>
+        </div>
+      </mat-step>
+
+    </mat-horizontal-stepper>
+  </div>
+</form>

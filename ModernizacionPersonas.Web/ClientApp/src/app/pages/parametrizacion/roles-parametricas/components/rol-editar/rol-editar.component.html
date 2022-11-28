@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>{{title}}</h2>
+
+<mat-dialog-content [formGroup]="editRolForm">
+
+  <mat-form-field class="mat-form-field-text">
+    <mat-label>Nombre Rol</mat-label>
+    <input style="cursor: not-allowed;" readonly matInput formControlName="nombre">
+  </mat-form-field>
+
+  <mat-form-field class="mat-form-field-text">
+    <mat-label>Descripcion Rol</mat-label>
+    <input matInput formControlName="descripcion">
+  </mat-form-field>
+
+  <mat-form-field style="width: 60%;">
+    <mat-label>Permisos</mat-label>
+    <mat-select multiple [(ngModel)]="permisos" formControlName="permisos">
+      <mat-option *ngFor="let permiso of permisosRol" [value]="permiso.codigo">
+        {{permiso.nombre}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions class="mat-container">
+  <button mat-raised-button mat-dialog-close>Cancelar</button>
+  <button mat-raised-button color="primary" (click)="edit()">Editar</button>
+</mat-dialog-actions>

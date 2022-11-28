@@ -1,0 +1,40 @@
+<div class="main-container">
+  <div class="modal-title">
+    <h2 class="thin-text">Transacciones</h2>
+  </div>
+  <div>
+    <div class="messages">
+      <div *ngIf="data.length===0" class="empty-messages">
+        <b class="thin-text sm">No hay registro de transacciones</b>
+      </div>
+      <div class="message-row contact first-of-group last-of-group" *ngFor="let item of data; let i=index">
+        <div class="message-container">
+          <div class="avatar right hidden" *ngIf="item.codigoUsuario===loggedUser.userName">{{item.initials}}</div>
+          <div class="bubble thin-text sm">
+            <small>{{item.codigoUsuario}}</small>
+            <div class="comments">
+              <ul *ngFor="let comment of item.comments">
+                <li>
+                  {{comment.message}}
+                </li>
+              </ul>
+            </div>
+            <div class="time secondary-text">{{item.creationDate | date:'MM/dd/yyyy HH:mm'}}</div>
+            <div class="attachment-container" *ngIf="item.attachments?.length>0">
+              <a [href]="item.downloadUrl" targer="_blank" title="Descargar soportes">
+                <span>
+                  {{item.attachments?.length}} soporte<span *ngIf="item.attachments?.length>1">s</span>
+                </span>
+                <mat-icon>cloud_download</mat-icon>
+              </a>
+            </div>
+          </div>
+          <div class="avatar hidden" *ngIf="item.codigoUsuario!==loggedUser.userName">{{item.initials}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="info" (click)="onDismiss()">Cerrar</button>
+  </div>
+</div>

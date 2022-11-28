@@ -1,0 +1,20 @@
+table {
+  width: 100%;
+  border: 1px solid #d0d0d0;
+
+  &.w80{
+    width:80%;
+  }
+
+  th,
+  td {
+    padding: 2px 10px;
+    border: 1px solid #d0d0d0;
+
+    &.title{
+      background-color: #f0f8ff;
+      color: #000;
+      font-weight: bold;
+    }
+  }
+}

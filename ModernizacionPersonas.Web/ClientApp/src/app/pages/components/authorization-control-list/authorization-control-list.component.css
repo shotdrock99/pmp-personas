@@ -1,0 +1,22 @@
+.cursor-pointer {
+  cursor: pointer;
+}
+.table {
+  padding: 20px;
+}
+.table .table-header {
+  border-top: 1px solid #8e8e8e;
+  border-bottom: 1px solid #8e8e8e;
+  padding: 10px 4px;
+}
+.table .table-header div {
+  text-align: center;
+}
+.table .table-data {
+  border-bottom: 1px solid #8e8e8e;
+  padding: 8px 4px;
+}
+.table .table-data .badge {
+  font-size: 100%;
+  padding: 5px 10px;
+}

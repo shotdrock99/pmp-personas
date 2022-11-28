@@ -1,0 +1,116 @@
+<div class="main-container" *ngIf="tablValoresAsegDiarios.length > 0">
+  <div fxFlex="100%" fxLayout="column">
+    <div class="table-title thin-text md">
+      <b>VALORES ASEGURADOS DIARIOS: </b>
+    </div>
+    <div fxFlex="100%" fxLayout="column" class="table-container thin-text sm">
+      <div fxFlex="100%" fxLayout="row" class="table-header">
+        <div *ngIf="!isSumaFija" class="column-header" fxFlex="40%">AMPAROS</div>
+        <div *ngIf="isSumaFija" class="column-header" fxFlex="34%"></div>
+        <ng-container *ngIf="isSumaFija">
+          <div class="column-header" [fxFlex]="66/opciones.length" *ngFor="let o of opciones; let i=index;">
+            <b>Opción {{i+1}}</b>
+          </div>
+        </ng-container>
+        <div *ngIf="!isSumaFija" style="padding-left: 8.5em;">
+          <div class="column-header" [fxFlex]="!esTasaMensual?60:120/opciones.length">
+            <b>Días</b>
+          </div>
+          <div *ngIf="!esTasaMensual" style="padding-left: 5em;text-align: center;"class="column-header" [fxFlex]="!esTasaMensual?60:120/opciones.length">
+            <b>Valor</b>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="isSumaFija" fxFlex="100%" fxLayout="row" class="table-header">
+        <ng-container>
+          <div class="column-header" [fxFlex]="35">
+            <b>AMPAROS</b>
+          </div>
+        </ng-container>
+        <div style="padding-left: 1.5em;text-align: center;">
+          <div class="column-header ffset-8 " [fxFlex]="!esTasaMensual?70:120/opciones.length">
+            <b>
+              Días</b>
+          </div>
+          <div class="column-header ffset-8  pl-4" [fxFlex]="!esTasaMensual?70:120/opciones.length">
+            <b>Valor 
+              </b>
+          </div>
+          
+        </div>
+        <div style="padding-left: 1.5em;text-align: center;">
+          <div class="column-header ffset-8  pl-4" [fxFlex]="!esTasaMensual?70:120/opciones.length">
+            <b>
+              Días</b>
+          </div>
+          <div class="column-header ffset-8 pl-4" [fxFlex]="!esTasaMensual?70:120/opciones.length">
+            <b>Valor 
+              </b>
+          </div>
+          
+        </div>
+        <div style="padding-left: 1.5em;text-align: center;">
+          <div class="column-header ffset-8  pl-4" [fxFlex]="!esTasaMensual?70:120/opciones.length">
+            <b>
+              Días</b>
+          </div>
+          <div class="column-header ffset-8  pl-4" [fxFlex]="!esTasaMensual?70:120/opciones.length">
+            <b>Valor 
+              </b>
+          </div>
+          
+        </div>
+      </div>
+      <div fxFlex="100%" fxLayout="column" class="table-body">
+        <div fxFlex="100%" fxLayout="row" class="table-row" *ngFor="let amparo of tablValoresAsegDiarios">
+          <div *ngIf="isSumaFija" class="column-header" fxFlex="34%">{{amparo.nombreAmparo === 'PRIMA ANUAL TOTAL' && esTasaMensual ?
+            'TASA MENSUAL POR MIL A APLICAR':amparo.nombreAmparo}}</div>
+            <div *ngIf="!isSumaFija"  class="column-header" fxFlex="40%">{{amparo.nombreAmparo === 'PRIMA ANUAL TOTAL' && esTasaMensual ?
+              'TASA MENSUAL POR MIL A APLICAR':amparo.nombreAmparo}}</div>
+          <div fxLayout="row" *ngFor="let o of opciones; let i=index" class="column-data text-center"
+            [fxFlex]="66/opciones.length">
+            <div fxFlexFill *ngIf="amparo.codigoTipoSumaAsegurada===1">
+              <div fxFlex="40%" fxLayoutAlign="end">
+                {{(amparo.nombreAmparo !== 'ASISTENCIA')
+                ? (amparo.opciones[i].numeroDias)
+                : (amparo.nombreAmparo === 'ASISTENCIA' && amparo.opciones[i].valorAsegurado === 0)
+                ? 'NO'
+                : 'SI'}}
+              </div>
+              <div fxFlex="63%" fxLayoutAlign="end">
+                {{(amparo.nombreAmparo !== 'ASISTENCIA')
+                ? (amparo.opciones[i].valorDiario | currency: 'USD' : 'symbol' : '1.0-0')
+                : (amparo.nombreAmparo === 'ASISTENCIA' && amparo.opciones[i].valorAsegurado === 0)
+                ? 'NO'
+                : 'SI'}}
+              </div>
+            </div>
+            <div fxFlexFill *ngIf="amparo.codigoTipoSumaAsegurada!==1">
+              <div fxFlex="40%" fxLayoutAlign="end"
+                *ngIf="amparo.nombreAmparo !== 'ASISTENCIA' && amparo.opciones[i].tipoValor === 0">
+                {{amparo.nombreAmparo !== 'PRIMA ANUAL TOTAL' ?
+                (amparo.opciones[i].numeroDias):
+                esTasaMensual? (amparo.opciones[i].tasaMensual/100 | percent : '1.0-2'): ''}}
+              </div>
+              <div fxFlex="40%" fxLayoutAlign="end"
+                *ngIf="amparo.nombreAmparo !== 'ASISTENCIA' && amparo.opciones[i].tipoValor === 1">
+                {{amparo.opciones[i].numeroDias}}
+              </div>
+              <div fxFlex="40%" fxLayoutAlign="end"
+                *ngIf="amparo.nombreAmparo !== 'ASISTENCIA' && amparo.opciones[i].tipoValor === 2">
+                {{amparo.opciones[i].numeroDias | number:'1.0-4'}}%
+              </div>
+              <div fxFlex="40%" fxLayoutAlign="end"
+                *ngIf="amparo.nombreAmparo !== 'ASISTENCIA' && amparo.opciones[i].tipoValor === 3"></div>
+              <div fxFlex="40%" fxLayoutAlign="end" *ngIf="esTasaMensual && amparo.nombreAmparo === 'ASISTENCIA'">SI
+              </div>
+              <div fxFlex="40%" fxLayoutAlign="end" *ngIf="!esTasaMensual">
+                {{amparo.nombreAmparo !== 'ASISTENCIA' ? (amparo.opciones[i].valorDiario | currency: 'USD' : 'symbol' : '1.0-0') : 'SI'}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="unload-overlay" *ngIf="!pageLoaded">
+  <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate">
+  </mat-progress-spinner>
+  <b class="thin-text md">Cargando Cotización...</b>
+</div>
+
+<div *ngIf="pageLoaded" fxLayout="column" class="view-container">
+  <div>
+    <app-cotizacion-tabs></app-cotizacion-tabs>
+  </div>
+  <div class="actions-container">
+    <app-page-toolbar [data]="toolbarConfig.items"></app-page-toolbar>
+  </div>
+  <div *ngIf="numeroCotizacion" class="num-cotizacion-container">
+    Cotizacion No. {{numeroCotizacion | trimzero}}
+    <small *ngIf="version == 777"> Ficha Alterna </small>
+    <small *ngIf="version != 777"> versión {{version}} </small>
+  </div>
+
+  <app-readonly-cotizacion-toast [data]="model" [readonly]="readonly" (reload)="reload($event)">
+  </app-readonly-cotizacion-toast>
+
+  <div class="view-content">
+    <app-cotizacion-viewer [data]="model" [readonly]="readonly" (updateInitialValues)=updateInitialValuesSF($event)></app-cotizacion-viewer>
+  </div>
+</div>

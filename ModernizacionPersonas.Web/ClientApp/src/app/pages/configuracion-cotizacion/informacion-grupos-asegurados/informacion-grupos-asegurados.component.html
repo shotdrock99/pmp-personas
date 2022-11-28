@@ -1,0 +1,100 @@
+<div class="grupos-asegurados-section-container" [formGroup]="gruposAseguradosForm">
+  <div fxFlex="100%">
+    <section class="toolbar">
+      <button mat-raised-button color="primary" (click)="openAgregarGrupoAsegurados()"
+        [disabled]="!allowCreateGrupoAsegurados">
+        Agregar Grupo Nuevo
+      </button>
+    </section>
+
+    <div class="table-container">
+      <table mat-table #tableGruposAsegurados [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef>Nombre</th>
+          <td mat-cell *matCellDef="let element">
+            <div style="display: inline-flex;">
+              <div *ngIf="!element.configured" class="errors-popover">
+                <mat-icon [mdePopoverTriggerFor]="appPopover" mdePopoverTriggerOn="click"
+                  #popoverTrigger="mdePopoverTrigger">error_outline</mat-icon>
+                <mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
+                  <mat-card style="max-width: 300px">
+                    <mat-card-content>
+                      <b style="color:red;">El grupo aún no ha sido configurado.</b>
+                    </mat-card-content>
+                  </mat-card>
+                </mde-popover>
+              </div>
+              <span class="mobile-label">Nombre:</span>
+              <span>
+                {{ element.nombreGrupoAsegurado }}
+                <span *ngIf="!readonly" style="cursor:pointer;" title="Cambiar nombre del grupo"
+                  (click)="openEditGroupName(element)">
+                  <mat-icon style="font-size: small;height: auto;width: auto;">edit</mat-icon>
+                </span>
+              </span>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tiposumaasegurada">
+          <th mat-header-cell *matHeaderCellDef>Tipo Suma Asegurada</th>
+          <td mat-cell *matCellDef="let element">
+            <span class="mobile-label">Tipo Suma Asegurada:</span>
+            {{ element.tipoSumaAsegurada.nombreTipoSumaAsegurada }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="sumaminimaasegurada">
+          <th mat-header-cell *matHeaderCellDef>Suma Mínima Asegurada</th>
+          <td mat-cell *matCellDef="let element">
+            <span class="mobile-label">Suma Mínima Asegurada:</span>
+            {{ element.valorMinAsegurado | currency: 'USD' : 'symbol' : '1.0-4'  }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="sumamaximaasegurada">
+          <th mat-header-cell *matHeaderCellDef>Suma Máxima Asegurada</th>
+          <td mat-cell *matCellDef="let element">
+            <span class="mobile-label">Suma Máxima Asegurada:</span>
+            {{ element.valorMaxAsegurado | currency: 'USD' : 'symbol' : '1.0-4' }}
+          </td>
+        </ng-container>
+
+        <ng-container style="width:100px;" matColumnDef="opciones">
+          <th mat-header-cell *matHeaderCellDef>Opciones</th>
+          <td mat-cell *matCellDef="let element">
+            <div class="button-group">
+              <button mat-raised-button class="mat-x-small" matTooltip="Ver" *ngIf="readonly"
+                (click)="openConfigureGrupo($event, element)">
+                Ver
+              </button>
+              <button mat-raised-button class="mat-x-small" matTooltip="Configurar Grupo" *ngIf="!readonly"
+                (click)="openConfigureGrupo($event, element)">
+                Configurar
+              </button>
+              <button mat-raised-button class="mat-x-small" color="warn" matTooltip="Eliminar Grupo" *ngIf="!readonly"
+                (click)="removeGrupo($event, element)">
+                Eliminar
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
+      </table>
+
+      <div class="table-footer thin-text sm">
+        Total de registros: {{itemsCount}}
+      </div>
+
+    </div>
+    <div *ngIf="showErrors" class="form-errors-container thin-text xs">
+      <ul>
+        <li *ngFor="let error of formErrors">
+          {{error}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

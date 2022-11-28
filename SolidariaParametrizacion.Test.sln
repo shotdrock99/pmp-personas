@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolidariaParametrizacion.Test", "SolidariaParametrizacion.Test\SolidariaParametrizacion.Test.csproj", "{44650288-EB1B-471F-AEDE-5BB2B2C560B2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolidariaParametrizacion.Common", "SolidariaParametrizacion.Common\SolidariaParametrizacion.Common.csproj", "{B70FD1D4-D444-4784-8115-426197CD01A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{44650288-EB1B-471F-AEDE-5BB2B2C560B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44650288-EB1B-471F-AEDE-5BB2B2C560B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44650288-EB1B-471F-AEDE-5BB2B2C560B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44650288-EB1B-471F-AEDE-5BB2B2C560B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B70FD1D4-D444-4784-8115-426197CD01A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B70FD1D4-D444-4784-8115-426197CD01A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B70FD1D4-D444-4784-8115-426197CD01A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B70FD1D4-D444-4784-8115-426197CD01A7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BBE84E94-2521-48A8-8F8C-5CA0232C1FB4}
+	EndGlobalSection
+EndGlobal

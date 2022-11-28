@@ -1,0 +1,26 @@
+.causales-list-container .view-title {
+  background: #fefefe;
+  padding: 10px 20px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.causales-list-container .table-container {
+  margin: 10px 0;
+  padding: 0 20px 20px;
+  overflow: auto;
+}
+.causales-list-container .table-container th.mat-header-cell {
+  text-align: center !important;
+}
+.causales-list-container .table-container td .roles-container .badge {
+  padding: 8px;
+  margin: 2px;
+}
+.causales-list-container .table-container .table-footer {
+  text-align: right;
+  padding: 10px 20px;
+  font-weight: bold;
+}
+.mouseHoover {
+  cursor: pointer;
+}

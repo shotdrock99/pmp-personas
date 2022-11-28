@@ -1,0 +1,11 @@
+<div fxLayout="column">
+  <div fxLayout="column" class="cotizacion-title">
+    <app-cotizacion-tabs></app-cotizacion-tabs>
+  </div>
+  <div class="actions-container">
+    <app-page-toolbar [data]="toolbarConfig.items"></app-page-toolbar>
+  </div>
+  <div class="main-container">
+    <app-cotizacion-viewer [data]="model"></app-cotizacion-viewer>
+  </div>
+</div>

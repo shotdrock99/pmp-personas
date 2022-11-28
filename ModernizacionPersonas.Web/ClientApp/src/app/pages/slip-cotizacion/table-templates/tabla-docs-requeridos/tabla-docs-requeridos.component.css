@@ -1,0 +1,31 @@
+.main-container {
+  margin-bottom: 40px;
+}
+.main-container table {
+  width: 100%;
+}
+.main-container table tr th {
+  border: 1px solid #8e8e8e;
+  text-align: center;
+  padding: 4px;
+}
+.main-container table tr td {
+  border: 1px solid #8e8e8e;
+  padding: 4px;
+}
+.main-container .table-docs {
+  border: 1px solid #8e8e8e;
+}
+.main-container .table-docs .title {
+  padding: 10px;
+  background-color: #eee;
+}
+.main-container .table-docs .sub-title {
+  padding: 5px 10px;
+  border-top: 1px solid #8e8e8e;
+  border-bottom: 1px solid #8e8e8e;
+  background-color: #eee;
+}
+.main-container .table-docs ul {
+  list-style: none;
+}

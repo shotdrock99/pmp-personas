@@ -1,0 +1,117 @@
+<h1 mat-dialog-title>
+  <div class="float-lg-right">
+    <button mat-button (click)="onNoClick()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  Configurar Grupo de Asegurados
+  <div class="thin-text sm">
+    <span class="badge badge-md badge-info margin-rigth"> Nombre: {{ nombreGrupo }}
+    </span>
+    <span class="badge badge-md badge-info">Tipo Suma Asegurada: {{ tipoSumaAsegurada.nombreTipoSumaAsegurada }}</span>
+  </div>
+</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <div class="grupo-asegurado-wizard">
+      <mat-horizontal-stepper #stepper linear (selectionChange)="onStepChange($event)">
+
+        <mat-step [stepControl]="amparosArray">
+          <div class="section-container">
+            <ng-template matStepLabel>Amparos</ng-template>
+            <ng-select #amparos name="amparos" [items]="amparosCollection$ | async" bindLabel="nombreAmparo"
+              bindValue="codigoAmparo" [multiple]="true" [closeOnSelect]="false" placeholder="Amparos"
+              clearAllText="Limpiar" [(ngModel)]="amparosSeleccionados" [ngModelOptions]="{ standalone : true }"
+              formArrayName="amparos" [clearable]="false" (add)="onAddAmparos($event)" [disabled]="readonly"
+              (remove)="onRemoveAmparos($event)">
+            </ng-select>
+            <div *ngIf="amparosArray.errors" class="text-danger">
+              <div *ngIf="amparosArray.errors.excedamparosbasicos">
+                <b class="error-message">Excedió el número de Amparos Básicos No Adicionales seleccionados</b>
+              </div>
+              <div *ngIf="amparosArray.errors.minlength">
+                <b class="error-message">Al menos un Amparo debe ser seleccionado</b>
+              </div>
+              <div *ngIf="amparosArray.errors.amparonoadicionalrequired">
+                <b class="error-message">Al menos un Amparo Básico No Adicional debe ser seleccionado</b>
+              </div>
+            </div>
+          </div>
+
+          <mat-action-row>
+            <button mat-button color="primary" matStepperNext>
+              Siguiente
+              <mat-icon>navigate_next</mat-icon>
+            </button>
+          </mat-action-row>
+        </mat-step>
+
+        <mat-step [stepControl]="valoresAseguradosArray">
+          <ng-template matStepLabel>Valores Asegurados</ng-template>
+          <div class="section-container">
+            <app-valores-asegurados [tipoSumaAsegurada]="tipoSumaAsegurada" [amparos]="selectedAmparos"
+              [readonly]="readonly">
+            </app-valores-asegurados>
+          </div> 
+
+          <mat-action-row>
+            <button mat-button matStepperPrevious>
+              <mat-icon>navigate_before</mat-icon>
+              Anterior
+            </button>
+            <button mat-button color="primary" matStepperNext [disabled]="!isValoresAseguradosValid">
+              Siguiente
+              <mat-icon>navigate_next</mat-icon>
+            </button>
+          </mat-action-row>
+        </mat-step>
+
+        <mat-step [stepControl]="edadesAmparosArray">
+          <ng-template matStepLabel>Edades</ng-template>
+          <div class="section-container">
+            <app-edades-ingresosamparos #edadesamparos [amparos]="selectedAmparos" [readonly]="readonly">
+            </app-edades-ingresosamparos>
+          </div>
+
+          <mat-action-row>
+            <button mat-button matStepperPrevious>
+              <mat-icon>navigate_before</mat-icon>
+              Anterior
+            </button>
+            <button mat-button color="primary" matStepperNext [disabled]="!isEdadesAmparosValid">
+              Siguiente
+              <mat-icon>navigate_next</mat-icon>
+            </button>
+          </mat-action-row>
+        </mat-step>
+
+        <mat-step [stepControl]="aseguradosArray">
+          <ng-template matStepLabel>Asegurados</ng-template>
+          <div class="section-container">
+            <app-asegurados #asegurados [amparos]="selectedAmparos" [tipoEstructura]="data.grupoAseguradoInfo.tipoEstructura" 
+            [readonly]="readonly" [opcionesUsadas$]="opcionesUsadasSubject.asObservable()">
+            </app-asegurados>
+          </div>
+
+          <mat-action-row>
+            
+            <button mat-button matStepperPrevious>
+              <mat-icon>navigate_before</mat-icon>
+              Anterior
+            </button>
+            <button mat-button color="primary" (click)="onCompleteClick()" [disabled]="!isAseguradosValid"
+              *ngIf="!readonly">
+              Finalizar
+              <mat-icon>navigate_next</mat-icon>
+            </button>
+            <button mat-button color="primary" (click)="dismiss()" *ngIf="readonly">
+              Cerrar
+              <mat-icon>navigate_next</mat-icon>
+            </button>
+          </mat-action-row>
+        </mat-step>
+
+      </mat-horizontal-stepper>
+    </div>
+  </form>
+</div>

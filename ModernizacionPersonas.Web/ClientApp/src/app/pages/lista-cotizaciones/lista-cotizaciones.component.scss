@@ -1,0 +1,64 @@
+.filter-container {
+  padding: 10px 20px;
+}
+
+.table-container {
+
+  table {
+    height: 100%;
+    .mat-row {
+      .more-container {
+        min-width: 30px;
+        .context-menu {
+          display: none;
+        }
+      }
+
+      &.hovered {
+        background: #eee;
+        .more-container {
+          .context-menu {
+            display: block;
+            outline: none;
+          }
+        }
+      }
+
+      &.highlighted {
+        background: #f5f5f5;
+      }
+    }
+
+    th {
+      padding: 0 5px;
+      &.mat-header-cell {
+        text-align: center !important;
+      }
+    }
+
+    td {
+      text-align: center;
+      padding: 0 5px;
+      .badge {
+        padding: 6px;
+        font-size: 85%;
+
+        &.badge-state {
+          min-width: 150px;
+          min-height: 20px;
+        }
+      }
+
+      .color-steelblue {
+        color: steelblue;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .table-footer {
+    text-align: right;
+    padding: 10px 20px;
+    font-weight: bold;
+  }
+}

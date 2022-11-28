@@ -1,0 +1,33 @@
+<div>
+  <div class="siniestralidad-table" fxFlex="100%" fxLayout="column">
+    <div class="theader" fxFlex="100%">
+      <div class="row" fxFlex="100%" fxLayout="row">
+        <div fxFlex="10%">Año</div>
+        <div fxFlex="22%">Fecha desde</div>
+        <div fxFlex="22%">Fecha hasta</div>
+        <div fxFlex="26%">Valor incurrido</div>
+        <div fxFlex="20%">Nro. Casos</div>
+      </div>
+    </div>
+
+    <div class="tbody" fxFlex="100%" fxLayout="column">
+      <div *ngIf="anyosSiniestralidad > 0">
+        <app-registro-siniestralidad *ngFor="let item of [].constructor(anyosSiniestralidad); let i = index" [model]="model['anno' + (i + 1)]"
+          [anyosSiniestralidad$]="anyosSiniestralidad$" [readonly]="readonly" (OnValidate)="validateOpcion($event)">
+        </app-registro-siniestralidad>
+      </div>
+      <div class="table-footer"></div>
+    </div>
+
+    <div *ngIf="submitted && formErrors" class="form-errors-container thin-text md">
+      <ul>
+        <li *ngIf="formErrors.empty">
+          <b>El formulario no puede estar vacío. Verifique nuevamente.</b>
+        </li>
+        <li *ngIf="formErrors.initialGtToday">
+          <b>La fecha inicial de siniestralidad no puede ser mayor a la fecha de ayer.</b>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

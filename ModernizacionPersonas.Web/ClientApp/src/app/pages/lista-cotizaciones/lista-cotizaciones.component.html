@@ -1,0 +1,192 @@
+<div fxLayout="column" class="view-container">
+
+  <div fxLayout="row" class="view-title">
+    <div class="toolbar" fxFlex="100%">
+      <div fxFlex="20%" fxLayout="row" fxLayoutAlign="start center">
+        <div class="thin-text">
+          Listado de Cotizaciones
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions-container">
+    <div fxLayout="row">
+      <div fxFlex="80%">
+        <app-page-toolbar [data]="toolbarConfig.items"></app-page-toolbar>
+      </div>
+      <div fxFlex="20%" fxLayoutAlign="end">
+        <div>
+          <button mat-menu-item (click)="showFilter=!showFilter" title="Filtrar">
+            <mat-icon *ngIf="!showFilter">filter_list</mat-icon>
+            <mat-icon *ngIf="showFilter">clear</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="filter-container" *ngIf="showFilter">
+    <app-cotizaciones-filter-panel (filter)="onFilterChange($event)"></app-cotizaciones-filter-panel>
+  </div>
+
+  <div fxLayout="row" fxFlex="100%" class="view-content">
+    <div fxFlex="0%">
+
+    </div>
+    <div fxFlex="100%">
+      <div class="table-container">
+        <div fxFlex="100%">
+          <table mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="selected">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+              <td mat-cell *matCellDef="let row">
+                <div style="padding-top: 10px;">
+                  <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)">
+                  </mat-checkbox>
+                </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="numeroCotizacion">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header style="width:150px">
+                <span>Numero de Cotización</span>
+                <br>
+                <span>Versión</span>
+              </th>
+              <td mat-cell *matCellDef="let row">
+                <div>
+                  <a>{{row.numeroCotizacion|trimzero}}</a>
+                </div>
+                <div>
+                  <small>versión {{row.version}}</small>
+                </div>
+              </td>
+            </ng-container>
+
+            <!-- <ng-container matColumnDef="zona">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Zona </th>
+            <td mat-cell *matCellDef="let row" > {{row.zona}} </td>
+          </ng-container> -->
+
+            <ng-container matColumnDef="sucursal">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                <span>Sucursal</span>
+                <br>
+                <span>Zona</span>
+              </th>
+              <td mat-cell *matCellDef="let row">
+                <div fxLayout="column">
+                  <span>{{row.sucursal}} </span>
+                  <small>Zona: {{row.zona}}</small>
+                </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ramo">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                <span>Ramo</span>
+                <br>
+                <span>Subramo</span>
+              </th>
+              <td mat-cell *matCellDef="let row">
+                <div fxLayout="column">
+                  <span>{{row.ramo}}</span>
+                  <small>Subramo: {{row.subramo}}</small>
+                </div>
+              </td>
+            </ng-container>
+
+            <!-- <ng-container matColumnDef="subramo">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Subramo </th>
+              <td mat-cell *matCellDef="let row"> {{row.subramo}} </td>
+            </ng-container> -->
+
+
+            <ng-container matColumnDef="tomador">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Tomador </th>
+              <td mat-cell *matCellDef="let row">
+                <div title="{{row.tomador}}"> {{row.tomador | charLimit:30}} </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="estado">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
+              <td mat-cell *matCellDef="let row">
+                <span class="badge badge-state badge-info" *ngIf="row.codigoEstado<=1106">En Cotización</span>
+                <span class="badge badge-state badge-info" *ngIf="row.codigoEstado===1107">En Resumen</span>
+                <span class="badge badge-state badge-info" *ngIf="row.codigoEstado===1108">En Ficha Técnica</span>
+                <span class="badge badge-state badge-info" *ngIf="row.codigoEstado===1109||row.codigoEstado===1110">En
+                  Configuración Slip</span>
+                <span class="badge badge-state badge-warning" *ngIf="row.codigoEstado===1111">Pendiente de
+                  Autorización</span>
+                <span class="badge badge-state badge-warning2" *ngIf="row.codigoEstado===1112">Devuelta para
+                  revisión</span>
+                <span class="badge badge-state badge-info" *ngIf="row.codigoEstado===1113">Autorizada</span>
+                <span class="badge badge-state badge-danger" *ngIf="row.codigoEstado===1114">No Autorizada</span>
+                <span class="badge badge-state badge-info" *ngIf="row.codigoEstado===1115">En Slip</span>
+                <span class="badge badge-state badge-success" *ngIf="row.codigoEstado===1300">Enviada</span>
+                <span class="badge badge-state badge-success" *ngIf="row.codigoEstado===1400">Aceptada</span>
+                <span class="badge badge-state badge-danger" *ngIf="row.codigoEstado===1500">Rechazada: Por
+                  cliente</span>
+                <span class="badge badge-state badge-danger" *ngIf="row.codigoEstado===1600">Rechazada: Por
+                  compañía</span>
+                <span class="badge badge-state badge-info2" *ngIf="row.codigoEstado===1700">Cerrada</span>
+                <span class="badge badge-state badge-danger" *ngIf="row.codigoEstado===1800">Cerrada/Vencida</span>
+                <span class="badge badge-state badge-success" *ngIf="row.codigoEstado===1900">Expedida</span>
+                <span class="badge badge-state badge-success" *ngIf="row.codigoEstado===1901">Solicitud Expedición</span>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ultimoUsuario">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Ultimo usuario </th>
+              <td mat-cell *matCellDef="let row">
+                <div title="{{row.lastAuthor}}"> {{row.lastAuthor}} </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="usuarioNotificado">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                <span>Usuario Notificado</span>
+                <br>
+                <span>Usuario Autoriza</span>
+              </th>
+              <td mat-cell *matCellDef="let row">
+                <div fxLayout="column">
+                  <span>{{row.usuarioNotificado}}</span>
+                  <span>{{row.usuarioAutorizador}}</span>
+                </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="fechaModificacion">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha Modificación</th>
+              <td mat-cell *matCellDef="let row">
+                {{row.fechaModificacion | date:'dd/MM/yyyy hh:mm'}}
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+              (click)="selection.toggle(row); onRowClick(row)"
+              [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}"
+              (mouseover)="row.hovered = true" (mouseout)="row.hovered = false"></tr>
+          </table>
+
+          <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator> -->
+          <div class="table-footer thin-text sm" *ngIf="!isLoading">
+            Cantidad de registros: {{itemsCount}}
+          </div>
+
+          <mat-card *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+            <mat-card-content>
+              <b class="thin-text md">Cargando cotizaciones...</b>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

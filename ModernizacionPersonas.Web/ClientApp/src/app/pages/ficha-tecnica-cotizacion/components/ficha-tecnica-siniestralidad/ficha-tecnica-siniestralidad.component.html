@@ -1,0 +1,106 @@
+<div>
+  <div style="margin-bottom: 20px;">
+    <table class="w80">
+      <thead>
+        <tr>
+          <td colspan="7" class="title">Siniestralidad Asegurados </td>
+        </tr>
+        <tr>
+          <th>Vigencia desde</th>
+          <th>Vigencia hasta </th>
+          <th>Valor incurrido </th>
+          <th>Número de casos </th>
+          <th>Siniestralidad promedio </th>
+          <th>% IBNR </th>
+          <th>Valor incurrido + IBNR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let siniestralidad of model.siniestralidad">
+          <td class="value-container">{{siniestralidad.vigenciaDesde | date:'MM/dd/yyyy'}}</td>
+          <td class="value-container">{{siniestralidad.vigenciaHasta | date:'MM/dd/yyyy'}}</td>
+          <td class="value-container">{{siniestralidad.valorIncurrido | currency: 'USD' : 'symbol' : '1.0-0'}}</td>
+          <td class="value-container">{{siniestralidad.numeroCasos}}</td>
+          <td class="value-container">{{siniestralidad.siniestralidadPromedio | currency: 'USD' : 'symbol' : '1.0-0'}}</td>
+          <td class="value-container">{{siniestralidad.IBNR/100 | percent:'1.0-0' }}</td>
+          <td class="value-container">{{siniestralidad.sumValorIncurridoIBNR | currency: 'USD' : 'symbol' : '1.0-0'}}</td>
+        </tr>
+        <tr class="totales-container">
+          <td colspan="2" style="text-align: right;"><b>Proyección nueva vigencia</b></td>
+          <td class="value-container">{{model.totales.sumValorincurrido | currency: 'USD' : 'symbol' : '1.0-0' }}</td>
+          <td class="value-container">{{model.totales.sumNumeroCasos | number:'1.0-0'}}</td>
+          <td class="value-container"></td>
+          <td class="value-container"></td>
+          <td class="value-container">{{model.totales.sumValorIBNR | currency: 'USD' : 'symbol' : '1.0-0'}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-bottom: 20px;" style="display: none;">
+    <table class="w40">
+      <thead>
+        <tr>
+          <th colspan="2">Tasas por Siniestralidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="display: none;">
+          <td>Tasa pura de riesgo por Siniestralidad</td>
+          <td class="value-container">{{model.tasasSiniestralidad.tasaPuraRiesgo | number:'1.0-4'}}</td>
+        </tr>
+        <tr>
+          <td>Tasa Comercial por Siniestralidad</td>
+          <td class="value-container">{{model.tasasSiniestralidad.tasaComercial | number:'1.0-4'}}</td>
+        </tr>
+        <tr>
+          <td>Prima anual Comercial</td>
+          <td class="value-container">
+            {{model.tasasSiniestralidad.primaAnualComercial|currency: 'USD' : 'symbol' : '1.0-4'}}</td>
+        </tr>
+        <tr>
+          <td>Prima Individual Comercial</td>
+          <td class="value-container">
+            {{model.tasasSiniestralidad.primaIndividualComercial|currency: 'USD' : 'symbol' : '1.0-4'}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <table class="w40">
+      <thead>
+        <tr *ngIf="false">
+          <th> Tasa de riesgo por Siniestralidad </th>
+          <th class="value-container">
+            {{model.proyeccionFinanciera.tasaRiesgoSiniestralidad | number:'1.0-4'}}</th>
+        </tr>
+        <tr>
+          <th colspan="2">PROYECCION FINANCIERA</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Tasa anual </td>
+          <td style="width: 30%;" class="value-container">
+            {{model.proyeccionFinanciera.tasaComercialAnual | number:'1.0-4'}}‰</td>
+        </tr>
+        <tr>
+          <td>% Descuento </td>
+          <td class="value-container">
+            {{model.proyeccionFinanciera.porcentajeDescuento/100 | percent:'1.0-4'}}</td>
+        </tr>
+        <tr>
+          <td>% Recargo </td>
+          <td class="value-container">
+            {{model.proyeccionFinanciera.porcentajeRecargo/100 | percent:'1.0-4'}}</td>
+        </tr>
+        <tr>
+          <td>Tasa comercial total </td>
+          <td class="value-container">
+            {{model.proyeccionFinanciera.tasaComercialTotal | number:'1.0-4'}}‰</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

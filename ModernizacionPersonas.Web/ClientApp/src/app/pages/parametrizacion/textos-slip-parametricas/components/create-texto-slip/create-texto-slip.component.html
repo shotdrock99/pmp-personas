@@ -1,0 +1,138 @@
+<h1 mat-dialog-title>
+  <div class="float-lg-right">
+    <button mat-button (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  Crear Texto Slip
+</h1>
+<div class="modal-content" mat-dialog-content>
+  <div [formGroup]="textForm">
+    <div>
+      <mat-form-field class="full-width">
+        <mat-label>Ramo</mat-label>
+        <mat-select aria-label="Ramo" disableOptionCentering formControlName="ramo" matTooltip="Ramo">
+          <mat-option *ngFor="let item of ramos" [value]="item">
+            {{item.nombreAbreviado}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="(submitted || form.ramo.touched)  && form.ramo.errors" class="text-danger">
+        <div *ngIf="form.ramo.errors.required">
+          <b class="error-message">El campo es requerido</b>
+        </div>
+        <div *ngIf="form.ramo.errors.incorrect">
+          <b class="error-message">El valor ingresado es inválido.</b>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <mat-form-field class="full-width">
+        <mat-label>Subramo</mat-label>
+        <mat-select aria-label="Subramo" disableOptionCentering formControlName="subramo" matTooltip="Subramo">
+          <mat-option *ngFor="let item of subramos" [value]="item">
+            {{item.nombreSubRamo}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="(submitted || form.subramo.touched)  && form.subramo.errors" class="text-danger">
+        <div *ngIf="form.subramo.errors.required">
+          <b class="error-message">El campo es requerido</b>
+        </div>
+        <div *ngIf="form.subramo.errors.incorrect">
+          <b class="error-message">El valor ingresado es inválido.</b>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <mat-form-field class="full-width">
+        <mat-label>Amparo</mat-label>
+        <mat-select aria-label="Amparo" disableOptionCentering formControlName="amparo" matTooltip="Amparo">
+          <mat-option *ngFor="let item of amparos" [value]="item">
+            {{item.nombreAmparo}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="(submitted || form.amparo.touched)  && form.amparo.errors" class="text-danger">
+        <div *ngIf="form.amparo.errors.required">
+          <b class="error-message">El campo es requerido</b>
+        </div>
+        <div *ngIf="form.amparo.errors.incorrect">
+          <b class="error-message">El valor ingresado es inválido.</b>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <mat-form-field class="full-width">
+        <mat-label>Seccion</mat-label>
+        <mat-select aria-label="Sección" disableOptionCentering formControlName="section" matTooltip="Sección">
+          <mat-option *ngFor="let item of sections" [value]="item">
+            {{item.seccion}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="(submitted || form.section.touched)  && form.section.errors" class="text-danger">
+        <div *ngIf="form.section.errors.required">
+          <b class="error-message">El campo es requerido</b>
+        </div>
+        <div *ngIf="form.section.errors.incorrect">
+          <b class="error-message">El valor ingresado es inválido.</b>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="body-content">
+    <div>
+      <p>
+        <small>Inserte las variables ubicando el cursor en el lugar en que desea insertar la variable y haga clic en la
+          acción <b>Insertar</b> junto a cada variable de la lista.</small>
+      </p>
+    </div>
+    <div fxLayout="row">
+      <div fxFlex="50%">
+        <div class="text-container">
+          <label>Texto</label>
+          <div #textoSlipArea class="texto-slip-area" ngDefaultControl contenteditable [innerHTML]="texto"></div>
+        </div>
+      </div>
+      <div fxFlex="50%">
+        <div style="padding:5px 10px;">
+          <label>Variables</label>
+          <div>
+            <div>
+              <mat-form-field class="full-width">
+                <mat-label>Buscar</mat-label>
+                <input matInput type="text" [(ngModel)]="searchValue">
+                <button mat-button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-form-field>
+            </div>
+            <div class="list-variables-container">
+              <ul>
+                <li *ngFor="let variable of variables | filterList :'nombreVariable' : searchValue : 'includes'">
+                  <div fxLayout=" row">
+                    <div fxFlex="70%">
+                      {{variable.nombreVariable}}
+                    </div>
+                    <div fxFlex="30%">
+                      <button mat-button (click)="addVariable($event, variable)">Insertar</button>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions fxLayout="row" fxLayoutAlign="end center" fxLayout.lt-md="column" fxLayoutGap="5px"
+  fxLayoutAlign.lt-md="end stretch">
+  <button mat-raised-button (click)="close()">Cancelar</button>
+  <button mat-raised-button color="soli-info" (click)="onAcceptClick()">Guardar</button>
+</div>

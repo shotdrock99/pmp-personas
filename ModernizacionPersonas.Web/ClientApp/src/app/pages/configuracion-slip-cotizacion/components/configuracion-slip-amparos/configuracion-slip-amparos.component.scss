@@ -1,0 +1,95 @@
+// shared definitions
+%input-noborder {
+  overflow: visible;
+  max-width: 100px;
+  border: none;
+  border-bottom: 1px solid #8e8e8e;
+  padding: 0 8px;
+  text-align: right;
+  background-color: transparent;
+  outline: none;
+}
+
+.main-container {
+  padding: 0 15px 0 15px;
+  display: flex;
+
+  .ga-container {
+    margin-bottom: 10px;
+    display: flex;
+
+    .ga-title {
+      padding: 4px 0;
+      display: flex;
+
+      .mat-icon {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.mat-card-content {
+  ul {
+    list-style: none;
+  }
+}
+
+.mat-icon {
+  &.small {
+    color: steelblue;
+    font-size: 9pt;
+  }
+}
+
+.table {
+  margin: 2px 0;
+  border: 1px solid #888;
+  border-bottom: 1px solid #888;
+
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+
+    padding: 2px;
+
+    &.subtitle {
+      background-color: #eee;
+      font-weight: bold;
+      padding: 3px;
+    }
+  }
+
+  .value-container {
+    float: right;
+    margin: 2px;
+
+    &.inline {
+      display: inline-flex;
+    }
+
+    input[type="text"] {
+      @extend %input-noborder;
+      &:disabled {
+        border: none;
+      }
+    }
+  }
+
+  .popover-errors {
+    .mat-icon {
+      font-size: 12pt;
+      padding-top: 0.2em;
+      cursor: pointer;
+    }
+  }
+
+  .bottom-bordered {
+    border-bottom: 1px solid #888;
+  }
+
+  .left-bordered {
+    border-left: 1px solid #888;
+    padding-left: 4px;
+  }
+}

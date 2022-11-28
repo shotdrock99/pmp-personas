@@ -1,0 +1,54 @@
+<div class="main-container">
+ <!-- <table *ngIf="false">
+    <thead>
+      <tr>
+        <th style="max-width: 60%;">DOCUMENTOS REQUERIDOS</th>
+        <th *ngFor="let column of model.columns"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of model.data">
+        <td>{{item.descripcion}}</td>
+        <td *ngFor="let val of item.valores">
+          <mat-checkbox [(ngModel)]="val" disabled="true">
+          </mat-checkbox>
+        </td>
+      </tr>
+    </tbody>
+  </table>-->
+
+  <div class="table-docs">
+    <div class="title">
+      DOCUMENTOS PARA RECLAMACION POR SINIESTRO
+    </div>
+    <div class="sub-title"> Accidente: </div>
+    <ul>
+	  <li>Formulario de Reclamación y FUCC.</li>
+      <li>Documento de identidad del asegurado.</li>
+	  <li>Documento de entidad competente   donde se detallen las circunstancias de tiempo, modo y lugar  de los hechos. En caso de Accidente de tránsito, Croquis o informe de accidente.</li>
+    </ul>
+    <div class="sub-title">Incapacidad o por Hospitalización</div>
+    <ul>
+      <li>Documento de identidad del asegurado.</li>
+      <li> Historia Clínica completa y/o informe médico que permita establecer la existencia de la enfermedad, tiempo estimado del padecimiento de la misma, fecha de diagnóstico tratamiento requerido</li>
+      <li> Incapacidad Médica, emita por entidad Competente, EPS.</li>
+    </ul>
+    <div class="sub-title">Incapacidad Total y Permanente:</div>
+    <ul>
+      <li>Documento de identidad del asegurado.</li>
+      <li>Calificación emitida por entidad competente (Junta de calificación), de acuerdo con la Ley 100 y sus decretos reglamentarios, donde se acredite el porcentaje de pérdida de capacidad laboral (PCL)</li>
+      <li>Fotocopia Historia Clínica</li>
+    </ul>
+    <div class="sub-title">Muerte:</div>
+    <ul>
+      <li>Soliictud individual de seguro.</li>
+      <li>Formulario de Reclamación y FUCC.</li>
+      <li>Documento de identidad del asegurado.</li>
+	  <li>Registro civil de defunción</li>
+      <li>Historia Clínica completa y/o informe médico que permita establecer la existencia de la enfermedad, tiempo estimado del padecimiento de la misma, fecha de diagnóstico tratamiento requerido</li>
+      <li>Documento de entidad competente   donde se detallen las circunstancias de tiempo, modo y lugar  de los hechos. En caso de Accidente de tránsito, Croquis o informe de accidente.</li>
+	  <li>Documento de identificación de los beneficiarios designados o según correponda la documentación de los de ley.</li>
+	  <li>Para Vida Grupo Deudor Certificación de la Entidfad sobre el saldo de la deuda a al fecha de siniestro.</li>
+	</ul>
+  </div>
+</div>

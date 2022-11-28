@@ -1,0 +1,25 @@
+.tabs-container {
+  button {
+    color: #3d3d3d;
+    font-weight: 500;
+    &.tab {
+      outline: 0;
+      border-right: 1px solid #eee;
+      text-align: center;
+
+      &:hover {
+        background-color: #fafafa;
+      }
+
+      &.active {
+        border-bottom: 2px solid #ef8e00;
+        border-radius: 0 5px 0 0;
+        cursor: default;
+      }
+
+      &.disabled {
+        color: lightgrey;
+      }
+    }
+  }
+}

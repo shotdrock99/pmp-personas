@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>{{title}}</h2>
+
+<mat-dialog-content [formGroup]="form">
+
+  <mat-form-field class="mat-form-field-text">
+    <mat-label>Nombre Usuario</mat-label>
+    <input matInput #nombre maxlength="50" (change)="change($event)" formControlName="userName" #input [value]="input.value.toUpperCase()">
+    <mat-error *ngIf="form.get('userName').hasError('required') && (form.get('userName').dirty || form.get('userName').touched)">
+      Nombre requerido.
+    </mat-error>
+    <mat-hint align="end">{{nombre.value.length}} / 50</mat-hint>
+  </mat-form-field>
+  <br>
+  <mat-form-field class="mat-form-field-text">
+    <mat-label>Nombre Persona</mat-label>
+    <input matInput formControlName="name" readonly>
+  </mat-form-field>
+  <br>
+  <mat-form-field class="mat-form-field-text">
+    <mat-label>Email Usuario</mat-label>
+    <input matInput formControlName="email" readonly>
+  </mat-form-field>
+  <br>
+  <mat-form-field style="width: 80%;">
+    <mat-label>Roles</mat-label>
+    <mat-select [(ngModel)]="roles" formControlName="roles">
+      <mat-option *ngFor="let rol of rolesUsuario" [value]="rol.roleId" [disabled]="rol.roleId === 0">
+        {{rol.roleName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions class="mat-container">
+  <button mat-raised-button mat-dialog-close>Cancelar</button>
+  <button mat-raised-button color="primary" (click)="create()">Crear</button>
+</mat-dialog-actions>

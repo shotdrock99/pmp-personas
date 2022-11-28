@@ -1,0 +1,55 @@
+.siniestralidad-table {
+  padding: 10px;
+  .theader {
+    .row {
+      text-align: center;
+      font-weight: bold;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+  }
+
+  .tbody {
+    .row {
+      text-align: center;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+
+      .dateinput {
+        &.editable {
+          border-bottom: 1px solid #888;
+          cursor: pointer;
+          max-width: 150px;
+        }
+      }
+
+      input {
+        &.light {
+          max-width: 150px;
+          outline-width: 0;
+          border: 0;
+          border-bottom: 1px solid #888;
+          text-align: right;
+          background-color: #fff;
+          margin: 5px;
+        }
+      }
+    }
+  }
+}
+
+.table-footer {
+  text-align: right;
+  padding: 15px 10px 0;
+  font-weight: bold;
+}
+
+.form-errors-container {
+  padding-top: 20px;
+  text-align: right;
+  color: red;
+  font-weight: bold;
+  ul {
+    list-style: none;
+  }
+}

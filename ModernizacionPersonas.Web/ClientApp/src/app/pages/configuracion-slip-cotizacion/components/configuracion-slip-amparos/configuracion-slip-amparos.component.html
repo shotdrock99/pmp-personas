@@ -1,0 +1,51 @@
+<mat-card-content fxLayout="column" fxFlex="100%" class="main-container">
+  <div fxFlex="100%" *ngIf="data.length===0">
+    <b class="thin-text md">No hay amparos registrados</b>
+  </div>
+  <mat-card-content fxLayout="column" fxFlex="100%">
+    <mat-card-content class="table">
+      <mat-card-content fxFlex="100%" fxLayout="column">
+        <mat-card-content *ngFor="let amparo of data; let i=index;" fxLayout="column" fxFlex="100%"
+          style="margin: 4px;">
+          <div class="row subtitle" fxFlex="100%" fxLayout="row" *ngIf="amparo.variables.length>0">
+            <div fxFlex="50%" fxLayoutAlign="start center">
+              {{amparo.nombreAmparo}}
+              <mat-icon class="small pointer" [mdePopoverTriggerFor]="detalleAmparoPopover" mdePopoverTriggerOn="click"
+                #popoverTrigger="mdePopoverTrigger">
+                info</mat-icon>
+              <mde-popover #detalleAmparoPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
+                <mat-card style="max-width: 500px">
+                  <mat-card-content>
+                    <div class="thin-text sm">
+                      <app-slip-amparos-description [template]="amparo.descripcion" [model]="amparo">
+                      </app-slip-amparos-description>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </mde-popover>
+            </div>
+            <div fxLayoutAlign="end center" fxFlex="50%">
+              <a (click)="amparo.showVariables=!amparo.showVariables" class="link-behavior">
+                <mat-icon *ngIf="!amparo.showVariables">expand_more</mat-icon>
+                <mat-icon *ngIf="amparo.showVariables">expand_less</mat-icon>
+              </a>
+            </div>
+          </div>
+          <mat-card-content fxLayout="column" *ngIf="amparo.showVariables">
+            <mat-card-content class="row" fxFlex="100%" fxLayout="row" *ngFor="let variable of amparo.variables">
+              <div fxFlex="60%">
+                {{variable.nombre}}
+              </div>
+              <mat-card-content fxFlex="40%">
+                <mat-card-content class="value-container inline" style="margin-right: 4px; font-size: 10pt;">
+                  <input type="text" [mask]="getMask(variable)" thousandSeparator="." class="full-width noborder"
+                    [(ngModel)]="variable.valor" (change)="onVariableChange(variable)" [readonly]="readonly" />
+                </mat-card-content>
+              </mat-card-content>
+            </mat-card-content>
+          </mat-card-content>
+        </mat-card-content>
+      </mat-card-content>
+    </mat-card-content>
+  </mat-card-content>
+</mat-card-content>

@@ -1,0 +1,56 @@
+<div *ngIf="!isLoading" fxLayout="column" class="view-container">
+  <div fxLayout="row" class="view-title">
+    <div class="toolbar" fxFlex="100%">
+      <div fxFlex="20%" fxLayout="row" fxLayoutAlign="start center">
+        <h4 class="thin-text">
+          Listado de Plantillas Email
+        </h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions-container">
+    <div fxLayout="row">
+      <div fxFlex="80%">
+        <app-page-toolbar [data]="toolbarConfig.items"></app-page-toolbar>
+      </div>
+      <div fxFlex="20%">
+        <mat-form-field class="full-width" appearance="legacy">
+          <mat-label>Filtrar</mat-label>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <div class="view-content" fxLayout="column">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre Plantilla </th>
+        <td mat-cell *matCellDef="let row" class="text-center"> {{row.templateName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="opciones">
+        <th mat-header-cell *matHeaderCellDef> Opciones </th>
+        <td mat-cell *matCellDef="let row">
+          <div class="button-group text-center">
+            <button mat-raised-button color="primary" (click)="editTemplate(row)" class="mat-md">
+              Editar
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+    <div class="table-footer">
+      Cantidad de registros: {{itemsCount}}
+    </div>
+  </div>
+
+</div>

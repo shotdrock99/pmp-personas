@@ -1,0 +1,81 @@
+  <div fxFlex="100%" fxLayout="column" class="main-container">
+    <div class="table-title thin-text md">
+      <b>VALORES ASEGURADOS: </b>
+    </div>
+    <div fxFlex="100%" fxLayout="column" class="table-container thin-text sm">
+      <div fxFlex="100%" fxLayout="row" class="table-title">
+        {{nameTipoSuma}}
+      </div>
+      <div fxFlex="100%" fxLayout="row" class="table-header">
+        <div class="column-header" fxFlex="40%">AMPAROS</div>
+        <ng-container *ngIf="isSumaFija">
+          <div class="column-header" [fxFlex]="60/opciones.length" *ngFor="let o of opciones; let i=index;">
+            <b>Valor Opción {{i+1}}</b>
+          </div>
+        </ng-container>
+        <div *ngIf="!isSumaFija" style="padding-left: 4.5em;">
+          <div class="column-header" [fxFlex]="!esTasaMensual?60:120/opciones.length">
+            <b>Valor Asegurado Individual</b>
+          </div>
+          <div *ngIf="!esTasaMensual" class="column-header" [fxFlex]="60/opciones.length">
+            <b>Valor Asegurado</b>
+          </div>
+        </div>
+      </div>
+      <div fxFlex="100%" fxLayout="column" class="table-body">
+        <div fxFlex="100%" fxLayout="row" class="table-row" *ngFor="let amparo of data">
+          <div class="column-header" fxFlex="40%">{{amparo.nombreAmparo === 'PRIMA ANUAL TOTAL' && esTasaMensual ?
+            'TASA MENSUAL POR MIL A APLICAR':amparo.nombreAmparo}}</div>
+          <div fxLayout="row" *ngFor="let o of opciones; let i=index" class="column-data text-center"
+            [fxFlex]="60/opciones.length">
+            <div fxFlexFill *ngIf="amparo.codigoTipoSumaAsegurada===1">
+              <div fxFlex="100%" fxLayoutAlign="end">
+                {{(amparo.nombreAmparo !== 'ASISTENCIA')
+                ? (amparo.opciones[i].valorAsegurado | currency: 'USD' : 'symbol' : '1.0-0')
+                : (amparo.nombreAmparo === 'ASISTENCIA' && amparo.opciones[i].valorAsegurado === 0)
+                ? 'NO'
+                : 'SI'}}
+              </div>
+            </div>
+            <div fxFlexFill *ngIf="amparo.codigoTipoSumaAsegurada!==1">
+              <div fxFlex="50%" fxLayoutAlign="end"
+                *ngIf="amparo.nombreAmparo !== 'ASISTENCIA' && amparo.opciones[i].tipoValor === 0 && amparo.nombreAmparo != 'PRIMA ANUAL TOTAL'">
+                {{amparo.nombreAmparo !== 'PRIMA ANUAL TOTAL' ?
+                (amparo.opciones[i].valorAseguradoIndividual | currency: 'USD' : 'symbol' : '1.0-4'):
+                esTasaMensual? (amparo.opciones[i].tasaMensual/100 | percent : '1.0-2'): ''}}
+              </div>
+              <div fxFlex="50%" fxLayoutAlign="end"
+                *ngIf="amparo.nombreAmparo == 'PRIMA ANUAL TOTAL' && esTasaMensual && amparo.nombreAmparo !== 'ASISTENCIA' &&  amparo.opciones[i].tipoValor === 0">
+                {{amparo.nombreAmparo !== 'PRIMA ANUAL TOTAL' ?
+                (amparo.opciones[i].valorAseguradoIndividual | currency: 'USD' : 'symbol' : '1.0-4'):
+                esTasaMensual? (amparo.opciones[i].tasaMensual | number : '1.0-2'): ''}}‰
+              </div>
+              <div fxFlex="50%" fxLayoutAlign="end"
+                *ngIf="amparo.nombreAmparo == 'PRIMA ANUAL TOTAL' && !esTasaMensual && amparo.nombreAmparo !== 'ASISTENCIA' &&  amparo.opciones[i].tipoValor === 0">
+                {{amparo.nombreAmparo !== 'PRIMA ANUAL TOTAL' ?
+                (amparo.opciones[i].valorAseguradoIndividual | currency: 'USD' : 'symbol' : '1.0-4'):
+                esTasaMensual? (amparo.opciones[i].tasaMensual | number : '1.0-2'): ''}}
+              </div>
+              <div fxFlex="50%" fxLayoutAlign="end"
+                *ngIf="amparo.nombreAmparo !== 'ASISTENCIA' && amparo.opciones[i].tipoValor === 1">
+                {{amparo.opciones[i].valorAseguradoIndividual}}
+              </div>
+              <div fxFlex="50%" fxLayoutAlign="end"
+                *ngIf="amparo.nombreAmparo !== 'ASISTENCIA' && amparo.opciones[i].tipoValor === 2">
+                {{amparo.opciones[i].valorAseguradoIndividual | number:'1.0-4'}}%
+              </div>
+              <div fxFlex="50%" fxLayoutAlign="end"
+                *ngIf="amparo.nombreAmparo !== 'ASISTENCIA' && amparo.opciones[i].tipoValor === 3"></div>
+              <div fxFlex="50%" fxLayoutAlign="end" *ngIf="esTasaMensual && amparo.nombreAmparo === 'ASISTENCIA'">SI
+              </div>
+              <div fxFlex="50%" fxLayoutAlign="end" *ngIf="!esTasaMensual">
+                {{amparo.nombreAmparo !== 'ASISTENCIA' ? (amparo.opciones[i].valorAsegurado | currency: 'USD' : 'symbol'
+                : '1.0-4') : 'SI'}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

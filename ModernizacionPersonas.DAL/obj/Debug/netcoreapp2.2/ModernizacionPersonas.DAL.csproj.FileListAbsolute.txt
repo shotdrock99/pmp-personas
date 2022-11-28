@@ -1,0 +1,14 @@
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.DAL\bin\Debug\netcoreapp2.2\ModernizacionPersonas.DAL.deps.json
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.DAL\bin\Debug\netcoreapp2.2\ModernizacionPersonas.DAL.dll
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.DAL\bin\Debug\netcoreapp2.2\ModernizacionPersonas.DAL.pdb
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.DAL\bin\Debug\netcoreapp2.2\ModernizacionPersonas.Common.dll
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.DAL\bin\Debug\netcoreapp2.2\ModernizacionPersonas.Entities.dll
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.DAL\bin\Debug\netcoreapp2.2\ModernizacionPersonas.Common.pdb
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.DAL\bin\Debug\netcoreapp2.2\ModernizacionPersonas.Entities.pdb
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.DAL\obj\Debug\netcoreapp2.2\ModernizacionPersonas.DAL.csprojAssemblyReference.cache
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.DAL\obj\Debug\netcoreapp2.2\ModernizacionPersonas.DAL.AssemblyInfoInputs.cache
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.DAL\obj\Debug\netcoreapp2.2\ModernizacionPersonas.DAL.AssemblyInfo.cs
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.DAL\obj\Debug\netcoreapp2.2\ModernizacionPersonas.DAL.csproj.CoreCompileInputs.cache
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.DAL\obj\Debug\netcoreapp2.2\ModernizacionPersonas.DAL.csproj.CopyComplete
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.DAL\obj\Debug\netcoreapp2.2\ModernizacionPersonas.DAL.dll
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.DAL\obj\Debug\netcoreapp2.2\ModernizacionPersonas.DAL.pdb

@@ -1,0 +1,17 @@
+<div class="main-container" *ngIf="model.secciones.length>0">
+  <h4>{{model.tituloSeccion}}</h4>
+  <hr />
+
+  <div *ngFor="let clausula of model.secciones">
+    <h5>{{clausula.tituloSeccion}}</h5>
+    <p [innerHTML]="clausula.texto"></p>
+    <!-- REQUISITOS DE ASEGURABILIDAD -->
+    <div *ngIf="clausula.codigoSeccion==='35'">
+      <app-tabla-reqs-asegurabilidad [data]="model.asegurabilidad"></app-tabla-reqs-asegurabilidad>
+    </div>
+    <!-- DOCUMENTOS EN CASO DE RECLAMACIÓN -->
+    <div *ngIf="clausula.codigoSeccion==='61'">
+      <app-tabla-docs-requeridos></app-tabla-docs-requeridos>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.Entities\bin\Staging\netcoreapp2.2\ModernizacionPersonas.Entities.deps.json
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.Entities\bin\Staging\netcoreapp2.2\ModernizacionPersonas.Entities.dll
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.Entities\bin\Staging\netcoreapp2.2\ModernizacionPersonas.Entities.pdb
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.Entities\bin\Staging\netcoreapp2.2\ModernizacionPersonas.Common.dll
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.Entities\bin\Staging\netcoreapp2.2\ModernizacionPersonas.Common.pdb
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.Entities\obj\Staging\netcoreapp2.2\ModernizacionPersonas.Entities.csprojAssemblyReference.cache
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.Entities\obj\Staging\netcoreapp2.2\ModernizacionPersonas.Entities.AssemblyInfoInputs.cache
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.Entities\obj\Staging\netcoreapp2.2\ModernizacionPersonas.Entities.AssemblyInfo.cs
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.Entities\obj\Staging\netcoreapp2.2\ModernizacionPersonas.Entities.csproj.CoreCompileInputs.cache
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.Entities\obj\Staging\netcoreapp2.2\ModernizacionPersonas.Entities.csproj.CopyComplete
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.Entities\obj\Staging\netcoreapp2.2\ModernizacionPersonas.Entities.dll
+C:\Users\ext.jsanchez\Documents\Proyectos\PMPUV\ModernizacionPersonas.Entities\obj\Staging\netcoreapp2.2\ModernizacionPersonas.Entities.pdb

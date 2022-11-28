@@ -1,0 +1,202 @@
+<div class="unload-overlay" *ngIf="!pageLoaded">
+  <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate">
+  </mat-progress-spinner>
+  <b class="thin-text md">Generando Ficha Técnica...</b>
+</div>
+
+<div *ngIf="pageLoaded" fxLayout="column" class="view-container">
+  <div>
+    <app-cotizacion-tabs></app-cotizacion-tabs>
+  </div>
+  <div class="actions-container">
+    <div fxLayout="row">
+      <div fxFlex="80%">
+        <app-page-toolbar [data]="toolbarConfig.items"></app-page-toolbar>
+      </div>
+      <div fxFlex="20%" fxLayoutAlign="end">
+        <div>
+          <button *ngIf="!readonly && version != 777" mat-menu-item (click)="continue()" title="Continuar">
+            <span>Continuar a Configuración Slip</span>
+            <mat-icon>chevron_right</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="numeroCotizacion" class="num-cotizacion-container">
+    Cotizacion No. {{numeroCotizacion}}
+    <small *ngIf="version == 777"> versión {{versionor}} Ficha Alterna </small>
+    <small *ngIf="version != 777"> versión {{version}} </small>
+  </div>
+
+  <app-readonly-cotizacion-toast [data]="cotizacion" [readonly]="readonly" (reload)="reload($event)">
+  </app-readonly-cotizacion-toast>
+
+  <div class="view-content">
+    <div fxLayout="column" fxFlex="80%" style="margin: 5px;">
+      <div class="section-container">
+        <table class="header-table w80">
+          <tr class="header-row-0">
+            <td colspan="2" class="title-h1">
+              <div class="text-center">FICHA TECNICA</div>
+            </td>
+          </tr>
+          <tr>
+            <td>Director Comercial</td>
+            <td>{{model.directorComercialInfo.nombre}}</td>
+          </tr>
+          <tr>
+            <td>Zona</td>
+            <td>{{model.zona}}</td>
+          </tr>
+          <tr>
+            <td>Agencia</td>
+            <td>{{model.sucursal}}</td>
+          </tr>
+          <tr>
+            <td>Sector</td>
+            <td>{{model.sector | uppercase}}</td>
+          </tr>
+          <tr>
+            <td>Ramo</td>
+            <td>{{model.ramo}}</td>
+          </tr>
+          <tr>
+            <td>Subramo</td>
+            <td>{{model.subramo}}</td>
+          </tr>
+          <tr>
+            <td>Tipo Tasa</td>
+            <td>{{model.tipoTasa.nombreTasa | uppercase}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="section-container">
+        <app-ficha-tecnica-informacion-tomador [model]="model.informacionTomador">
+        </app-ficha-tecnica-informacion-tomador>
+      </div>
+      <div class="section-container">
+        <app-ficha-tecnica-grupos-asegurados [model]="model.gruposAsegurados" [tipoTasa1]="model.tipoTasa"
+          [tieneSiniestralidad]="model.tieneSiniestralidad"></app-ficha-tecnica-grupos-asegurados>
+      </div>
+
+      <div class="section-container" *ngIf="model.tieneSiniestralidad">
+        <app-ficha-tecnica-siniestralidad [model]="model.informacionSiniestralidad">
+        </app-ficha-tecnica-siniestralidad>
+      </div>
+      <div class="section-container">
+        <table class="w40">
+          <thead>
+            <tr class="title-h2">
+              <th>FACTOR G</th>
+              <th style="width: 30%;">Tasas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td> Comisión Intermediario </td>
+              <td class="value-container">{{model.informacionFactorG.comisionIntermediario/100 | percent:'1.0-4'}}
+              </td>
+            </tr>
+            <tr class="bg-gray">
+              <td> IVA Comisión Intermediario </td>
+              <td class="value-container">{{model.informacionFactorG.ivaComisionIntermediario/100 | percent:'1.0-4'}}
+              </td>
+            </tr>
+            <tr>
+              <td> Gastos de retorno </td>
+              <td class="value-container">{{model.informacionFactorG.gastosRetorno/100 | percent:'1.0-4'}}</td>
+            </tr>
+            <tr class="bg-gray">
+              <td> IVA Gastos de retorno </td>
+              <td class="value-container">{{model.informacionFactorG.ivaGastosRetorno/100 | percent:'1.0-4'}}</td>
+            </tr>
+            <tr>
+              <td> Otros gastos </td>
+              <td class="value-container">{{model.informacionFactorG.otroGgastos/100 | percent:'1.0-4'}}</td>
+            </tr>
+            <tr>
+              <td> Gastos Compañía </td>
+              <td class="value-container">{{model.informacionFactorG.gastosCompania/100 | percent:'1.0-4'}}</td>
+            </tr>
+            <tr>
+              <td> Utilidad </td>
+              <td class="value-container">{{model.informacionFactorG.utilidad/100 | percent:'1.0-4'}}</td>
+            </tr>
+            <tr>
+              <td style="text-align: right;"> <b>Factor G</b> </td>
+              <td class="value-container">{{model.informacionFactorG.totalFactorG/100 | percent:'1.0-4'}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="section-container">
+        <table class="w40">
+          <thead>
+            <tr class="title-h2">
+              <th>P&G Anual (365 días)</th>
+              <th style="width: 30%;">Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Primas Emitidas </td>
+              <td class="value-container">{{model.pygAnual.primaTotal | currency: 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr class="bg-gray">
+              <td>Asistencia proveedor</td>
+              <td class="value-container">{{model.pygAnual.asistencia | currency: 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td>Siniestros incurridos </td>
+              <td class="value-container">{{model.pygAnual.siniestrosIncurridos | currency: 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td>Siniestralidad </td>
+              <td class="value-container">{{model.pygAnual.siniestralidad | percent:'1.0-2'}}</td>
+            </tr>
+            <tr>
+              <td>Comisión Intermediario. </td>
+              <td class="value-container">{{model.pygAnual.comisionIntermediario | currency: 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr class="bg-gray">
+              <td>IVA Comisión Intermediario. </td>
+              <td class="value-container">{{model.pygAnual.ivaComisionIntermediario | currency: 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td>Gastos de retorno </td>
+              <td class="value-container">{{model.pygAnual.gastosRetorno | currency: 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr class="bg-gray">
+              <td>IVA Gastos de retorno </td>
+              <td class="value-container">{{model.pygAnual.ivaGastosRetorno | currency: 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td>Otros gastos </td>
+              <td class="value-container">{{model.pygAnual.otrosGastos | currency: 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td>Gastos Compañía </td>
+              <td class="value-container">{{model.pygAnual.gastosCompania | currency: 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td>Utilidad </td>
+              <td class="value-container">{{model.pygAnual.utilidad | currency: 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td>% Utilidad año </td>
+              <td class="value-container">{{model.pygAnual.porcentajeUtilidadAnno | percent:'1.0-2'}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="section-container" *ngIf="mostrarPerfilEdades">
+        <app-ficha-tecnica-perfil-edades [model]="model.perfilEdades"></app-ficha-tecnica-perfil-edades>
+      </div>
+      <div class="section-container" *ngIf="mostrarPerfilValores">
+        <app-ficha-tecnica-perfil-valores [model]="model.perfilValores"></app-ficha-tecnica-perfil-valores>
+      </div>
+    </div>
+  </div>
+</div>

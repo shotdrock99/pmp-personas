@@ -1,0 +1,118 @@
+<div *ngIf="!isLoading" fxLayout="column" class="view-container">
+  <div fxLayout="row" class="view-title">
+    <div class="toolbar" fxFlex="100%">
+      <div fxFlex="20%" fxLayout="row" fxLayoutAlign="start center">
+        <h4 class="thin-text">
+          Listado de Causales
+        </h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions-container">
+    <div fxLayout="row">
+      <div fxFlex="80%">
+        <app-page-toolbar [data]="toolbarConfig.items"></app-page-toolbar>
+      </div>
+      <div fxFlex="20%">
+        <mat-form-field class="full-width" appearance="legacy">
+          <mat-label>Filtrar</mat-label>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <div class="view-content" fxLayout="column">
+    <table mat-table [dataSource]=" dataSource" matSort>
+
+      <ng-container matColumnDef="descripcionCausal">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Descripción Causal</th>
+        <td mat-cell *matCellDef="let row" class="text-center">{{row.causalTexto | uppercase}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="activo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Activo</th>
+        <td mat-cell *matCellDef="let row" class="text-center">
+          <div *ngIf="row.activo === 1" class="causal-container">
+            <font color="1BC10F">Si</font>
+          </div>
+          <div *ngIf="row.activo !== 1" class="causal-container">
+            <font color="FF0000">No</font>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="externo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Externo</th>
+        <td mat-cell *matCellDef="let row" class="text-center">
+          <div *ngIf="row.externo===1 && row.tipoCausal !== 1" class="causal-container">
+            <font color="1BC10F">Si</font>
+          </div>
+          <div *ngIf="row.externo!==1 && row.tipoCausal !== 1" class="causal-container">
+            <font color="FF0000">No</font>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="solidaria">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Solidaria</th>
+        <td mat-cell *matCellDef="let row" class="text-center">
+          <div *ngIf="row.solidaria===1 && row.tipoCausal !== 1" class="causal-container">
+            <font color="1BC10F">Si</font>
+          </div>
+          <div *ngIf="row.solidaria!==1 && row.tipoCausal !== 1" class="causal-container">
+            <font color="FF0000">No</font>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="tipoCausal">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo Causal</th>
+        <td mat-cell *matCellDef="let row" class="text-center">
+          <div *ngIf="row.tipoCausal === 1" class="causal-container">
+            <div class="badge badge-info">Acepta</div>
+          </div>
+          <div *ngIf="row.tipoCausal !== 1" class="causal-container">
+            <div class="badge badge-secondary">Rechazo</div>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="usuarioModifica">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Usuario Modifica </th>
+        <td mat-cell *matCellDef="let row" class="text-center">{{row.usuario}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="fechaModifica">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Modifica </th>
+        <td mat-cell *matCellDef="let row" class="text-center">{{row.fechaMovimiento | date:'dd/MM/yyyy hh:mm'}}</td>
+      </ng-container>
+
+      <ng-container style="width: 100px;" matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef>Opciones</th>
+        <td mat-cell *matCellDef="let row">
+          <div class="button-group text-center">
+            <button mat-raised-button (click)="editCausal(row)" [disabled]="row.activo !== 1">
+              Editar
+            </button>
+            <button mat-raised-button *ngIf="row.activo === 1" (click)="disableCausal(row)">
+              Deshabilitar
+            </button>
+            <button mat-raised-button *ngIf="row.activo !== 1" (click)="disableCausal(row)">
+              Habilitar
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"> </tr>
+    </table>
+
+    <div class="table-footer">
+      Cantidad de registros: {{itemsCount}}
+    </div>
+  </div>
+</div>

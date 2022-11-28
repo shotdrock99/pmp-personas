@@ -1,0 +1,43 @@
+.mat-toolbar {
+  background: #ef8e00;
+  color: #fff;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+}
+.mat-toolbar.mat-toolbar-multiple-rows {
+  min-height: 50px;
+}
+.mat-toolbar.mat-toolbar-multiple-rows .mat-toolbar-row {
+  height: 50px;
+}
+.mat-toolbar .title {
+  outline: none;
+  cursor: pointer;
+}
+.toolbar-icon {
+  padding: 0 14px;
+  cursor: pointer;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+.user-menu-container .initials-user-container {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 12px;
+  border-radius: 22px;
+  padding: 10px;
+  background-color: #ef8e00;
+  color: #fff;
+}
+.user-menu-container .user-info-container {
+  width: 300px;
+}
+.user-menu-container .user-info-container .user-email-label {
+  font-size: small;
+}
+.username-container {
+  padding-top: 4px;
+  font-weight: bold;
+  font-size: 9pt;
+}

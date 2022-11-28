@@ -1,0 +1,27 @@
+<div *ngIf="codAmparo == '4' || codAmparo == '51'" style="font-weight: bold;" fxLayoutAlign="center" class="row header">
+  ANEXO TABLA DESMEMBRACION
+</div>
+<div *ngIf="codAmparo == '6'" fxLayoutAlign="center" style="font-weight: bold;" class="row header">ANEXO TABLA
+  PORCENTUAL</div>
+<div fxLayout="column" class="main-container">
+  <table class="table-indemnizaciones thin-text sm">
+    <thead>
+      <tr style="text-align: center;">
+        <th colspan="3">TABLA DE INDEMNIZACIONES</th>
+      </tr>
+      <tr style="text-align: center;">
+        <th>NRO</th>
+        <th>CLASE PERDIDA</th>
+        <th>% DE INDEMNIZACION</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td style="width: 30px;">{{item.index}}</td>
+        <td>{{item.descripcion | uppercase }}</td>
+        <td style="width: 150px; text-align: right;">{{item.valor/100 | percent:'1.0-4' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

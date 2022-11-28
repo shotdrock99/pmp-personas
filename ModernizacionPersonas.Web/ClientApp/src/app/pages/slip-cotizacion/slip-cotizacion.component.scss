@@ -1,0 +1,56 @@
+.unload-overlay {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: x-large;
+}
+
+.toolbar {
+  min-height: 42px;
+  background-color: #fff;
+
+  &.fixed-toolbar {
+    position: fixed;
+    top: 50px;
+    left: 250px;
+    z-index: 9999;
+    width: calc(100% - 250px);
+    height: 50px;
+  }
+}
+
+p {
+  text-align: justify;
+}
+
+.view-content {
+  font-size: 10pt;
+  padding: 10px;
+  font-family: "Lato Light", "Helvetica", "helvetica", "normal", "WinAnsiEncoding";
+
+  .slip-container {
+    width: 900px;
+    margin: 0 auto 50px;
+    .slip-content {
+      margin: 20px auto;
+      background-color: #fafafa;
+      padding: 1in;
+
+      .product-image-container {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .signature-container {
+        width: 200px;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+

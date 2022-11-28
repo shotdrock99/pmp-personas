@@ -1,0 +1,90 @@
+<div *ngIf="!isLoading" fxLayout="column" class="view-container">
+  <div fxLayout="row" class="view-title">
+    <div class="toolbar" fxFlex="100%">
+      <div fxFlex="20%" fxLayout="row" fxLayoutAlign="start center">
+        <h4 class="thin-text">
+          Listado de Usuarios
+        </h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions-container">
+    <div fxLayout="row">
+      <div fxFlex="80%">
+        <app-page-toolbar [data]="toolbarConfig.items"></app-page-toolbar>
+      </div>
+      <div fxFlex="20%">
+        <mat-form-field class="full-width" appearance="legacy">
+          <mat-label>Filtrar</mat-label>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <div class="view-content" fxLayout="column">
+    <table mat-table [dataSource]=" dataSource" matSort>
+
+      <ng-container matColumnDef="userName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+        <td mat-cell *matCellDef="let row" class="text-center">{{row.name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="userEmail">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+        <td mat-cell *matCellDef="let row" class="text-center">{{row.email}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="userNick">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Usuario </th>
+        <td mat-cell *matCellDef="let row" class="text-center">{{row.userName}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="roles">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Rol</th>
+        <td mat-cell *matCellDef="let row" class="text-center">
+          <div class="role-container">
+            <div class="badge badge-info">{{row.rol.roleName}}</div>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="usuarioModifica">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Usuario Modifica </th>
+        <td mat-cell *matCellDef="let row" class="text-center">{{row.usuario}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="fechaModifica">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Modifica </th>
+        <td mat-cell *matCellDef="let row" class="text-center">{{row.fechaMovimiento | date:'dd/MM/yyyy hh:mm'}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="opciones">
+        <th mat-header-cell *matHeaderCellDef> Opciones </th>
+        <td mat-cell *matCellDef="let row">
+          <div class="button-group text-center">
+            <button mat-raised-button color="primary" (click)="editUsuario(row)" class="mat-md"
+              [disabled]="!row.activo">
+              Editar
+            </button>
+            <button mat-raised-button color="primary" *ngIf="row.activo" class="mat-md" (click)="disableUsuario(row)">
+              Deshabilitar
+            </button>
+            <button mat-raised-button color="primary" *ngIf="!row.activo" class="mat-md" (click)="disableUsuario(row)">
+              Habilitar
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"> </tr>
+    </table>
+
+    <div class="table-footer">
+      Cantidad de registros: {{itemsCount}}
+    </div>
+  </div>
+</div>

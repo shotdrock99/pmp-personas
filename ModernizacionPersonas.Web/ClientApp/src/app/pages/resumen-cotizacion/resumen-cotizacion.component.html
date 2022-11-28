@@ -1,0 +1,341 @@
+<div class="unload-overlay" *ngIf="!pageLoaded">
+  <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate">
+  </mat-progress-spinner>
+  <b class="thin-text md">Generando Resumen...</b>
+</div>
+
+<div *ngIf="pageLoaded" fxLayout="column" class="view-container">
+  <div>
+    <app-cotizacion-tabs></app-cotizacion-tabs>
+  </div>
+  <div class="actions-container">
+    <div fxLayout="row">
+      <div fxFlex="80%">
+        <app-page-toolbar [data]="toolbarConfig.items"></app-page-toolbar>
+      </div>
+      <div fxFlex="20%" fxLayoutAlign="end">
+        <div *ngIf="!readonly">
+          <button mat-menu-item (click)="continue()" title="Continuar">
+            <span>Continuar a Ficha Técnica</span>
+            <mat-icon>chevron_right</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="numeroCotizacion" class="num-cotizacion-container">
+    Cotizacion No. {{numeroCotizacion}}
+    <small *ngIf="version == 777"> Ficha Alterna </small>
+    <small *ngIf="version != 777"> versión {{version}} </small>
+  </div>
+
+  <app-readonly-cotizacion-toast [data]="cotizacion" [readonly]="readonly" (reload)="reload($event)">
+  </app-readonly-cotizacion-toast>
+
+  <div class="view-content">
+    <div fxLayout="column" fxFlex="80" style="margin: 5px;">
+      <table class="header-table">
+        <tr class="header-row-0">
+          <td colspan="5" class="title-h1">
+            <div class="text-center">RESUMEN COTIZACION</div>
+          </td>
+        </tr>
+        <tr class="header-row-1">
+          <td colspan="5">
+            <b>Tipo de Tasa: {{model.tipoTasa.nombreTasa | uppercase}}</b>
+          </td>
+        </tr>
+        <tr class="header-row-2">
+          <td>
+            <div class="column-container">
+              <b>Comision:</b>
+              <div class="value-container">
+                <input type="text" mask="percent" suffix="%" [dropSpecialCharacters]="false" (change)="onChange($event)"
+                  [ngModel]="model.comision | number: '1.0-4'" (ngModelChange)="model.comision = $event" [readonly]="readonly || blockComision" />
+              </div>
+            </div>
+          </td>
+
+          <td>
+            <div class="column-container">
+              <b>IVA Comision:</b>
+              <div class="value-container">
+                <input type="text" mask="percent" suffix="%" [dropSpecialCharacters]="false" (change)="onChange($event)"
+                  [ngModel]="model.ivaComision| number: '1.0-4'" (ngModelChange)="model.ivaComision = $event" [readonly]="true" />
+              </div>
+            </div>
+          </td>
+
+          <td>
+            <div class="column-container">
+              <b>G. Retorno:</b>
+              <div class="value-container">
+                <input type="text" mask="percent" suffix="%" [dropSpecialCharacters]="false" (change)="onChange($event)"
+                 [ngModel]="model.gRetorno | number: '1.0-4'" (ngModelChange)="model.gRetorno = $event" [readonly]="readonly" />
+              </div>
+            </div>
+          </td>
+
+          <td>
+            <div class="column-container">
+              <b>IVA G. Retorno:</b>
+              <div class="value-container">
+                <input type="text" mask="percent" suffix="%" [dropSpecialCharacters]="false" (change)="onChange($event)"
+                  [ngModel]="model.ivagRetorno | number: '1.0-4'"  (ngModelChange)="model.ivagRetorno = $event" [readonly]="true" />
+              </div>
+            </div>
+          </td>
+
+          <td>
+            <div class="column-container">
+              <b>Otros Gastos:</b>
+              <div class="value-container">
+                <input type="text" mask="percent" suffix="%" [dropSpecialCharacters]="false" (change)="onChange($event)"
+                  [ngModel]="model.otrosGastos | number: '1.0-4'"  (ngModelChange)="model.otrosGastos = $event" [readonly]="readonly" />
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr class="header-row-3">
+          <td colspan="2">
+            <div class="column-container">
+              <b>Gastos Compañia:</b>
+              <div class="value-container" *ngIf="!userRole">
+                <input type="text" mask="percent" suffix="%" [dropSpecialCharacters]="false" (change)="onChange($event)"
+                  [ngModel]="model.gastosCompania | number: '1.0-4'" (ngModelChange)="model.gastosCompania = $event" [readonly]="true" />
+              </div>
+              <div class="value-container" *ngIf="userRole">
+                <input type="text" mask="percent" suffix="%" [dropSpecialCharacters]="false" (change)="onChange($event)"
+                  [ngModel]="model.gastosCompania | number: '1.0-4'" (ngModelChange)="model.gastosCompania = $event" [readonly]="readonly" />
+              </div>
+            </div>
+          </td>
+          <td colspan="2">
+            <div class="column-container">
+              <b>Utilidad:</b>
+              <div class="value-container" *ngIf="!userRole">
+                <input type="text" mask="percent" suffix="%" [dropSpecialCharacters]="false" (change)="onChange($event)"
+                  [ngModel]="model.utilidad | number: '1.0-4'" (ngModelChange)="model.utilidad = $event" [readonly]="true" />
+              </div>
+              <div class="value-container" *ngIf="userRole">
+                <input type="text" mask="percent" suffix="%" [dropSpecialCharacters]="false" (change)="onChange($event)"
+                  [ngModel]="model.utilidad | number: '1.0-4'" (ngModelChange)="model.utilidad = $event" [readonly]="readonly" />
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="column-container">
+              <b>Factor G:</b>
+              <div class="value-container">
+                <!-- <input type="text" mask="percent.5" suffix="%" [dropSpecialCharacters]="false" [(ngModel)]="model.factorG" readonly /> -->
+                <span>{{model.factorG | number: '1.0-4'}}%</span>
+                <mat-icon *ngIf="model.factorG > 100" class="small pointer" [mdePopoverTriggerFor]="factorGPopover" mdePopoverTriggerOn="click"
+                  #popoverTrigger="mdePopoverTrigger">
+                  error_outline</mat-icon>
+                <mde-popover #factorGPopover=mdePopover [mdePopoverOverlapTrigger]="false">
+                  <mat-card style="max-width: 500px;">
+                    <mat-card-content>
+                      <div class="thin-text sm">
+                        <small>La suma de las variables del Factor G <br> supera el 100%, favor verificar</small>
+                      </div>
+                    </mat-card-content>
+                  </mat-card>
+                </mde-popover>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <div class="grupos-asegurados-container" *ngFor="let grupo of model.gruposAsegurados">
+        <div class="grupo-asegurados-container" fxFlex="100%" fxLayout="row">
+          <div fxFlex="5%" fxFlex.gdGap.xs="8%" fxFlex.gt-sm="3%">
+            <span (click)="grupo.visible=!grupo.visible">
+              <mat-icon *ngIf="!grupo.visible">keyboard_arrow_right</mat-icon>
+              <mat-icon *ngIf="grupo.visible">keyboard_arrow_down</mat-icon>
+            </span>
+          </div>
+          <div fxFlex="95%"  fxFlex.gdGap.xs="92%" fxFlex.gt-sm="97%" class="grupo-asegurados-content" [ngClass]="{'expanded':grupo.visible}">
+            <table>
+              <thead>
+                <tr>
+                  <th colspan="5" class="title-h2">Grupo de Asegurados: {{grupo.nombre}}</th>
+                </tr>
+                <tr>
+                  <th colspan="3">Tipo Suma Asegurada: {{grupo.tipoSumaAsegurada.nombreTipoSumaAsegurada}}</th>
+                  <th colspan="2">Listado Asegurados: {{grupo.conListaAsegurados?'SI':'NO'}}</th>
+                </tr>
+                <tr>
+                  <th colspan="3">Numero Asegurados: {{grupo.numeroAsegurados}}</th>
+                  <th colspan="2">Edad Promedio: {{grupo.edadPromedio}}</th>
+                </tr>
+                <tr *ngIf="grupo.conDistribucionAsegurados">
+                  <th colspan="2">Numero de asegurados por opción</th>
+                  <th *ngFor="let opcion of grupo.opciones; let i = index">
+                    <div>
+                      {{grupo['aseguradosOpcion' + (i+ 1)]}}</div>
+                  </th>
+                </tr>
+                <tr>
+                  <th colspan="2">Valor Asegurado Total</th>
+                  <th *ngFor="let opcion of grupo.opciones">
+                    <div class="currency-container">
+                      {{opcion.valorAseguradoTotal | currency: 'USD' : 'symbol' : '1.0-4'}}</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody *ngIf="grupo.visible && ShowData">
+                <tr class="opciones">
+                  <td colspan="2">Detalle</td>
+                  <td *ngFor="let opcion of grupo.opciones let idx=index;">
+                    <span *ngIf="grupo.numeroOpciones===1">Valor Asegurado</span>
+                    <span *ngIf="grupo.numeroOpciones>1">Opción {{idx+1}}</span>
+                  </td>
+                </tr>
+                <tr *ngFor="let amparo of grupo.amparos | basiconoadicional">
+                  <td colspan="2">{{amparo.nombreAmparo}}</td>
+                  <td *ngFor="let opcion of grupo.opciones">
+                    <div class="currency-container">{{opcion.valorAsegurado | currency: 'USD' : 'symbol' : '1.0-4' }}
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">TASA COMERCIAL ANUAL</td>
+                  <td *ngFor="let opcion of grupo.opciones">
+                    <div class="percent-container">{{opcion.tasaComercialAnual | number:'1.0-4'}}‰</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">% DESCUENTO</td>
+                  <td *ngFor="let opcion of grupo.opciones">
+                    <div class="value-container">
+                      <input type="text" mask="percent" suffix="%" [dropSpecialCharacters]="false"
+                        (change)="onChange($event)" [ngModel]="opcion.porcentajeDescuento | number: '1.0-4'" (ngModelChange)="opcion.porcentajeDescuento = $event"
+                        [readOnly]="opcion.porcentajeRecargo>0||readonly" [disabled]="!opcion.configurado" />
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">% RECARGO</td>
+                  <td *ngFor="let opcion of grupo.opciones">
+                    <div class="value-container">
+                      <input type="text" mask="percent" suffix="%" [dropSpecialCharacters]="false"
+                        (change)="onChange($event)" [ngModel]="opcion.porcentajeRecargo | number: '1.0-4'" (ngModelChange)="opcion.porcentajeRecargo = $event"
+                        [readOnly]="opcion.porcentajeDescuento>0||readonly" [disabled]="!opcion.configurado" />
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">TASA COMERCIAL A APLICAR</td>
+                  <td *ngFor="let opcion of grupo.opciones">
+                    <div class="percent-container">{{opcion.tasaComercialAplicar | number:'1.0-4'}}‰</div>
+                  </td>
+                </tr>
+                <tr *ngIf="grupo.tipoSumaAsegurada.codigoTipoSumaAsegurada===1">
+                  <td colspan="2">Prima Anual <b>INDIVIDUAL</b></td>
+                  <td *ngFor="let opcion of grupo.opciones">
+                    <div class="currency-container">
+                      {{opcion.primaAnualIndividual | currency: 'USD' : 'symbol' : '1.0-4'}}</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">Prima Anual <b>TOTAL</b> </td>
+                  <td *ngFor="let opcion of grupo.opciones">
+                    <div class="currency-container">{{opcion.primaAnualTotal | currency: 'USD' : 'symbol' : '1.0-4'}}
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br />
+            <!-- Informacion Siniestralidad -->
+            <div *ngIf="model.tieneSiniestralidad">
+              <table *ngIf="grupo.visible">
+                <thead>
+                  <tr>
+                    <th [attr.colspan]="this.controlColumn+2" class="title-h3"> Tipo de Tasa : TASA POR
+                      SINIESTRALIDAD
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="opciones">
+                    <td colspan="2">Detalle</td>
+                    <td *ngFor="let opcion of grupo.opciones let idx=index;">
+                      <div class="text-center">
+                        <span *ngIf="grupo.numeroOpciones===1">Valor Asegurado</span>
+                        <span *ngIf="grupo.numeroOpciones>1 && opcion.valorAsegurado > 0">Opción {{idx+1}}</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr *ngFor="let amparo of grupo.amparos | basiconoadicional">
+                    <td colspan="2">{{amparo.nombreAmparo}}</td>
+                    <td *ngFor="let opcion of grupo.opciones">
+                      <div *ngIf="opcion.valorAsegurado > 0" class="currency-container">{{opcion.valorAsegurado | currency: 'USD' : 'symbol' : '1.0-4'}}
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">TASA COMERCIAL POR SINIESTRALIDAD</td>
+                    <td *ngFor="let opcion of grupo.opciones">
+                      <div *ngIf="opcion.valorAsegurado > 0" class="percent-container">{{opcion.siniestralidad.tasaComercial | number:'1.0-4'}}‰
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">% DESCUENTO</td>
+                    <td *ngFor="let opcion of grupo.opciones">
+                      <div *ngIf="opcion.valorAsegurado > 0" class="value-container">
+                        <input type="text" mask="percent" suffix="%" [dropSpecialCharacters]="false"
+                          (change)="onChange($event, true)"
+                          [ngModel]="opcion.siniestralidad.porcentajeDescuento | number: '1.0-4'" (ngModelChange)="opcion.siniestralidad.porcentajeDescuento = $event"
+                          [readOnly]="opcion.siniestralidad.porcentajeRecargo>0||readonly"
+                          [disabled]="!opcion.configurado" />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">% RECARGO</td>
+                    <td *ngFor="let opcion of grupo.opciones">
+                      <div *ngIf="opcion.valorAsegurado > 0" class="value-container">
+                        <input type="text" mask="percent" suffix="%" [dropSpecialCharacters]="false"
+                          (change)="onChange($event, true)"
+                          [ngModel]="opcion.siniestralidad.porcentajeRecargo | number: '1.0-4'" (ngModelChange)="opcion.siniestralidad.porcentajeRecargo = $event"
+                          [readOnly]="opcion.siniestralidad.porcentajeDescuento>0||readonly"
+                          [disabled]="!opcion.configurado" />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">TASA COMERCIAL A APLICAR</td>
+                    <td *ngFor="let opcion of grupo.opciones">
+                      <div *ngIf="opcion.valorAsegurado > 0" class="percent-container">
+                        {{opcion.siniestralidad.tasaComercialAplicar | number : '1.0-4'}}‰
+                      </div>
+                    </td>
+                  </tr>
+                  <tr *ngIf="false">
+                    <td colspan="2">Prima Anual <b>INDIVIDUAL</b></td>
+                    <td *ngFor="let opcion of grupo.opciones">
+                      <div *ngIf="opcion.valorAsegurado > 0" class="currency-container">
+                        {{opcion.siniestralidad.primaAnualIndividual | currency: 'USD' : 'symbol' : '1.0-4'}}
+                      </div>
+                    </td>
+                  </tr>
+                  <tr style="background-color: #f5f5f5;">
+                    <td colspan="2">Prima Anual <b>INDIVIDUAL</b> </td>
+                    <td *ngFor="let opcion of grupo.opciones">
+                      <div *ngIf="opcion.valorAsegurado > 0" class="currency-container">
+                        <b>{{opcion.siniestralidad.primaAnualTotal | currency: 'USD' : 'symbol' : '1.0-4'}}</b>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

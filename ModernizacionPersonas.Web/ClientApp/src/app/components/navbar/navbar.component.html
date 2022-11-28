@@ -1,0 +1,31 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <a mat-icon-button (click)="toggleSideNav($event)" fxShow="true" fxHide.gt-sm>
+      <mat-icon>menu</mat-icon>
+    </a>
+    <div fxShow="true" fxFlex="70%">
+      <div fxFlex fxLayout fxLayoutAlign="flex-start">
+        <ng-container *ngFor="let item of items">
+          <a *ngIf="item.itemsCount>0" mat-button [matMenuTriggerFor]="menu">
+            {{item.text}}
+            <mat-icon class="material-icons">expand_more</mat-icon>
+          </a>
+          <a *ngIf="item.itemsCount==0" mat-button [routerLink]="item.routerLink">
+            {{item.text}}
+          </a>
+          <mat-menu #menu="matMenu" xPosition="after">
+            <ng-container *ngFor="let subitem of item.items">
+              <a mat-menu-item [routerLink]="subitem.routerLink">
+                <mat-icon class="material-icons">{{subitem.icon}}</mat-icon>
+                {{subitem.text}}
+              </a>
+            </ng-container>
+          </mat-menu>
+        </ng-container>
+      </div>
+    </div>
+    <div fxShow="true" fxFlex="30%">
+      <app-user-menu></app-user-menu>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

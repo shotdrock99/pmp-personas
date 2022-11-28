@@ -1,0 +1,66 @@
+<div fxLayout="column" fxFlex="100%">
+  <div class="table">
+    <div fxFlex="100%" fxLayout="column">
+      <div style="padding: 0.5em;">
+        <mat-checkbox [checked]="allComplete" [indeterminate]="someComplete()" (change)="setAll($event.checked)" [disabled]="readonly">
+          Seleccionar Todos
+        </mat-checkbox>
+      </div>
+      <div *ngFor="let clausula of data; let i=index;" fxLayout="column" fxFlex="100%" style="margin: 4px;">
+        <div class="row subtitle" fxFlex="100%" fxLayout="row">
+          <div fxFlex="5%">
+            <mat-checkbox [(ngModel)]="clausula.activo" (change)="onClausulaSelect(clausula)" (ngModelChange)="updateAllComplete()" [disabled]="readonly">
+            </mat-checkbox>
+          </div>
+          <div fxFlex="95%" fxLayout="row">
+            {{clausula.nombre}}
+            <mat-icon class="small pointer" [mdePopoverTriggerFor]="detalleAmparoPopover" mdePopoverTriggerOn="click"
+              #popoverTrigger="mdePopoverTrigger">
+              info</mat-icon>
+            <mde-popover #detalleAmparoPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
+              <mat-card style="max-width: 500px">
+                <mat-card-content>
+                  <div class="thin-text sm">
+                    <p [innerHTML]="clausula.descripcion"></p>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </mde-popover>
+          </div>
+        </div>
+        <div *ngIf="clausula.activo">
+          <div fxLayout="column" *ngIf="clausula.codigoSeccion===35">
+            <div style="margin: 10px;">
+              <app-configuracion-slip-asegurabilidad [data]="clausula.asegurabilidad" (refresh)="executeRefresh()" [readonly]="readonly" (valueChange)="onChangeAsegurabilidad($event)">
+              </app-configuracion-slip-asegurabilidad>
+            </div>
+          </div>
+          <div class="variables-container" fxLayout="column" *ngIf="clausula.codigoSeccion!==35">
+            <div class="row" fxFlex="100%" fxLayout="row" *ngFor="let variable of clausula.variables">
+              <div fxFlex="60%">
+                {{variable.nombre}}
+              </div>
+              <div fxFlex="40%">
+                <div class="value-container inline" style="margin-right: 4px; font-size: 10pt;">
+                  <input type="text" [mask]="getMask(variable)" thousandSeparator="." class="full-width noborder"
+                    [(ngModel)]="variable.valor" (change)="onVariableChange(variable)" [readonly]="readonly" />
+                  <div *ngIf="variable.errors" class="errors-popover">
+                    <mat-icon class="text-warning" [mdePopoverTriggerFor]="appPopover" mdePopoverTriggerOn="click"
+                      #popoverTrigger="mdePopoverTrigger">error_outline</mat-icon>
+                    <mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
+                      <mat-card style="max-width: 300px">
+                        <mat-card-content>
+                          <b *ngIf="variable.errors">El valor configurado debe ser mayor a cero.</b>
+                        </mat-card-content>
+                      </mat-card>
+                    </mde-popover>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

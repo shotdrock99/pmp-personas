@@ -1,0 +1,129 @@
+<div class="unload-overlay" *ngIf="!pageLoaded">
+  <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate">
+  </mat-progress-spinner>
+  <b class="thin-text md">Cargando Cotización...</b>
+</div>
+
+<div *ngIf="pageLoaded" fxLayout="column" class="view-container">
+  <div fxLayout="column" style="height: 100%;">
+    <div fxLayout="row" class="view-title">
+      <div class="toolbar" fxFlex="100%">
+        <div fxFlex="20%" fxLayout="row" fxLayoutAlign="start center">
+          <div class="thin-text">
+            Histórico de cotización
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions-container">
+      <div fxLayout="row">
+        <div fxFlex="80%">
+          <app-page-toolbar [data]="toolbarConfig.items"></app-page-toolbar>
+        </div>
+      </div>
+    </div>
+
+    <div class="view-content">
+      <div class="container blue-bg">
+        <div class="container">
+          <h2 class="pb-3 pt-2">Histórico de cotización #{{numeroCotizacion}}</h2>
+          <div class="timeline-container">
+            <!--first section-->
+            <div
+              *ngFor="let item of data; let i = index; let even=even; let odd=odd; let first=first; let last=last;">
+              <div *ngIf="even">
+                <div class="row align-items-center how-it-works" [ngClass]="{'last':last, 'first':first}">
+                  <div class="col-2 text-center bottom">
+                    <div class="circle">{{i+1}}</div>
+                  </div>
+                  <div class="col-6">
+                    <div class="item-content">
+                      <h5>{{item.description}}</h5>
+                      <div *ngIf="item.comments.length>0" class="comments-container">
+                        <ul>
+                          <li><i>"{{item.comments[0].message}}"</i></li>
+                        </ul>
+                      </div>
+                      <b>{{item.codigoUsuario}}</b> | <small>{{item.creationDate|date:'dd/MM/yyyy h:mm a'}}</small>
+                      <div *ngIf="item.uNotificado">
+                        <b>U Notificado: </b> <small>{{item.uNotificado}}</small>
+                      </div>
+                      <div>
+                        <a *ngIf="item.codigoEstadoCotizacion>=1111&&item.codigoEstadoCotizacion<=1114"
+                          class="pointer" (click)="downloadAttachments(item)">Descargar adjuntos</a>
+                      </div>
+                      <div>
+                        <a *ngIf="item.codigoEstadoCotizacion===1108"
+                          [routerLink]="['/cotizaciones', codigoCotizacion, 'fichatecnica']">Ver Ficha Técnica</a>
+                        <a *ngIf="item.codigoEstadoCotizacion===1115"
+                          [routerLink]="['/cotizaciones', codigoCotizacion, 'slip', 'preview']">Ver Slip</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--path between 1-2-->
+                <div class="row timeline" *ngIf="!last">
+                  <div class="col-2">
+                    <div class="corner top-right"></div>
+                  </div>
+                  <div class="col-8">
+                    <hr />
+                  </div>
+                  <div class="col-2">
+                    <div class="corner left-bottom"></div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="odd">
+                <!--second section-->
+                <div class="row align-items-center justify-content-end how-it-works"
+                  [ngClass]="{'last':last, 'first':first}">
+                  <div class="col-6 text-right">
+                    <div class="item-content">
+                      <h5>{{item.description}}</h5>
+                      <div *ngIf="item.comments.length>0" class="comments-container">
+                        <ul>
+                          <li><i>"{{item.comments[0].message}}"</i></li>
+                        </ul>
+                      </div>
+                      <b>{{item.codigoUsuario}}</b> | <small>{{item.creationDate|date:'dd/MM/yyyy h:mm a'}}</small>
+                      <div *ngIf="item.uNotificado">
+                        <b>U Notificado: </b> <small>{{item.uNotificado}}</small>
+                      </div>
+                      <div>
+                        <a *ngIf="item.codigoEstadoCotizacion>=1111&&item.codigoEstadoCotizacion<=1114"
+                          class="pointer" (click)="downloadAttachments(item)">Descargar adjuntos</a>
+                      </div>
+                      <div>
+                        <a *ngIf="item.codigoEstadoCotizacion===1108"
+                          [routerLink]="['/cotizaciones', codigoCotizacion, 'fichatecnica']">Ver Ficha Técnica</a>
+                        <a *ngIf="item.codigoEstadoCotizacion===1115"
+                          [routerLink]="['/cotizaciones', codigoCotizacion, 'slip', 'preview']">Ver Slip</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-2 text-center full">
+                    <div class="circle">{{i+1}}</div>
+                  </div>
+                </div>
+                <!--path between 2-3-->
+                <div class="row timeline" *ngIf="!last">
+                  <div class="col-2">
+                    <div class="corner right-bottom"></div>
+                  </div>
+                  <div class="col-8">
+                    <hr />
+                  </div>
+                  <div class="col-2">
+                    <div class="corner top-left"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

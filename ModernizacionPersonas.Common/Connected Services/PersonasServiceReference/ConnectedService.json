@@ -1,0 +1,18 @@
+﻿{
+  "ProviderId": "Microsoft.VisualStudio.ConnectedService.Wcf",
+  "Version": "15.0.31022.994",
+  "ExtendedData": {
+    "inputs": [
+      "http://192.1.3.183:8082/WCFTablasParametrizacionPersonas/Service1.svc"
+    ],
+    "collectionTypes": [
+      "System.Array",
+      "System.Collections.Generic.Dictionary`2"
+    ],
+    "namespaceMappings": [
+      "*, PersonasServiceReference"
+    ],
+    "targetFramework": "netcoreapp2.2",
+    "typeReuseMode": "None"
+  }
+}

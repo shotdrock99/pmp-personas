@@ -1,0 +1,25 @@
+<div class="toolbar-container" fxFlex="100%" fxLayout="row">
+  <div *ngFor="let item of menuItems" [ngStyle]="{'display' : item.isEnabled ? 'block':'none'}">
+    <button *ngIf="!item.items" mat-menu-item [title]="item.tooltip" (click)="itemClick($event, item)">
+      <mat-icon [ngClass]="{'hidden' : item.icon_path===''}">{{item.icon_path}}
+      </mat-icon>
+      <span>{{item.label}}</span>
+    </button>
+    <div *ngIf="item.items">
+      <button mat-menu-item [title]="item.tooltip" [matMenuTriggerFor]="menu">
+        <mat-icon [ngClass]="{'hidden' : item.icon_path===''}">{{item.icon_path}}
+        </mat-icon>
+        <span>{{item.label}}</span>
+      </button>
+      <mat-menu #menu="matMenu">
+        <div *ngFor="let item of item.items" [ngStyle]="{'display' : item.isEnabled ? 'block':'none'}">
+          <button mat-menu-item [title]="item.tooltip" (click)="itemClick($event, item)">
+            <mat-icon [ngClass]="{'hidden' : item.icon_path===''}">{{item.icon_path}}
+            </mat-icon>
+            <span>{{item.label}}</span>
+          </button>
+        </div>
+      </mat-menu>
+    </div>
+  </div>
+</div>

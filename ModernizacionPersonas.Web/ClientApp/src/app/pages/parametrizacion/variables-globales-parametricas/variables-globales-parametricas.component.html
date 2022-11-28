@@ -1,0 +1,50 @@
+<div *ngIf="!isLoading" fxLayout="column" class="view-container">
+  <div fxLayout="row" class="view-title">
+    <div class="toolbar" fxFlex="100%">
+      <div fxFlex="20%" fxLayout="row" fxLayoutAlign="start center">
+        <h4 class="thin-text">
+          Lista Variables Globales
+        </h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions-container">
+    <div fxLayout="row">
+      <app-page-toolbar [data]="toolbarConfig.items"></app-page-toolbar>
+    </div>
+  </div>
+
+  <div fxLayout="row wrap" fxLayoutGap="5em grid" fxLayoutAlign="start" class="card">
+    <div *ngFor="let card of data">
+      <mat-card class="body-card">
+        <mat-card-header>
+          <mat-card-title>{{card.nombreVariable | uppercase}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-form-field style="width: 80%;">
+            <mat-label>Valor Variable</mat-label>
+            <div *ngIf="card.tipoValorVariable === 'IN'">
+              <input matInput type="number" min="1" [(ngModel)]="card.valorVariable">
+            </div>
+            <mat-hint *ngIf="card.tipoValorVariable === 'IN'">Números mayores a 0.</mat-hint>
+            <div *ngIf="card.tipoValorVariable === 'VC'">
+              <input matInput type="text" [(ngModel)]="card.valorVariable">
+            </div>
+            <mat-hint *ngIf="card.tipoValorVariable === 'VC'">Solo letras.</mat-hint>
+            <div *ngIf="card.tipoValorVariable === 'MO'">
+              <input matInput type="number" min="1" step="any" [(ngModel)]="card.valorVariable">
+            </div>
+            <span *ngIf="card.tipoValorVariable === 'MO'" matPrefix>$ &nbsp;</span>
+            <mat-hint *ngIf="card.tipoValorVariable === 'MO'">Tipo moneda.</mat-hint>
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+          <div fxFlex></div>
+          <button mat-raised-button class="button" color="primary" (click)="edit(card)" >Editar</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+</div>

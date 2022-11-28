@@ -1,0 +1,58 @@
+<div>
+  <table class="w80">
+    <tr class="title-h2">
+      <td colspan="2" class="title">
+        INFORMACION TOMADOR
+      </td>
+    </tr>
+    <tr>
+      <td>Tomador</td>
+      <td>{{model.tomador}}</td>
+    </tr>
+    <tr>
+      <td>Vigencia</td>
+      <td *ngIf="model.vigencia.desde != '01-01-0001'">{{model.vigencia.desde}} - {{model.vigencia.hasta}}
+      <td *ngIf="model.vigencia.desde == '01-01-0001'">POR DEFINIR
+      </td>
+    </tr>
+    <tr>
+      <td>Tipo de Riesgo</td>
+      <td>{{model.actividadRiesgo | uppercase}}</td>
+    </tr>
+    <tr>
+      <td>Ciudad</td>
+      <td>{{model.ciudad | uppercase}}</td>
+    </tr>
+    <tr>
+      <td>Intermediarios</td>
+      <td>
+        <div class="intermediarios-container">
+          <div fxLayout="column">
+            <div fxFlex="100%" fxLayout="row wrap" *ngFor="let intermediario of model.intermediarios">
+              <div fxFlex="70%">
+                {{intermediario.nombre}}
+                <b>{{intermediario.porcentajeParticipacion/100 | percent:'1.0-4'}}</b>
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Aseguradora Actual</td>
+      <td>{{model.aseguradoraActual}}</td>
+    </tr>
+    <tr>
+      <td>Tipo de Negocio</td>
+      <td>{{model.tipoNegocio}}</td>
+    </tr>
+    <tr>
+      <td>Tipo de Contratacion</td>
+      <td>{{model.tipoContratacion | uppercase}}</td>
+    </tr>
+    <tr>
+      <td>Con Listado Asegurados</td>
+      <td>{{model.conListadoAsegurados?'SI':'NO'}}</td>
+    </tr>
+  </table>
+</div>

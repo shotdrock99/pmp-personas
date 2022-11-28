@@ -1,0 +1,337 @@
+<div class="unload-overlay" *ngIf="!pageLoaded">
+  <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate">
+  </mat-progress-spinner>
+  <b class="thin-text md">Cargando configuración...</b>
+</div>
+
+<div *ngIf="pageLoaded" fxLayout="column" class="view-container">
+  <div>
+    <app-cotizacion-tabs [disabledTab$]="disabledTabSubject.asObservable()" ></app-cotizacion-tabs>
+  </div>
+
+  <div class="actions-container">
+    <div fxLayout="row">
+      <div fxFlex="80%">
+        <app-page-toolbar [data]="toolbarConfig.items"></app-page-toolbar>
+      </div>
+      <div fxFlex="20%" fxLayoutAlign="end" *ngIf="showButtonContinueToSlip">
+        <div>
+          <button mat-menu-item (click)="continue()" title="Continuar" [disabled]="disabledContinue">
+            <span>Continuar a Envío Slip</span>
+            <mat-icon>chevron_right</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="numeroCotizacion" class="num-cotizacion-container">
+    Cotizacion No. {{numeroCotizacion}}
+    <small> version {{version}} </small>
+  </div>
+
+  <app-readonly-cotizacion-toast [data]="cotizacion" [readonly]="readonly">
+  </app-readonly-cotizacion-toast>
+
+  <div class="view-content">
+    <div [formGroup]="form" class="form-container" fxLayout="column" fxFlex="80%">
+      <div>
+        <div *ngIf="alertConfig.visible" class="alert" [ngClass]="alertConfig.className">
+          <div fxLayout="row">
+            <div fxFlex="5%">
+              <mat-icon class="mat-icon-2x">{{alertConfig.icon}}</mat-icon>
+            </div>
+            <div fxFlex="85%" fxLayout="column">
+              <div [innerHTML]="alertConfig.message"></div>
+              <div class="thin-text sm">{{lastTransactionCommentsMessage}}</div>
+            </div>
+            <div fxFlex>
+              <div fxLayoutAlign="end center">
+                <button mat-raised-button color="default" (click)="openHistory()">
+                  <mat-icon>history</mat-icon>
+                  Ver transacciones
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <app-informacion-autorizaciones-cotizacion #informacionAutorizacionesCotizacion [readonly]="readonly"
+          (validate)="reloadValidation()"  *ngIf="mostrarNotificacionAutorizaciones">
+        </app-informacion-autorizaciones-cotizacion>
+
+      </div>
+
+      <br />
+
+      <div *ngIf="showConfiguracionSlip">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Información presentación SLIP</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div fxflex fxlayout="column" fxLayout.sm="column" fxLayout.xs="column" fxLayout.gt-sm="row wrap" fxLayoutGap="20px" style="margin: 20px;">
+              <div fxFlex="100" fxFlex.gt-sm="0 1 calc(50% - 20px)">
+                <!--<mat-form-field class="full-width">
+                  <input matInput upperCase class="thin-text sm" type="text" #formDepartamento
+                    placeholder="Departamento" aria-label="Departamento" [formControl]="Departamento"
+                    [matAutocomplete]="formDepartamento" />
+                  <mat-autocomplete #formDepartamento="matAutocomplete"
+                    [displayWith]="displayFn.bind(this, 'nombreDepartamento')">
+                    <mat-option *ngFor="let option of filteredDepartamentos | async" [value]="option">
+                      <span class="thin-text sm">{{ option.nombreDepartamento }}</span>
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>-->
+                <mat-form-field class="full-width">
+                  <input matInput upperCase class="thin-text sm" type="text" placeholder="Departamento" #departamento aria-label="Departamento"
+                    [formControl]="Departamento" [matAutocomplete]="departamentoss">
+                  <mat-autocomplete #departamentoss="matAutocomplete" [displayWith]="displayFn.bind(this, 'nombreDepartamento')">
+                    <mat-option *ngFor="let option of filteredDepartamentos | async" [value]="option">
+                      {{option.nombreDepartamento}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+                <div *ngIf="(submitted || Departamento.touched) && Departamento.errors"
+                  class="text-danger">
+                  <div *ngIf="Departamento.errors.required">
+                    <b class="error-message">El campo es requerido</b>
+                  </div>
+                </div>
+              </div>
+
+              <div fxFlex="100" fxFlex.gt-sm="0 1 calc(50% - 20px)">
+                <!--<mat-form-field class="full-width">
+                  <input matInput upperCase class="thin-text sm" type="text" #Municipio placeholder="Ciudad"
+                    aria-label="Ciudad" [formControl]="Municipio" [matAutocomplete]="Municipioo" />
+                  <mat-autocomplete #Municipioo="matAutocomplete"
+                    [displayWith]="displayFn.bind(this, 'nombreMunicipio')">
+                    <mat-option *ngFor="let option of filteredMunicipios | async" [value]="option">
+                      <span class="thin-text sm">{{ option.nombreMunicipio }}</span>
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>-->
+                <mat-form-field class="full-width">
+                  <input matInput upperCase class="thin-text sm" type="text"  placeholder="Municipio"
+                    aria-label="Municipio" [formControl]="Municipio" [matAutocomplete]="municipioss" />
+                  <mat-autocomplete #municipioss="matAutocomplete" [displayWith]="displayFn.bind(this, 'nombreMunicipio')">
+                    <mat-option *ngFor="let option of filteredMunicipios | async" [value]="option">
+                      <span class="thin-text sm">{{ option.nombreMunicipio }}</span>
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+                <div *ngIf="(submitted || Municipio.touched) && Municipio.errors"
+                  class="text-danger">
+                  <div *ngIf="Municipio.errors.required">
+                    <b class="error-message">El campo es requerido</b>
+                  </div>
+                </div>
+              </div>
+
+              <div class="no-margin-right" fxflex="100" fxFlex.gt-sm="0 1 calc(100%)" fxlayout="column" fxLayout.sm="column" fxLayout.xs="column" fxLayout.gt-sm="row wrap" fxLayoutGap="20px" [formGroup]="tomadorForm">
+                <div fxFlex="100" fxFlex.gt-sm="0 1 calc(100% - 20px)">
+                  <div>Información del Tomador</div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-sm="0 1 calc(100% - 20px)">
+                  <mat-form-field class="full-width">
+                    <input #nombre matInput upperCase placeholder="Señores" formControlName="nombre"
+                      pattern="[a-zA-ZÀ-úñÑ _.-]*"
+                      [ngClass]="{ 'is-invalid': submitted && tomadorControls.errors }"/>
+                  </mat-form-field>
+                  <div *ngIf="(submitted || tomadorControls.nombre.touched) && tomadorControls.nombre.errors"
+                    class="text-danger">
+                    <div *ngIf="tomadorControls.nombre.errors.required">
+                      <b class="error-message">El campo es requerido</b>
+                    </div>
+                    <div *ngIf="tomadorControls.nombre.errors.maxlength">
+                      <b class="error-message">El valor del campo excedió el límite de caracteres permitido</b>
+                    </div>
+                    <div *ngIf="tomadorControls.nombre.errors.pattern">
+                      <b class="error-message">Sólo se permiten valores alfabeticos</b>
+                    </div>
+                  </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-sm="0 1 calc(33% - 20px)">
+                <mat-form-field class="full-width">
+                  <input #nombre matInput upperCase placeholder="Dirección" formControlName="direccion"
+                    [ngClass]="{ 'is-invalid': submitted && tomadorControls.direccion.errors }" />
+                </mat-form-field>
+                <div *ngIf="(submitted || tomadorControls.direccion.touched) && tomadorControls.direccion.errors"
+                    class="text-danger">
+                    <div *ngIf="tomadorControls.direccion.errors.required">
+                      <b class="error-message">El campo es requerido</b>
+                    </div>
+                    <div *ngIf="tomadorControls.direccion.errors.maxlength">
+                      <b class="error-message">El valor del campo excedió el límite de caracteres permitido</b>
+                    </div>
+                  </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-sm="0 1 calc(34% - 20px)">
+                  <mat-form-field class="full-width">
+                    <input matInput upperCase placeholder="Teléfono" formControlName="telefono"
+                      [ngClass]="{ 'is-invalid': submitted && tomadorControls.telefono.errors }" />
+                  </mat-form-field>
+                  <div *ngIf="(submitted || tomadorControls.telefono.touched) && tomadorControls.telefono.errors"
+                    class="text-danger">
+                    <div *ngIf="tomadorControls.telefono.errors.required">
+                      <b class="error-message">El campo es requerido</b>
+                    </div>
+                    <div *ngIf="tomadorControls.telefono.errors.maxlength">
+                      <b class="error-message">El valor del campo excedió el límite de caracteres permitido</b>
+                    </div>
+                  </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-sm="0 1 calc(33% - 20px)">
+                  <mat-form-field class="full-width">
+                    <input matInput upperCase placeholder="Correo Electrónico" formControlName="email"
+                      [ngClass]="{ 'is-invalid': submitted && tomadorControls.email.errors }" />
+                  </mat-form-field>
+                  <div *ngIf="(submitted || tomadorControls.email.touched) && tomadorControls.email.errors"
+                    class="text-danger">
+                    <div *ngIf="tomadorControls.email.errors.required">
+                      <b class="error-message">El campo es requerido</b>
+                    </div>
+                    <div *ngIf="tomadorControls.email.errors.email">
+                      <b class="error-message">El valor ingresado no es correo válido</b>
+                    </div>
+                  </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-sm="0 1 calc(50% - 20px)">
+                  <mat-form-field class="full-width">
+                    <input matInput upperCase class="thin-text sm" type="text" #departamentoTomadorr
+                      placeholder="Departamento" aria-label="Departamento" [formControl]="DepartamentoTomador"
+                      [matAutocomplete]="departamentsPolicyholder" />
+                    <mat-autocomplete #departamentsPolicyholder="matAutocomplete"
+                      [displayWith]="displayFn.bind(this, 'nombreDepartamento')">
+                      <mat-option *ngFor="let epartamentPolicyholder of filteredDepartamentsPolicyholder | async" [value]="epartamentPolicyholder">
+                        <span class="thin-text sm">{{ epartamentPolicyholder.nombreDepartamento }}</span>
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+                  <div
+                    *ngIf="(submitted || DepartamentoTomador.touched) && DepartamentoTomador.errors"
+                    class="text-danger">
+                    <div *ngIf="DepartamentoTomador.errors.required">
+                      <b class="error-message">El campo es requerido</b>
+                    </div>
+                  </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-sm="0 1 calc(50% - 20px)">
+                  <mat-form-field class="full-width">
+                    <input matInput upperCase class="thin-text sm" type="text" #municipioTomadorr placeholder="Ciudad"
+                      aria-label="Ciudad" [formControl]="MunicipioTomador" [matAutocomplete]="municipalitiesPolicyholder" />
+                    <mat-autocomplete #municipalitiesPolicyholder="matAutocomplete"
+                      [displayWith]="displayFn.bind(this, 'nombreMunicipio')">
+                      <mat-option *ngFor="let municipalitiePolicyholder of filteredMunicipalitiesPolicyholder | async" [value]="municipalitiePolicyholder">
+                        <span class="thin-text sm">{{ municipalitiePolicyholder.nombreMunicipio }}</span>
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+                  <div *ngIf="(submitted || MunicipioTomador.touched) && MunicipioTomador.errors"
+                    class="text-danger">
+                    <div *ngIf="MunicipioTomador.errors.required">
+                      <b class="error-message">El campo es requerido</b>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div fxFlex="100" fxFlex.gt-sm="0 1 calc(100% - 20px)">
+                <mat-form-field class="full-width">
+                  <textarea matInput upperCase formControlName="actividad" placeholder="Actividad del Tomador"
+                    style="resize: none;"></textarea>
+                </mat-form-field>
+                <div *ngIf="(submitted || formControls.actividad.touched) && formControls.actividad.errors"
+                  class="text-danger">
+                  <div *ngIf="formControls.actividad.errors.required">
+                    <b class="error-message">El campo es requerido</b>
+                  </div>
+                </div>
+              </div>
+
+              <br />
+
+              <div fxFlex="100" fxFlex.gt-sm="0 1 calc(100% - 20px)" fxlayout="row wrap" fxLayoutAlign="end end" fxLayoutGap="20px">
+                <div fxFlex="100" fxFlex.gt-sm="0 1 calc(50% - 20px)" style="font-size: 10pt; text-align:right;">
+                  <label for="diasValidezCotizacion"  style="font-size: 11pt;" >Días validez cotización </label>
+                  <input type="number" (keyup)="validateDVC()" (change)="validateDVC()" class="full-width noborder" id="diasValidezCotizacion" formControlName="diasValidezCotizacion" />
+                  <div *ngIf="false">
+                    <div
+                      *ngIf="(submitted || formControls.diasValidezCotizacion.touched) && formControls.diasValidezCotizacion.errors">
+                      <div class="popover-errors text-danger">
+                        <mat-icon [mdePopoverTriggerFor]="appPopover" mdePopoverTriggerOn="click"
+                          #popoverTrigger="mdePopoverTrigger">error_outline</mat-icon>
+                        <mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
+                          <mat-card style="max-width: 300px">
+                            <mat-card-content>
+                              <div *ngIf="formControls.diasValidezCotizacion.errors.required">
+                                <b class="error-message">El campo es requerido</b>
+                              </div>
+                              <div *ngIf="formControls.diasValidezCotizacion.errors.max">
+                                <b class="error-message">El valor del campo excedió el límite máximo permitido</b>
+                              </div>
+                              <div *ngIf="formControls.diasValidezCotizacion.errors.min">
+                                <b class="error-message">El valor del campo excedió el límite mínimo permitido</b>
+                              </div>
+                            </mat-card-content>
+                          </mat-card>
+                        </mde-popover>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <div class="divider-h"></div>
+
+        <mat-card class="example-card" *ngIf="showConfiguracionAmparos">
+          <mat-card-header>
+            <mat-card-title>Información variable de Amparos</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <app-configuracion-slip-amparos [data]="model.amparos" [cotizacionState]="cotizacionState"
+              (valuesChange)="onFormValuesChange($event)" [readonly]="readonly"></app-configuracion-slip-amparos>
+          </mat-card-content>
+        </mat-card>
+
+        <div class="divider-h"></div>
+
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>Clausulas</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <app-configuracion-slip-clausulas #clausulasForm [data]="model.clausulas"
+              [cotizacionState]="cotizacionState" (valuesChange)="onFormValuesChange($event)"
+              (refresh)="refreshClause($event)" [readonly]="readonly">
+            </app-configuracion-slip-clausulas>
+          </mat-card-content>
+        </mat-card>
+
+        <div class="divider-h"></div>
+
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>Condiciones Especiales</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div fxFlex="100%" style="padding: 4px 0 0;">
+              <mat-form-field class="full-width">
+                <textarea id="TxtCondicionesEspeciales" matInput formControlName="condiciones" style="height:80px;resize: none;" (change)="onFormValuesChange($event)"></textarea>
+              </mat-form-field>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

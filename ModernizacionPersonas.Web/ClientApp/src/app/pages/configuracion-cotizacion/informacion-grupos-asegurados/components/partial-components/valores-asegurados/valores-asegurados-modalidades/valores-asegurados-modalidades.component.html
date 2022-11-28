@@ -1,0 +1,104 @@
+<form [formGroup]="form">
+    <div class="table-container">
+        <div *ngIf="form.errors">
+            <div *ngIf="form.errors.invalid">
+                <b class="error-message">Debe completar los datos antes de continuar</b>
+            </div>
+        </div>
+
+        <!-- <div *ngIf="esTipoSumaFija">
+            <b style="display: inline; margin-left: 21em;">Opción 1</b>
+            <b style="display: inline; margin-left: 13em;">Opción 2</b>
+            <b style="display: inline; margin-left: 13em;">Opción 3</b>
+        </div> -->
+
+        <table id="tableValoresAseguradosModalidades" mat-table #tableValoresAseguradosModalidades [dataSource]="dataSource" matSort formArrayName="valoresAsegurados">
+            <ng-container matColumnDef="amparo">
+                <th mat-header-cell *matHeaderCellDef>Amparo(s) Seleccionado(s)</th>
+                <td mat-cell *matCellDef="let element; let i = index">
+                    {{element.amparo.nombreAmparo}}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="nDias1">
+                <th mat-header-cell *matHeaderCellDef class="odd-column">Número Días</th>
+                <td mat-cell *matCellDef="let element; let i = index" class="odd-column">
+                    <app-option-dias [dataSource]="dataSourceComplete" [element]="element" [readonly]="readonly" [optionIndex]="1"></app-option-dias>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="valorDiario1">
+                <th mat-header-cell *matHeaderCellDef class="odd-column">Valor Diario</th>
+                <td mat-cell *matCellDef="let element; let i = index" class="odd-column">
+                    <app-option-daily-value [dataSource]="dataSourceComplete" [element]="element" [readonly]="readonly" [optionIndex]="1"></app-option-daily-value>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="valor1">
+                <th mat-header-cell *matHeaderCellDef class="odd-column">Valor Asegurado</th>
+                <td mat-cell *matCellDef="let element; let i = index" class="odd-column">
+                    <app-option-value-dd [element]="element" [optionIndex]="1"></app-option-value-dd>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="nDias2" *ngIf="esTipoSumaFija">
+                <th mat-header-cell *matHeaderCellDef>Número Días</th>
+                <td mat-cell *matCellDef="let element; let i = index">
+                    <app-option-dias [dataSource]="dataSourceComplete" [element]="element" [readonly]="readonly" [optionIndex]="2"></app-option-dias>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="valorDiario2" *ngIf="esTipoSumaFija">
+                <th mat-header-cell *matHeaderCellDef>Valor Diario</th>
+                <td mat-cell *matCellDef="let element; let i = index">
+                    <app-option-daily-value [dataSource]="dataSourceComplete" [element]="element" [readonly]="readonly" [optionIndex]="2"></app-option-daily-value>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="valor2" *ngIf="esTipoSumaFija">
+                <th mat-header-cell *matHeaderCellDef>Valor Asegurado</th>
+                <td mat-cell *matCellDef="let element; let i = index">
+                    <app-option-value-dd [element]="element" [optionIndex]="2"></app-option-value-dd>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="nDias3" *ngIf="esTipoSumaFija">
+                <th mat-header-cell *matHeaderCellDef class="odd-column">Número Días</th>
+                <td mat-cell *matCellDef="let element; let i = index" class="odd-column">
+                    <app-option-dias [dataSource]="dataSourceComplete" [element]="element" [readonly]="readonly" [optionIndex]="3"></app-option-dias>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="valorDiario3" *ngIf="esTipoSumaFija">
+                <th mat-header-cell *matHeaderCellDef class="odd-column">Valor Diario</th>
+                <td mat-cell *matCellDef="let element; let i = index" class="odd-column">
+                    <app-option-daily-value [dataSource]="dataSourceComplete" [element]="element" [readonly]="readonly" [optionIndex]="3"></app-option-daily-value>
+                </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="valor3" *ngIf="esTipoSumaFija">
+                <th mat-header-cell *matHeaderCellDef class="odd-column">Valor Asegurado</th>
+                <td mat-cell *matCellDef="let element; let i = index" class="odd-column">
+                    <app-option-value-dd [element]="element" [optionIndex]="3"></app-option-value-dd>
+                </td>
+            </ng-container>
+            
+            <ng-container *matHeaderRowDef="displayedColumns">
+                <tr class="mat-header-row header-group-row" *ngIf="esTipoSumaFija">
+                  <th class="mat-header-cell" role="columnheader"></th>
+                  <th class="mat-header-cell" colspan="3" class="odd-column header-cell">
+                    Opción 1
+                  </th>
+                  <th class="mat-header-cell" colspan="3" class="header-cell">
+                    Opción 2
+                  </th>
+                  <th class="mat-header-cell" colspan="3" class="odd-column header-cell">
+                    Opción 3
+                  </th>
+                </tr>
+              </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns; let i=index"></tr>
+        </table>
+    </div>
+</form>

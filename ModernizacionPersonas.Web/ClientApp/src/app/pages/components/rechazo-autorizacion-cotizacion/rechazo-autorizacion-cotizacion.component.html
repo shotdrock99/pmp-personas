@@ -1,0 +1,35 @@
+<div [formGroup]="rechazoForm">
+  <h5>No autorización de Cotización</h5>
+  <p>
+    Se enviara una notificación de rechazo según la información configurada en la Cotización.
+  </p>
+  <div>
+    <div>
+      <b>Dirigido a:</b>
+    </div>
+    <span>{{user | titlecase}} - </span>
+    <span>{{userRole | titlecase}}</span>
+  </div>
+  <div>
+    <mat-form-field class="full-width">
+      <mat-label>Seleccione una causal de rechazo</mat-label>
+      <mat-select formControlName="causalRechazo" placeholder="Seleccione una causal de rechazo">
+        <mat-option *ngFor="let option of causales" [value]="option">
+          {{option.value | uppercase}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div *ngIf="(submitted || form.causalRechazo.touched) && form.causalRechazo.errors" class="text-danger">
+      <div *ngIf="form.causalRechazo.errors.required">
+        <b class="error-message">Debe seleccionar una causal de rechazo</b>
+      </div>
+    </div>
+  </div>
+  <div>
+    ¿Confirma la notificación de No Autorización de la cotización?
+  </div>
+  <div mat-dialog-actions class="float-right">
+    <button mat-raised-button color="primary" (click)="onConfirm()">Aceptar</button>
+    <button mat-raised-button (click)="onDismiss()">Cancelar</button>
+  </div>
+</div>

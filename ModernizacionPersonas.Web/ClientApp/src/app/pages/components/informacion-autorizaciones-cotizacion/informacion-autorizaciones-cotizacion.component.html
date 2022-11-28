@@ -1,0 +1,140 @@
+<div class="main-container">
+  <mat-card>
+    <mat-card-header>
+      <div mat-card-avatar class="title-icon">
+        <mat-icon class="md-36">security</mat-icon>
+      </div>
+      <mat-card-title>
+        Controles de Autorización
+      </mat-card-title>
+      <mat-card-subtitle>
+        Resumen de controles de autorización
+      </mat-card-subtitle>
+      <mat-panel-description>
+      </mat-panel-description>
+    </mat-card-header>
+    <div fxLayout="column" *ngIf="authorizations?.length>0">
+      <div fxLayout="row" [formGroup]="notificationForm">
+        <div fxFlex="100%" fxLayout="column">
+
+          <app-authorization-control-list [data]="authorizations"></app-authorization-control-list>
+
+          <div *ngIf="!readonly">
+            <div class="notification-actions-container" *ngIf="!notifyDisabled">
+              <div fxLayout="row">
+                <div fxFlex="100%">
+                  <mat-form-field class="full-width">
+                    <textarea upperCase matInput class="thin-text sm" placeholder="Observaciones"
+                      formControlName="observaciones" style="resize: none;"></textarea>
+                  </mat-form-field>
+                  <div *ngIf="(submitted || form.observaciones.touched)  && form.observaciones.errors"
+                    class="text-danger">
+                    <div *ngIf="form.observaciones.errors.required">
+                      <b class="error-message">El campo es requerido</b>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div fxLayout="row" fxLayoutAlign="end end">
+                <div fxFlex="100%" fxFlex.gt-sm="50%">
+                  <div class="form-group">
+                    <mat-form-field class="full-width">
+                      <input matInput class="thin-text sm" type="text" placeholder="Usuario a Notificar"
+                        formControlName="usuarioNotificacion" upperCase
+                        [ngClass]="{'is-invalid': submitted && form.usuarioNotificacion.errors}"
+                        [matAutocomplete]="usuarioNotificacion" matTooltip="Usuario a Notificar" />
+                      <mat-autocomplete #usuarioNotificacion="matAutocomplete"
+                        [displayWith]="displayFn.bind(this, 'codigo')">
+                        <mat-option *ngFor="let usuario of filteredNotificationUsers|async" [value]="usuario">
+                          <span style="position: relative;">
+                            <span class="thin-text sm">{{usuario.codigo}}</span>
+                            <span style="float: right;">
+                              <small
+                                class="badge badge-info badge-pill badge-md thin-text sm">{{usuario.nombreRol}}</small>
+                            </span>
+                          </span>
+                        </mat-option>
+                      </mat-autocomplete>
+                    </mat-form-field>
+                    <div class="text-danger" *ngIf="this.notificationUsers.length===0">
+                      <b class="error-message">No existen usuarios activos para notificar.</b>
+                    </div>
+
+                    <div *ngIf="(submitted || form.usuarioNotificacion.touched)  && form.usuarioNotificacion.errors"
+                      class="text-danger">
+                      <div *ngIf="form.usuarioNotificacion.errors.required">
+                        <b class="error-message">El campo es requerido</b>
+                      </div>
+                      <div *ngIf="form.usuarioNotificacion.errors.incorrect">
+                        <b class="error-message">El valor ingresado es inválido.</b>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="form-group" fxLayoutAlign="end">
+                <input id="files" type="file" accept=".jpeg, .png, .xls, .xlsx, .doc, .docx, .bmp, .tif, .ppt, .pptx, .pdf, .msg"
+                  formControlname="archivoAdjunto" (change)="onFileChange($event)" multiple
+                  style="visibility: hidden;font-size: 0ch" />
+                <label for="files" class="btn btn-info custom">
+                  <span *ngIf="!showLoading">Adjuntar soportes</span>
+                  <span *ngIf="showLoading">Cargando soportes...</span>
+                </label>
+                <div class="thin-text sm text-right hidden">{{fileName}}</div>
+              </div>
+              <div class="thin-text sm bold" *ngIf="uploadFail">
+                <div class="text-danger" style="text-align:left;">Hubo un error cargando el archivo</div>
+                <a class="thin-text xs hidden" (click)="showError=!showError" style="cursor: pointer;">Ver
+                  detalles</a>
+                <div *ngIf="showError" style="max-height: 200px; overflow: auto;">
+                  {{uploadError}}
+                </div>
+              </div>
+              <div *ngIf="uploadCompleted&&!uploadFail">
+                <div class="thin-text sm">
+                  <div style="text-align: right;">
+                    <span *ngIf="!uploadSuccessfully" class="text-success">El archivo fue cargado
+                      exitosamente</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div fxLayout="20%">
+              <div class="history-container" *ngIf="showHistory" (blur)="onBlurHistoryContainer($event)">
+                <div class="history-container-title" fxLayout="row">
+                  <div fxFlex="80%" class="text-left thin-text md">
+                    Movimientos de Autorizaciones
+                  </div>
+                  <div fxFlex="20%" class="text-right">
+                    <mat-icon (click)="toggleHistory($event)">close</mat-icon>
+                  </div>
+                </div>
+                <app-cotizacion-transactions></app-cotizacion-transactions>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div fxLayout="column" *ngIf="authorizations?.length===0">
+      <div class="alert alert-info">
+        No hay controles de autorización pendientes
+      </div>
+    </div>
+    
+    <mat-card-action *ngIf="allowNotify">
+      
+      <div class="text-right">
+        <button mat-raised-button color="primary" (click)="notify()" [disabled]="notifyDisabled">
+          <mat-icon>email</mat-icon>
+          Notificar
+        </button>
+      </div>
+    </mat-card-action>
+
+  </mat-card>
+</div>

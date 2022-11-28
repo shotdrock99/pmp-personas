@@ -1,0 +1,37 @@
+<div>
+  <table class="w80">
+    <thead>
+      <tr>
+        <td colspan="7" class="title">Perfil de Valores Asegurados </td>
+      </tr>
+      <tr>
+        <th>Valor asegurado desde</th>
+        <th>Valor asegurado hasta </th>
+        <th>Cantidad de asegurados </th>
+        <th>% Participación de asegurados </th>
+        <th>Valor Asegurado Total </th>
+        <th>% Participación valor asegurado </th>
+        <th>Promedio de valor asegurado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rango of model.rangos">
+        <td class="value-container">{{rango.valorAseguradoDesde | currency: 'USD' : 'symbol' : '1.0-0'}}</td>
+        <td class="value-container">{{rango.valorAseguradoHasta | currency: 'USD' : 'symbol' : '1.0-0' }}</td>
+        <td class="value-container">{{rango.cantidadAsegurados }}</td>
+        <td class="value-container">{{rango.porcentajeParticipacionAsegurados/100 | percent:'1.0-0' }}</td>
+        <td class="value-container">{{rango.valorAseguradoTotal | currency: 'USD' : 'symbol' : '1.0-0'}}</td>
+        <td class="value-container">{{rango.porcentajeParticipacionValorAsegurado/100 | percent:'1.0-0' }}</td>
+        <td class="value-container">{{rango.promedioValorAsegurado | currency: 'USD' : 'symbol' : '1.0-0'}}</td>
+      </tr>
+      <tr class="totales-container">
+        <td colspan="2" style="text-align: right;"><b>Totales</b></td>
+        <td class="value-container">{{model.totales.sumCantidadAsegurados }}</td>
+        <td class="value-container">{{model.totales.sumPorcentajeParticipacionAsegurados/100 | percent:'1.0-0' }}</td>
+        <td class="value-container">{{model.totales.sumValorAseguradoTotal | currency: 'USD' : 'symbol' : '1.0-0' }}</td>
+        <td class="value-container">{{model.totales.sumPorcentajeParticipacionValorAsegurado/100 | percent:'1.0-0' }}</td>
+        <td class="value-container">{{model.totales.sumPromedioValorAsegurado | currency: 'USD' : 'symbol' : '1.0-0'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

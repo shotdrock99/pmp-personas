@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>{{title}}</h2>
+
+<mat-dialog-content [formGroup]="editForm">
+
+  <mat-form-field class="mat-form-field-text">
+    <mat-label>Nombre Sección</mat-label>
+    <input matInput formControlName="seccion" class="uppercase" (input)="editForm.get('seccion').setValue(editForm.get('seccion').value.toUpperCase())">
+  </mat-form-field>
+  
+  <mat-form-field style="width: 60%;">
+    <mat-label>Grupo</mat-label>
+    <mat-select [(ngModel)]="grupo" formControlName="grupo" disabled>
+      <mat-option *ngFor="let g of grupos" [value]="g.value">
+        {{g.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-checkbox *ngIf="grupo === 3" [(ngModel)]="especial" formControlName="especial" disabled>Especial</mat-checkbox>
+
+</mat-dialog-content>
+
+<mat-dialog-actions class="mat-container">
+  <button mat-raised-button mat-dialog-close>Cancelar</button>
+  <button mat-raised-button color="primary" (click)="edit()">Editar</button>
+</mat-dialog-actions>
